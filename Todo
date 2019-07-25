@@ -1,0 +1,19 @@
+- add method to get fuel amounts. GetFuelAmounts() as general method?
+- add srb_separator method
+- add LF_separator method
+
+Launcher:
+
+Gravity turn:
+- enter num stages to stage during gravity turn
+- enter type of fuel to monitor? or use GetFuelAmounts()?
+- if using srbs, use srb_separator method. if LF, use lf_separator method.
+
+circularise:
+- create_node(mu=gravitational_parameter, r=apoapsis, a1=semi_major_axis, time_to_apo, prograde=delta_v?) method
+- calculate_burn_time(grav_constant=9.82?, ) return burn_time
+- orientate_ship(0, 0, 0) method 
+- execute_burn(time_to_burn) - how to confirm burn finished? pass in parameter and value, e.g. parameter=periapsis and value= 0.99*target_periapsis?
+- remove_node() method
+
+use mock to test?
