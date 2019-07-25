@@ -1,6 +1,9 @@
 - add method to get fuel amounts. GetFuelAmounts() as general method?
 - add srb_separator method
 - add LF_separator method
+- add more useful stats. vessel mass. some rocket equations? e.g. for circularisation burn
+
+
 
 Launcher:
 
