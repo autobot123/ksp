@@ -2,12 +2,14 @@ import krpc
 import time
 import math
 
+# todo add target apo and peri to class
+
 
 class Launcher:
 
-    def __init__(self, sas_activated, launch_num_stages):
+    def __init__(self, sas_activated, launch_num_stages, script_name):
         # connections
-        self.conn = krpc.connect(name='Sub-orbital flight')
+        self.conn = krpc.connect(name=script_name)
         self.canvas = self.conn.ui.stock_canvas
         self.vessel = self.conn.space_center.active_vessel
         self.srf_frame = self.vessel.orbit.body.reference_frame
@@ -20,43 +22,14 @@ class Launcher:
         self.ut = self.conn.add_stream(getattr, self.conn.space_center, 'ut')
         self.altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'mean_altitude')
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
+        self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
         self.stage_1_resources = self.vessel.resources_in_decouple_stage(stage=1, cumulative=False)
         self.srb_fuel = self.conn.add_stream(self.stage_1_resources.amount, 'SolidFuel')
         self.turn_angle = 0
 
-        # # screen info
-        # panel = self.canvas.add_panel()
-        # screen_size = self.canvas.rect_transform.size
-        # rect = panel.rect_transform
-        # rect.size = (170, 40)
-        # rect.position = (720- (screen_size[0] / 2), 280)
-        #
-        # button = panel.add_button("Launch")
-        # button.rect_transform.position = (0, 0)
-        # button_clicked = self.conn.add_stream(getattr, button, 'clicked')
-
-        # # wait for launch
-        # while True:
-        #     if button_clicked():
-        #         self.launch_it()
-        #         button.clicked = False
-        #         # todo destroy button?
-        #         rect = None
-        #         break
-        #
-        #     time.sleep(1)
-
-    def print_info(self):
-        while True:
-            print(self.altitude())
-            print(self.apoapsis())
-            # print(self.stage_2_resources)
-            print(self.srb_fuel())
-            time.sleep(1)
-
-    def launch_it(self):
-        self.set_phys_warp(3)
-        # self.conn.space_center.physics_warp_factor = 0
+    # core methods
+    def launch(self, warp=0):
+        self.set_phys_warp(warp)
         print("Launching vessel")
         self.vessel.control.throttle = 1
         for i in range(self.launch_num_stages):
@@ -64,28 +37,9 @@ class Launcher:
         self.vessel.control.sas = True
         time.sleep(0.1)
 
-    # fixme delete
-    def grav_turn(self, altitude_start, altitude_finish=0):
-        mean_altitude = self.conn.get_call(getattr, self.vessel.flight(), 'mean_altitude')
-        expr = self.conn.krpc.Expression.greater_than(self.conn.krpc.Expression.call(mean_altitude),
-                                                 self.conn.krpc.Expression.constant_double(altitude_start))
-        event = self.conn.krpc.add_event(expr)
-        with event.condition:
-            event.wait()
-        print("Executing gravity turn")
-        self.vessel.auto_pilot.engage()
-        time.sleep(0.1)
-        self.vessel.auto_pilot.target_pitch_and_heading(45, 90)
-
-    #todo finish
-    def grav_turn_gradual(self, alt_turn_start=5000,
-                          alt_turn_end=30000,
-                          target_apo=80000,
-                          final_pitch=30,
-                          warp=0):
+    def gravity_turn(self, alt_turn_start=5000, alt_turn_end=30000, target_apo=80000, final_pitch=30, warp=0):
 
         srbs_separated = False
-
 
         self.vessel.auto_pilot.engage()
         self.vessel.auto_pilot.target_pitch_and_heading(90, 90)
@@ -142,23 +96,48 @@ class Launcher:
         flow_rate = F / Isp
         burn_time = (m0 - m1) / flow_rate
 
-        print(burn_time)
+        print("Burn time: ", burn_time)
 
-        # todo add burn
+        # Orientate ship
+        print('Orientating ship for circularization burn')
+        self.vessel.auto_pilot.reference_frame = node.reference_frame
+        self.vessel.auto_pilot.target_direction = (0, 1, 0)
+        self.vessel.auto_pilot.wait()
+
+        # Wait until burn
+        print('Waiting until circularization burn')
+        burn_ut = self.ut() + self.vessel.orbit.time_to_apoapsis - (burn_time / 2.)
+        lead_time = 5
+        self.conn.space_center.warp_to(burn_ut - lead_time)
+
+        # Execute burn
+        print('Ready to execute burn')
+        time_to_apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'time_to_apoapsis')
+        while time_to_apoapsis() - (burn_time / 2.) > 0:
+            pass
+        print('Executing burn')
+        self.vessel.control.throttle = 1.0
+        time.sleep(burn_time - 0.1)
+        print('Fine tuning')
+        self.vessel.control.throttle = 0.05
+        remaining_burn =self.conn.add_stream(node.remaining_burn_vector, node.reference_frame)
+        # while remaining_burn()[1] > 0:
+        while self.periapsis() < 0.99*target_peri:
+            pass
+        self.vessel.control.throttle = 0.0
+        node.remove()
+
+        print('Launch complete')
 
 
-    def separate_booster(self, num_stages, stage_desc="", fuel_cutoff=0.1):
-        fuel_amount = self.conn.get_call(self.vessel.resources.amount, "SolidFuel")
-        expr = self.conn.krpc.Expression.less_than(self.conn.krpc.Expression.call(fuel_amount),
-                                                   self.conn.krpc.Expression.constant_float(fuel_cutoff))
-        event = self.conn.krpc.add_event(expr)
-        with event.condition:
-            event.wait()
-        print('Separating booster')
-        for i in range(num_stages):
-            self.vessel.control.activate_next_stage()
-            if i < num_stages -1:
-                print('Initiating {} stage'.format(stage_desc))
+    # useful
+    def print_info(self):
+        while True:
+            print(self.altitude())
+            print(self.apoapsis())
+            # print(self.stage_2_resources)
+            print(self.srb_fuel())
+            time.sleep(1)
 
     def sas_prograde(self):
         self.vessel.auto_pilot.disengage()
@@ -183,3 +162,19 @@ class Launcher:
     def set_phys_warp(self, factor=0):
         print("setting warp to ", factor)
         self.conn.space_center.physics_warp_factor = factor
+
+
+    # deprecated
+
+    def separate_booster(self, num_stages, stage_desc="", fuel_cutoff=0.1):
+        fuel_amount = self.conn.get_call(self.vessel.resources.amount, "SolidFuel")
+        expr = self.conn.krpc.Expression.less_than(self.conn.krpc.Expression.call(fuel_amount),
+                                                   self.conn.krpc.Expression.constant_float(fuel_cutoff))
+        event = self.conn.krpc.add_event(expr)
+        with event.condition:
+            event.wait()
+        print('Separating booster')
+        for i in range(num_stages):
+            self.vessel.control.activate_next_stage()
+            if i < num_stages -1:
+                print('Initiating {} stage'.format(stage_desc))

@@ -1,10 +1,9 @@
 from pdb import set_trace as breakpoint
 from krpc_FUNCTIONS import Launcher
 
-test = Launcher(sas_activated=True, launch_num_stages=1)
-test.launch_it()
-test.grav_turn_gradual(warp=1)
-
+test = Launcher(sas_activated=True, launch_num_stages=1, script_name="01.C")
+test.launch(warp=3)
+test.gravity_turn(warp=1)
 test.circularise()
 
 # # test.launch_it()
