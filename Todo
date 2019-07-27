@@ -1,3 +1,4 @@
+- change circularise method to match apoapsis. Cut throttle if app rises more then ten %
 - add method to get fuel amounts. GetFuelAmounts() as general method?
 - add booster_separator(fuel_type, fuel_threshold)
 - can the gravity turn logic go into its own method? Or is it better to have that written out and call the booster_sep method in the while loop?
