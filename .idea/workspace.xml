@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
+            <state relative-caret-position="272">
+              <caret line="34" column="47" lean-forward="true" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#175#1139#0" />
@@ -55,7 +55,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="76" />
     <option name="y" value="-23" />
     <option name="width" value="1702" />
@@ -218,7 +218,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18756586" />
@@ -285,8 +285,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
+        <state relative-caret-position="272">
+          <caret line="34" column="47" lean-forward="true" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <element signature="e#175#1139#0" />
