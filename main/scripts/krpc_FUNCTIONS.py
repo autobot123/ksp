@@ -163,17 +163,24 @@ class Launcher:
         print("setting warp to ", factor)
         self.conn.space_center.physics_warp_factor = factor
 
+    ## todo test
+    def get_fuel_quantity(self):
+        solid_fuel = self.conn.get_call(self.vessel.resources.amount, "SolidFuel")
+        liquid_fuel = self.conn.get_call(self.vessel.resources.amount, "LiquidFuel")
+        return solid_fuel, liquid_fuel
+
 
     # deprecated
 
-    def separate_booster(self, num_stages, stage_desc="", fuel_cutoff=0.1):
-        fuel_amount = self.conn.get_call(self.vessel.resources.amount, "SolidFuel")
+    def separate_booster(self, num_stages, fuel_type, stage_desc="", fuel_cutoff=0.1):
+        # fuel types = "SolidFuel", "LiquidFuel"
+        fuel_amount = self.conn.get_call(self.vessel.resources.amount, fuel_type)
         expr = self.conn.krpc.Expression.less_than(self.conn.krpc.Expression.call(fuel_amount),
                                                    self.conn.krpc.Expression.constant_float(fuel_cutoff))
         event = self.conn.krpc.add_event(expr)
         with event.condition:
             event.wait()
-        print('Separating booster')
+        print('Separating {} booster'.format(fuel_type))
         for i in range(num_stages):
             self.vessel.control.activate_next_stage()
             if i < num_stages -1:
