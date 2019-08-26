@@ -1,4 +1,5 @@
 to test:
+- create gravity turn and manuever node only launch profile? stage myself
 - add method to get fuel amounts. GetFuelAmounts() as general method?
 
 
