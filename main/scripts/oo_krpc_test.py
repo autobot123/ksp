@@ -1,5 +1,5 @@
 from pdb import set_trace as breakpoint
-from krpc_FUNCTIONS import Launcher
+from krpc_FUNCTIONS import Core, Launcher, Orbit
 
 test = Launcher(sas_activated=True, launch_num_stages=1, script_name="01.C")
 test.launch(warp=3)
