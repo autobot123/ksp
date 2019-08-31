@@ -1,6 +1,14 @@
+clean up orbits. dump first kerbsat. quicksave test staging for new kerbsat.
+
+neaten methods for circularising. put calcs into one core method and call them.
+
+create smart method for warping?
+
+
 to test:
 - create gravity turn and manuever node only launch profile? stage myself
 - add method to get fuel amounts. GetFuelAmounts() as general method?
+
 
 
 backlog:
