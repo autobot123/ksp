@@ -4,6 +4,11 @@ import math
 
 # todo add target apo and peri to class
 
+"""
+cmd line:
+from krpc_FUNCTIONS import Core, Launcher, Orbit
+"""
+
 
 class Core:
 
@@ -28,7 +33,6 @@ class Core:
         self.turn_angle = 0
 
 
-    # useful
     def print_info(self):
         while True:
             print(self.altitude())
@@ -91,7 +95,7 @@ class Launcher(Core):
         self.vessel.control.sas = True
         time.sleep(0.1)
 
-    def gravity_turn(self, alt_turn_start=5000, alt_turn_end=30000, target_apo=80000, final_pitch=30, warp=0):
+    def gravity_turn(self, alt_turn_start=3000, alt_turn_end=20000, target_apo=100000, final_pitch=25, warp=0):
 
         srbs_separated = False
 
@@ -128,6 +132,39 @@ class Launcher(Core):
         print("Gravity turn finished, coasting to apoapsis")
         self.sas_prograde()
         self.vessel.control.throttle = 0
+
+
+    def gravity_turn_no_staging(self, alt_turn_start=3000, alt_turn_end=20000, target_apo=100000, final_pitch=25, warp=0):
+
+        ##todo improve turn logic. get it smoother. what to do with final pithc and where to point?
+
+        self.vessel.auto_pilot.engage()
+        self.vessel.auto_pilot.target_pitch_and_heading(90, 90)
+
+        while self.altitude() < 0.9*alt_turn_start:
+            pass
+
+        self.set_phys_warp(warp)
+
+        while True:
+
+            if self.altitude() > alt_turn_start and self.altitude() < alt_turn_end:
+                frac = ((self.altitude() - alt_turn_start) / (alt_turn_end - alt_turn_start))
+                new_turn_angle = frac * 90
+                if abs(new_turn_angle - self.turn_angle) > 0.5:
+                    turn_angle = 90-new_turn_angle + frac*final_pitch
+                    self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, 90)
+                    # print("alt: {},    turn:{}".format(self.altitude(), turn_angle))
+
+            if self.apoapsis() > target_apo:
+                break
+
+            time.sleep(0.1)
+
+        print("Gravity turn finished, coasting to apoapsis")
+        self.sas_prograde()
+        self.vessel.control.throttle = 0
+
 
     def circularise(self, target_peri=80000):
 
@@ -186,7 +223,7 @@ class Launcher(Core):
 
 class Orbit(Core):
 
-    def set_apo(self, apo_target, wait_til_peri=False, burn_time=30, turn_time=5):
+    def set_apo(self, apo_target, wait_til_peri=True, burn_time=30, turn_time=5):
 
         if wait_til_peri:
             while self.vessel.orbit.time_to_periapsis > burn_time*3:
@@ -197,9 +234,9 @@ class Orbit(Core):
         self.conn.space_center.rails_warp_factor = 0
 
         print("Orienting craft")
-        if self.apoapsis < apo_target:
+        if self.apoapsis() < apo_target:
             self.sas_prograde()
-        elif self.apoapsis > apo_target:
+        elif self.apoapsis() > apo_target:
             self.sas_retrograde()
 
         time.sleep(turn_time)
@@ -217,7 +254,7 @@ class Orbit(Core):
         print("Burn complete. Target apo: {}  Actual apo: {}".format(apo_target, apo_actual))
 
 
-    def set_peri(self, peri_target, wait_til_apo=False, burn_time=30, turn_time=5):
+    def set_peri(self, peri_target, wait_til_apo=True, burn_time=30, turn_time=5):
         ## todo check if burn should be prograde or retrograde
 
         if wait_til_apo:
@@ -229,9 +266,9 @@ class Orbit(Core):
         self.conn.space_center.rails_warp_factor = 0
 
         print("Orienting craft")
-        if self.periapsis < peri_target:
+        if self.periapsis() < peri_target:
             self.sas_prograde()
-        elif self.periapsis > peri_target:
+        elif self.periapsis() > peri_target:
             self.sas_retrograde()
 
         time.sleep(turn_time)
@@ -306,7 +343,7 @@ def main():
     orbit = Orbit()
 
     launch.launch()
-    launch.gravity_turn()
+    launch.gravity_turn_no_staging()
     launch.circularise()
 
 

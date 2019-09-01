@@ -1,4 +1,4 @@
-clean up orbits. dump first kerbsat. quicksave test staging for new kerbsat.
+turn set_apo and set_peri into one method. define apo or peri in args.
 
 neaten methods for circularising. put calcs into one core method and call them.
 
