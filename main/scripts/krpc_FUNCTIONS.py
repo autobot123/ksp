@@ -27,6 +27,20 @@ class Core:
         self.stage_1_resources = self.vessel.resources_in_decouple_stage(stage=1, cumulative=False)
         self.srb_fuel = self.conn.add_stream(self.stage_1_resources.amount, 'SolidFuel')
 
+    ## SAS stuff
+    ## fixme - get one method working and pass in SAS mode. output below, how to get enum?
+    ## (Pdb) self.vessel.control.sas_mode = "prograde"
+    ## *** TypeError: SpaceCenter.Control_set_SASMode() argument 1 must be a <enum 'SASMode'>, got a <class 'str'>
+
+    def set_sas(self, sasMode):
+        self.vessel.auto_pilot.disengage()
+        self.vessel.control.sas = True
+        time.sleep(0.1)
+        breakpoint()
+        self.vessel.control.sas_mode = self.vessel.control.sas_mode.sasMode
+
+        ## todo try using autopilot commands in krpc
+
     def sas_prograde(self):
         ## todo: one method for sas? pass in sas_mode as arg
         self.vessel.auto_pilot.disengage()
@@ -166,6 +180,7 @@ class Launcher(Core):
             pass
 
         ## todo create core method
+        self.vessel.auto_pilot.engage()
         mu = self.vessel.orbit.body.gravitational_parameter
         r = self.vessel.orbit.apoapsis
         a1 = self.vessel.orbit.semi_major_axis
@@ -208,8 +223,9 @@ class Launcher(Core):
         print('Fine tuning')
         self.vessel.control.throttle = 0.05
         remaining_burn =self.conn.add_stream(node.remaining_burn_vector, node.reference_frame)
-        # while remaining_burn()[1] > 0:
-        while self.periapsis() < 0.99*self.target_peri:
+
+        ## preferred method of ending burn
+        while remaining_burn()[1] > 0.1:
             pass
         self.vessel.control.throttle = 0.0
         node.remove()
@@ -325,19 +341,18 @@ class Orbit(Core):
         time.sleep(burn_time - 0.1)
         print('Fine tuning')
         self.vessel.control.throttle = 0.05
-        breakpoint()
         remaining_burn = self.conn.add_stream(node.remaining_burn_vector, node.reference_frame)
 
-        #fixme use node.remaining_delta_v instead? "dumb" method, would have to use some low value like <0.2
-        while remaining_burn()[1] > 0:
-            print("\nRemaining burn vector item 2: {}".format(remaining_burn()[1]))
-            print("Remaining delta v: {}\n".format(node.remaining_delta_v))
-            time.sleep(1)
-
+        while remaining_burn()[1] > 0.1:
             pass
         self.vessel.control.throttle = 0.0
         node.remove()
+        self.sas_prograde()
 
+class Transfer(Core):
+
+    def execute_node(self):
+        pass
 
 def main():
 
@@ -347,6 +362,11 @@ def main():
     launcher.launch()
     launcher.gravity_turn_no_staging()
     launcher.circularise()
+
+def test():
+
+    test = Core()
+    test.set_sas(prograde)
 
 
 if __name__ == "__main__":
