@@ -24,8 +24,10 @@ class Core:
         self.altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'mean_altitude')
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
         self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
-        self.stage_1_resources = self.vessel.resources_in_decouple_stage(stage=1, cumulative=False)
-        self.srb_fuel = self.conn.add_stream(self.stage_1_resources.amount, 'SolidFuel')
+
+        ## deprecated by get_srb_fuel() method
+        # self.stage_4_resources = self.vessel.resources_in_decouple_stage(stage=4, cumulative=False)
+        # self.srb_fuel = self.conn.add_stream(self.stage_4_resources.amount, 'SolidFuel')
 
     ## SAS stuff
     ## fixme - get one method working and pass in SAS mode. output below, how to get enum?
@@ -78,11 +80,28 @@ class Core:
         liquid_fuel = self.conn.get_call(self.vessel.resources.amount, "LiquidFuel")
         return solid_fuel, liquid_fuel
 
-
     def warp_to(self, time):
         ## fixme below command unreliable
         self.conn.space_center.warp_to(time)
         ## todo use set_apo time warp in this method? work out how to scale warping
+
+    # ## deprecated
+    # def get_srb_fuel(self, srb_decouple_stage, fuel_type):
+    #     stage_resources = self.vessel.resources_in_decouple_stage(stage=srb_decouple_stage, cumulative=False)
+    #     srb_fuel = self.conn.add_stream(stage_resources.amount, 'SolidFuel')
+    #
+    #     return srb_fuel()
+
+    # todo part_name is not very specific and will probably break easily
+    # todo work out how to get current stage automatically
+    def get_fuel_in_stage(self, part_name, fuel_type):
+        stage_resources = self.vessel.parts.in_stage(self.vessel.control.current_stage)
+        total_fuel = 0
+        for part in stage_resources:
+            if part_name in part.name:
+                total_fuel += part.resources.amount(name = fuel_type)
+
+        return total_fuel
 
 class Launcher(Core):
 
@@ -90,8 +109,7 @@ class Launcher(Core):
         super().__init__(script_name=script_name)
         self.target_apo = target_apo
         self.target_peri = target_peri
-        print("Launch parameters: Target apo = {}    Target peri = {}"
-        .format(self.target_apo, self.target_peri))
+        print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
 
     def launch(self, launch_num_stages=1, sas_activated=True, warp=0):
         self.set_phys_warp(warp)
@@ -102,9 +120,18 @@ class Launcher(Core):
         self.vessel.control.sas = sas_activated
         time.sleep(0.1)
 
-    def gravity_turn(self, alt_turn_start=3000, alt_turn_end=20000, final_pitch=25, warp=0):
+    # todo trigger liquid fuel stage?
+    def gravity_turn(self, alt_turn_start=3000, alt_turn_end=20000, final_pitch=25, warp=0, srbs_separated=False, lf_launch_stage=False):
+        """
+        :param alt_turn_start: self explanatory
+        :param alt_turn_end: the craft will turn in order to hit final_pitch by this altitude
+        :param final_pitch: in degrees. this pitch will be held until target_apo is reached
+        :param warp: timewarp 0-3 = 1-4x
+        :param srbs_separated: default False means the solid fuel boosters in current stage will be staged when empty
+        :param lf_launch_stage: default False means the liquid fuel booster in current stage will be staged when empty
+        :return:
+        """
 
-        srbs_separated = False
         turn_angle = 0
 
         self.vessel.auto_pilot.engage()
@@ -115,6 +142,7 @@ class Launcher(Core):
 
         self.set_phys_warp(warp)
 
+        print("Entering gravity turn loop")
         while True:
 
             if self.altitude() > alt_turn_start and self.altitude() < alt_turn_end:
@@ -125,11 +153,15 @@ class Launcher(Core):
                     self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, 90)
 
             if not srbs_separated:
-                if self.srb_fuel() < 0.1:
-                    print("SRBs done")
-                    self.vessel.control.activate_next_stage()
+                if self.get_fuel_in_stage("solid", "SolidFuel") < 0.1:
+                    print("Staging SRBs done")
                     self.vessel.control.activate_next_stage()
                     srbs_separated = True
+
+            if not lf_launch_stage:
+                if self.get_fuel_in_stage("LFB", "LiquidFuel") < 0.1:
+                    self.vessel.control.activate_next_stage()
+                    lf_launch_stage = True
 
             if self.apoapsis() > self.target_apo:
                 break
@@ -219,6 +251,8 @@ class Launcher(Core):
             pass
         print('Executing burn')
         self.vessel.control.throttle = 1.0
+
+        # fixme overshoots burns when launching into orbit. use remaing_burn earlier?
         time.sleep(burn_time - 0.1)
         print('Fine tuning')
         self.vessel.control.throttle = 0.05
@@ -226,6 +260,7 @@ class Launcher(Core):
 
         ## preferred method of ending burn
         while remaining_burn()[1] > 0.1:
+            print(remaining_burn()[1])
             pass
         self.vessel.control.throttle = 0.0
         node.remove()
@@ -349,10 +384,12 @@ class Orbit(Core):
         node.remove()
         self.sas_prograde()
 
+
 class Transfer(Core):
 
     def execute_node(self):
         pass
+
 
 def main():
 
@@ -360,14 +397,14 @@ def main():
     orbit = Orbit()
 
     launcher.launch()
-    launcher.gravity_turn_no_staging()
+    # launcher.gravity_turn_no_staging()
+    launcher.gravity_turn()
     launcher.circularise()
 
 def test():
 
     test = Core()
     test.set_sas(prograde)
-
 
 if __name__ == "__main__":
 
