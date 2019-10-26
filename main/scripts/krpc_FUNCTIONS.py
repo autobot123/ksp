@@ -1,6 +1,8 @@
 import krpc
 import time
 import math
+import json
+import os
 
 # todo add target apo and peri to class
 
@@ -12,9 +14,17 @@ from krpc_FUNCTIONS import Core, Launcher, Orbit
 
 class Core:
 
-    def __init__(self, script_name="kRPC script"):
+    def __init__(self, json_config):
+
+        with open(json_config, "r") as json_file:
+            craft_params = json.load(json_file)
+
+        self.craft_params = craft_params
+        self.launch_params = self.craft_params['launch_params']
+
         # connections
-        self.conn = krpc.connect(name=script_name)
+        self.json_config = json_config
+        self.conn = krpc.connect(name=craft_params['script_name'])
         self.canvas = self.conn.ui.stock_canvas
         self.vessel = self.conn.space_center.active_vessel
         self.srf_frame = self.vessel.orbit.body.reference_frame
@@ -28,6 +38,8 @@ class Core:
         ## deprecated by get_srb_fuel() method
         # self.stage_4_resources = self.vessel.resources_in_decouple_stage(stage=4, cumulative=False)
         # self.srb_fuel = self.conn.add_stream(self.stage_4_resources.amount, 'SolidFuel')
+
+
 
     ## SAS stuff
     ## fixme - get one method working and pass in SAS mode. output below, how to get enum?
@@ -105,11 +117,32 @@ class Core:
 
 class Launcher(Core):
 
-    def __init__(self, script_name='kRPC script', target_apo=100000, target_peri=100000):
-        super().__init__(script_name=script_name)
+
+    def __init__(self, json_config, target_apo=100000, target_peri=100000):
+
+        """
+        :param alt_turn_start: self explanatory
+        :param alt_turn_end: the craft will turn in order to hit final_pitch by this altitude
+        :param final_pitch: in degrees. this pitch will be held until target_apo is reached
+        :param warp: timewarp 0-3 = 1-4x
+        :param srbs_separated: default False means the solid fuel boosters in current stage will be staged when empty
+        :param lf_launch_stage_expended: default False means the liquid fuel booster in current stage will be staged when empty
+        :return:
+        """
+
+        super().__init__(json_config)
         self.target_apo = target_apo
         self.target_peri = target_peri
         print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
+
+        self.alt_turn_start = self.launch_params['alt_turn_start']
+        self.alt_turn_end = self.launch_params['alt_turn_end']
+        self.final_pitch = self.launch_params['final_pitch']
+        self.warp = self.launch_params['warp']
+        self.srbs_separated = self.launch_params['srbs_separated']
+        self.lf_launch_stage_expended = self.launch_params['lf_launch_stage_expended']
+
+        print('Launch parameters: {}'.format(self.launch_params))
 
     def launch(self, launch_num_stages=1, sas_activated=True, warp=0):
         self.set_phys_warp(warp)
@@ -120,48 +153,38 @@ class Launcher(Core):
         self.vessel.control.sas = sas_activated
         time.sleep(0.1)
 
-    # todo trigger liquid fuel stage?
-    def gravity_turn(self, alt_turn_start=3000, alt_turn_end=20000, final_pitch=25, warp=0, srbs_separated=False, lf_launch_stage=False):
-        """
-        :param alt_turn_start: self explanatory
-        :param alt_turn_end: the craft will turn in order to hit final_pitch by this altitude
-        :param final_pitch: in degrees. this pitch will be held until target_apo is reached
-        :param warp: timewarp 0-3 = 1-4x
-        :param srbs_separated: default False means the solid fuel boosters in current stage will be staged when empty
-        :param lf_launch_stage: default False means the liquid fuel booster in current stage will be staged when empty
-        :return:
-        """
+    def gravity_turn(self):
 
         turn_angle = 0
 
         self.vessel.auto_pilot.engage()
         self.vessel.auto_pilot.target_pitch_and_heading(90, 90)
 
-        while self.altitude() < 0.9*alt_turn_start:
+        while self.altitude() < 0.9*self.alt_turn_start:
             pass
 
-        self.set_phys_warp(warp)
+        self.set_phys_warp(self.warp)
 
         print("Entering gravity turn loop")
         while True:
 
-            if self.altitude() > alt_turn_start and self.altitude() < alt_turn_end:
-                frac = ((self.altitude() - alt_turn_start) / (alt_turn_end - alt_turn_start))
+            if self.altitude() > self.alt_turn_start and self.altitude() < self.alt_turn_end:
+                frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
                 new_turn_angle = frac * 90
                 if abs(new_turn_angle - turn_angle) > 0.5:
-                    turn_angle = 90-new_turn_angle + frac*final_pitch
+                    turn_angle = 90-new_turn_angle + frac*self.final_pitch
                     self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, 90)
 
-            if not srbs_separated:
+            if not self.srbs_separated:
                 if self.get_fuel_in_stage("solid", "SolidFuel") < 0.1:
                     print("Staging SRBs done")
                     self.vessel.control.activate_next_stage()
-                    srbs_separated = True
+                    self.srbs_separated = True
 
-            if not lf_launch_stage:
+            if not self.lf_launch_stage_expended:
                 if self.get_fuel_in_stage("LFB", "LiquidFuel") < 0.1:
                     self.vessel.control.activate_next_stage()
-                    lf_launch_stage = True
+                    self.lf_launch_stage_expended = True
 
             if self.apoapsis() > self.target_apo:
                 break
@@ -265,7 +288,10 @@ class Launcher(Core):
         self.vessel.control.throttle = 0.0
         node.remove()
 
+
         print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()
 
 
 class Orbit(Core):
@@ -393,8 +419,10 @@ class Transfer(Core):
 
 def main():
 
-    launcher = Launcher()
-    orbit = Orbit()
+    moonsat1_json = os.path.join(os.getcwd(), r"..\resources\moonsat1_config.json")
+
+    launcher = Launcher(moonsat1_json)
+    orbit = Orbit(moonsat1_json)
 
     launcher.launch()
     # launcher.gravity_turn_no_staging()
