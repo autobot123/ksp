@@ -1,9 +1,12 @@
+Scan for config matching craft name when running script
+Do not launch if vehicle is not on launchpad
+If no config found, prompt to enter details
+
+Split out into different scripts as appropriate
+
+
+
 turn set_apo and set_peri into one method. define apo or peri in args.
-
-neaten methods for circularising. put calcs into one core method and call them.
-
-create smart method for warping?
-
 
 to test:
 - create gravity turn and manuever node only launch profile? stage myself
