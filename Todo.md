@@ -16,7 +16,7 @@ to test:
 backlog:
 - call info display script using sub process popen. program is python, first argument is my script https://stackoverflow.com/questions/7152340/using-a-python-subprocess-call-to-invoke-a-python-script
 
-
+User story: log flight data to CSV for analysis
 
 Launcher:
 
