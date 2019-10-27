@@ -14,7 +14,12 @@ from krpc_FUNCTIONS import Core, Launcher, Orbit
 
 class Core:
 
-    def __init__(self, json_config):
+    def __init__(self):
+        """
+        :param json_config: full path to json config file for ship
+        """
+
+        json_config = self.select_craft_config()
 
         with open(json_config, "r") as json_file:
             craft_params = json.load(json_file)
@@ -23,7 +28,7 @@ class Core:
         self.launch_params = self.craft_params['launch_params']
 
         # connections
-        self.json_config = json_config
+        # self.json_config = json_config
         self.conn = krpc.connect(name=craft_params['script_name'])
         self.canvas = self.conn.ui.stock_canvas
         self.vessel = self.conn.space_center.active_vessel
@@ -38,6 +43,35 @@ class Core:
         ## deprecated by get_srb_fuel() method
         # self.stage_4_resources = self.vessel.resources_in_decouple_stage(stage=4, cumulative=False)
         # self.srb_fuel = self.conn.add_stream(self.stage_4_resources.amount, 'SolidFuel')
+
+    def select_craft_config(self):
+
+        craft_name = krpc.connect().space_center.active_vessel.name
+        resources_dir = os.path.join(os.getcwd(), r"..\resources")
+
+        for json_config_file in os.listdir(resources_dir):
+
+            json_config_craft_name = json_config_file.split('_config.json')[0]
+            if json_config_craft_name.lower() == craft_name.lower():
+                print("Loading config file {}".format(json_config_file))
+                return os.path.join(resources_dir, json_config_file)
+
+            else:
+                raise Exception("Could not find config file for craft {}".format(craft_name))
+                # todo implement below
+                return self.create_new_config(craft_name)
+
+    # todo add
+    def create_new_config(self, craft_name):
+
+        # make a new json file using craft name
+        # for each param in json, populate details and enforce type
+
+        new_craft_config = os.path.join(os.getcwd(), 'r..\resources', craft_name.lower(), "_config.json")
+
+        with open(new_craft_config, 'w') as new_craft_json:
+            # open template and loop? then save as new file
+
 
 
 
@@ -105,7 +139,7 @@ class Core:
     #     return srb_fuel()
 
     # todo part_name is not very specific and will probably break easily
-    # todo work out how to get current stage automatically
+    # todo add functionality to account for not all engines of one type being expended in current stage (as above method)
     def get_fuel_in_stage(self, part_name, fuel_type):
         stage_resources = self.vessel.parts.in_stage(self.vessel.control.current_stage)
         total_fuel = 0
@@ -118,7 +152,7 @@ class Core:
 class Launcher(Core):
 
 
-    def __init__(self, json_config, target_apo=100000, target_peri=100000):
+    def __init__(self, target_apo=100000, target_peri=100000):
 
         """
         :param alt_turn_start: self explanatory
@@ -130,7 +164,7 @@ class Launcher(Core):
         :return:
         """
 
-        super().__init__(json_config)
+        super().__init__()
         self.target_apo = target_apo
         self.target_peri = target_peri
         print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
@@ -419,10 +453,10 @@ class Transfer(Core):
 
 def main():
 
-    moonsat1_json = os.path.join(os.getcwd(), r"..\resources\moonsat1_config.json")
+    # moonsat1_json = os.path.join(os.getcwd(), r"..\resources\moonsat1_config.json")
 
-    launcher = Launcher(moonsat1_json)
-    orbit = Orbit(moonsat1_json)
+    launcher = Launcher()
+    orbit = Orbit()
 
     launcher.launch()
     # launcher.gravity_turn_no_staging()
