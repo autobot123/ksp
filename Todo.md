@@ -2,7 +2,7 @@ backlog:
 - Do not launch if vehicle is not on launchpad
 - If no config found, prompt to enter details
 - Split out into different scripts as appropriate
-
+- add craft files to repo and add installer method?
 
 
 turn set_apo and set_peri into one method. define apo or peri in args.
