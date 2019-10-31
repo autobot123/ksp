@@ -1,5 +1,5 @@
 {
-  "script_name": "<craftname> launch",
+  "script_name": "",
   "launch_params": {
     "alt_turn_start": 3000,
     "alt_turn_end": 22500,

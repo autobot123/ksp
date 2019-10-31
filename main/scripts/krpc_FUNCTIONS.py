@@ -15,11 +15,9 @@ from krpc_FUNCTIONS import Core, Launcher, Orbit
 class Core:
 
     def __init__(self):
-        """
-        :param json_config: full path to json config file for ship
-        """
 
         json_config = self.select_craft_config()
+        craft_config_template = r'..\resources\craft_config\craft_config_template.json'
 
         with open(json_config, "r") as json_file:
             craft_params = json.load(json_file)
@@ -40,21 +38,18 @@ class Core:
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
         self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
 
-        ## deprecated by get_srb_fuel() method
-        # self.stage_4_resources = self.vessel.resources_in_decouple_stage(stage=4, cumulative=False)
-        # self.srb_fuel = self.conn.add_stream(self.stage_4_resources.amount, 'SolidFuel')
 
     def select_craft_config(self):
 
         craft_name = krpc.connect().space_center.active_vessel.name
-        resources_dir = os.path.join(os.getcwd(), r"..\resources")
+        craft_config_dir = os.path.join(os.getcwd(), r"..\resources\craft_config")
 
-        for json_config_file in os.listdir(resources_dir):
+        for json_config_file in os.listdir(craft_config_dir):
 
             json_config_craft_name = json_config_file.split('_config.json')[0]
             if json_config_craft_name.lower() == craft_name.lower():
                 print("Loading config file {}".format(json_config_file))
-                return os.path.join(resources_dir, json_config_file)
+                return os.path.join(craft_config_dir, json_config_file)
 
             else:
                 raise Exception("Could not find config file for craft {}".format(craft_name))
@@ -62,14 +57,18 @@ class Core:
                 return self.create_new_config(craft_name)
 
     # todo add
-    def create_new_config(self, craft_name):
+    def create_new_config(self, craft_nam, craft_config_template):
 
         # make a new json file using craft name
         # for each param in json, populate details and enforce type
 
-        new_craft_config = os.path.join(os.getcwd(), 'r..\resources', craft_name.lower(), "_config.json")
+        new_craft_config = os.path.join(os.getcwd(), 'r..\resources\craft_config', craft_name.lower(), "_config.json")
+
+        with open(craft_config_template, 'r') as cc_template:
+            config_text = json.load(cc_template)
 
         with open(new_craft_config, 'w') as new_craft_json:
+            for
             # open template and loop? then save as new file
 
 
