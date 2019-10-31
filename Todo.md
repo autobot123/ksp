@@ -1,9 +1,9 @@
 backlog:
+- List options when running script. E.g. do you want to launch(if you're on the launchpad)? Do you want to circularise?
 - Do not launch if vehicle is not on launchpad
 - If no config found, prompt to enter details
 - Split out into different scripts as appropriate
-
-
+- add craft files to repo and add installer method?
 
 turn set_apo and set_peri into one method. define apo or peri in args.
 
@@ -17,6 +17,11 @@ backlog:
 - call info display script using sub process popen. program is python, first argument is my script https://stackoverflow.com/questions/7152340/using-a-python-subprocess-call-to-invoke-a-python-script
 
 
+
+
+User story: log flight data to CSV for analysis
+Epic: automate landing on a body
+Story: automatically control throttle to gradually reduce vertical speed when landing
 
 Launcher:
 
