@@ -1,5 +1,4 @@
 {
-  "script_name": "",
   "launch_params": {
     "alt_turn_start": 3000,
     "alt_turn_end": 22500,
@@ -7,5 +6,9 @@
     "warp": 0,
     "srbs_separated": false,
     "lf_launch_stage_expended": false
+  },
+  "more params": {
+	"test": 20,
+	"test2": 2
   }
 }

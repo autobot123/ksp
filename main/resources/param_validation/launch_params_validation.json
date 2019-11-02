@@ -1,0 +1,22 @@
+{
+	launch_params": {
+		"alt_turn_start": {
+			"type":int"
+		},
+		"alt_turn_end": {
+			"type": int
+		},
+		"final_pitch": {
+			"type": int
+		},
+		"warp": {
+			"type": int
+		},
+		"srbs_separated": {
+			"type": bool
+		},
+		"lf_launch_stage_expended": {
+			"type": bool
+		}
+	}
+}
