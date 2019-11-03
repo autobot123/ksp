@@ -22,6 +22,8 @@ with open(json_config, "r") as json_file:
 
 stage_resources = vessel.parts.in_stage(vessel.control.current_stage)
 
+exit()
+
 while 500 < altitude() < 5000:
     for part in stage_resources:
         if "solid" in part.name:
@@ -30,3 +32,8 @@ while 500 < altitude() < 5000:
         if "engine" in part.name:
             liquid_fuel = part.resources.amount(name="LiquidFuel")
             print("liquid fuel: {}".format(liquid_fuel))
+
+
+node = vessel.control.nodes
+for i in node:
+	 i.orbit.body.name

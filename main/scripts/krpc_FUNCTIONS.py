@@ -82,6 +82,11 @@ class Core:
     ## (Pdb) self.vessel.control.sas_mode = "prograde"
     ## *** TypeError: SpaceCenter.Control_set_SASMode() argument 1 must be a <enum 'SASMode'>, got a <class 'str'>
 
+    def set_orientation(self, mode):
+        self.vessel.auto_pilot.reference_frame = mode.reference_frame
+        self.vessel.auto_pilot.target_direction = (0, 1, 0)
+        self.vessel.auto_pilot.wait()
+
     def set_sas(self, sasMode):
         self.vessel.auto_pilot.disengage()
         self.vessel.control.sas = True
@@ -157,6 +162,9 @@ class Core:
         time.sleep(delay)
         print(msg)
         self.vessel.control.activate_next_stage()
+
+    def execute_node(self):
+
 
 
 class Launcher(Core):

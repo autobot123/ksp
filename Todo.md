@@ -31,3 +31,6 @@ circularise:
 - orientate_ship(0, 0, 0) method 
 - execute_burn(time_to_burn) - how to confirm burn finished? pass in parameter and value, e.g. parameter=periapsis and value= 0.99*target_periapsis?
 - remove_node() method
+
+
+
