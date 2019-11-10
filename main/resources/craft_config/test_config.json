@@ -1,0 +1,14 @@
+{
+  "launch_params": {
+    "alt_turn_start": "23",
+    "alt_turn_end": "4",
+    "final_pitch": 20,
+    "warp": 0,
+    "srbs_separated": false,
+    "lf_launch_stage_expended": false
+  },
+  "more params": {
+    "test": "1",
+    "test2": "etfsdd"
+  }
+}

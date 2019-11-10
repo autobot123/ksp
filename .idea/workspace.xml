@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28c92cd8-bc4c-468d-80ca-02476ad64be5" name="Default Changelist" comment="">
+    <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/nodes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/useful_attributes.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Todo" beforeDir="false" afterPath="$PROJECT_DIR$/Todo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/Todo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,109 +19,112 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/scripts/oo_krpc_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-            <state relative-caret-position="234">
-              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-=======
-            <state relative-caret-position="1751">
-              <caret line="121" column="43" lean-forward="true" selection-start-line="121" selection-start-column="43" selection-end-line="121" selection-end-column="43" />
->>>>>>> Stashed changes
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-=======
-        <entry file="file://$PROJECT_DIR$/main/scripts/KerbSatLauncher.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="595">
+              <caret line="119" column="52" lean-forward="true" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#265#1249#0" />
+                <element signature="e#1295#3156#0" />
               </folding>
->>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/info_display.pyw">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-            <state relative-caret-position="68">
-              <caret line="100" column="25" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="25" />
+        <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="68">
+                <caret line="4" selection-start-line="4" selection-end-line="4" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Todo">
+        <entry file="file://$PROJECT_DIR$/main/scripts/json_config_creator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-=======
-            <state relative-caret-position="1056">
-              <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
->>>>>>> Stashed changes
+            <state relative-caret-position="612">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Todo.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="17">
+                <caret line="1" column="106" selection-start-line="1" selection-start-column="106" selection-end-line="1" selection-end-column="106" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>launching</find>
-      <find>apoa</find>
-      <find>warp</find>
-      <find>peria</find>
-      <find>apo</find>
-      <find>self.apoap</find>
-      <find>liquid</find>
+      <find>\resources</find>
+      <find>script_name</find>
+      <find>OUTPUT DATA</find>
+      <find>Type the new</find>
+      <find>node</find>
+      <find>execu</find>
+      <find>reference</find>
+      <find>self.apoapsis =</find>
+      <find>(0, 1, 0)</find>
+      <find>breakp</find>
+      <find>exit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main/scripts/oo_krpc_test.py" />
-        <option value="$PROJECT_DIR$/main/scripts/KerbSatLauncher.py" />
+        <option value="$PROJECT_DIR$/main/scripts/json_config_creator.py" />
+        <option value="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" />
+        <option value="$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json" />
+        <option value="$PROJECT_DIR$/docs/nodes.md" />
+        <option value="$PROJECT_DIR$/docs/useful_attributes" />
+        <option value="$PROJECT_DIR$/docs/useful_attributes.md" />
+        <option value="$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md" />
+        <option value="$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example" />
         <option value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
-        <option value="$PROJECT_DIR$/Todo" />
+        <option value="$PROJECT_DIR$/Todo.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-<<<<<<< Updated upstream
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1048" />
-=======
-    <option name="x" value="-7" />
-    <option name="width" value="1294" />
-    <option name="height" value="1407" />
->>>>>>> Stashed changes
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -133,7 +141,31 @@
             <path>
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
               <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="auto_pilot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="craft_config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
@@ -150,8 +182,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\ksp\main\resources\craft_config" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -165,8 +200,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.oo_krpc_test">
-    <configuration name="KerbSatLauncher" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.krpc_FUNCTIONS">
+    <configuration name="json_config_creator" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -178,7 +213,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/KerbSatLauncher.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/json_config_creator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,7 +222,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="info_display.pyw" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="krpc_FUNCTIONS" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -199,28 +234,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/info_display.pyw" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="oo_krpc_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ksp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main/scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/oo_krpc_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -231,9 +245,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.oo_krpc_test" />
-        <item itemvalue="Python.info_display.pyw" />
-        <item itemvalue="Python.KerbSatLauncher" />
+        <item itemvalue="Python.krpc_FUNCTIONS" />
+        <item itemvalue="Python.json_config_creator" />
       </list>
     </recent_temporary>
   </component>
@@ -242,148 +255,135 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="28c92cd8-bc4c-468d-80ca-02476ad64be5" name="Default Changelist" comment="" />
-      <created>1563304298496</created>
+      <changelist id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="" />
+      <created>1572173852558</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1563304298496</updated>
+      <updated>1572173852558</updated>
     </task>
-    <task id="LOCAL-00001" summary="add new launch profile for KerbSatLauncher; tweaked for krpc_FUNCTIONS to remove deadwood and reorganise; minor changes to oo_krpc_test">
-      <created>1564087707187</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1564087707187</updated>
-    </task>
-    <task id="LOCAL-00002" summary="add new launch profile for KerbSatLauncher; tweaked for krpc_FUNCTIONS to remove deadwood and reorganise; minor changes to oo_krpc_test">
-      <created>1564087943971</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1564087943971</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TodoView" selected-index="4">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-<<<<<<< Updated upstream
-    <frame x="953" y="0" width="974" height="1048" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="1416" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1741453" />
-=======
-    <frame x="-7" y="0" width="1294" height="1407" extended-state="0" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2093949" />
->>>>>>> Stashed changes
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.058028616" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920383" weight="0.32568306" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39952904" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3288854" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32735777" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32969603" />
-<<<<<<< Updated upstream
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.31527627" />
-=======
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.314887" />
->>>>>>> Stashed changes
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007962" side_tool="true" weight="0.3265306" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32967034" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289166" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32967034" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="add new launch profile for KerbSatLauncher; tweaked for krpc_FUNCTIONS to remove deadwood and reorganise; minor changes to oo_krpc_test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new launch profile for KerbSatLauncher; tweaked for krpc_FUNCTIONS to remove deadwood and reorganise; minor changes to oo_krpc_test" />
-  </component>
   <component name="editorHistoryManager">
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/main/scripts/KerbSatLauncher.py">
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/json/decoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="352" selection-start-line="352" selection-end-line="352" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/nodes.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="260">
+            <caret line="10" column="58" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="51">
+            <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+            <folding>
+              <element signature="e#0#11#0" expanded="true" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="68">
+            <caret line="4" selection-start-line="4" selection-end-line="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/json_config_creator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Todo">
-=======
-    <entry file="file://$PROJECT_DIR$/main/scripts/oo_krpc_test.py">
->>>>>>> Stashed changes
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+    <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/info_display.pyw">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-        <state relative-caret-position="68">
-          <caret line="100" column="25" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="25" />
-=======
-        <state relative-caret-position="1056">
-          <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/KerbSatLauncher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="595">
+          <caret line="119" column="52" lean-forward="true" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#265#1249#0" />
+            <element signature="e#1295#3156#0" />
           </folding>
->>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/oo_krpc_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-        <state relative-caret-position="234">
-          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-=======
-        <state relative-caret-position="1751">
-          <caret line="121" column="43" lean-forward="true" selection-start-line="121" selection-start-column="43" selection-end-line="121" selection-end-column="43" />
->>>>>>> Stashed changes
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/Todo.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="17">
+            <caret line="1" column="106" selection-start-line="1" selection-start-column="106" selection-end-line="1" selection-end-column="106" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

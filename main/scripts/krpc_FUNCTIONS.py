@@ -1,6 +1,9 @@
 import krpc
 import time
 import math
+import json
+import os
+from json_config_creator import JsonConfigCreator
 
 # todo add target apo and peri to class
 
@@ -12,9 +15,19 @@ from krpc_FUNCTIONS import Core, Launcher, Orbit
 
 class Core:
 
-    def __init__(self, script_name="kRPC script"):
+    def __init__(self):
+
+        self.craft_name = krpc.connect().space_center.active_vessel.name
+
+        # setting up craft config
+        json_config = self.select_craft_config()
+        with open(json_config, "r") as json_file:
+            craft_params = json.load(json_file)
+        self.craft_params = craft_params
+        self.launch_params = self.craft_params['launch_params']
+
         # connections
-        self.conn = krpc.connect(name=script_name)
+        self.conn = krpc.connect(name=self.craft_name)
         self.canvas = self.conn.ui.stock_canvas
         self.vessel = self.conn.space_center.active_vessel
         self.srf_frame = self.vessel.orbit.body.reference_frame
@@ -25,14 +38,87 @@ class Core:
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
         self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
 
-        ## deprecated by get_srb_fuel() method
-        # self.stage_4_resources = self.vessel.resources_in_decouple_stage(stage=4, cumulative=False)
-        # self.srb_fuel = self.conn.add_stream(self.stage_4_resources.amount, 'SolidFuel')
+    def select_craft_config(self):
+
+        craft_config_template = r'..\resources\craft_config\craft_config_template.json'
+
+        craft_config_filepath = os.path.join(os.getcwd(), r"..\resources\craft_config", self.craft_name.lower() + "_config.json")
+
+        if os.path.exists(craft_config_filepath):
+            query_response = input("Config found. Modify? y/n\n")
+            while True:
+                if query_response == "y":
+                    configCreator = JsonConfigCreator(craft_config_filepath, craft_config_filepath)
+                    configCreator.create_new_craft_config()
+                    return craft_config_filepath
+                elif query_response == "n":
+                    print("Loading craft config {}".format(craft_config_filepath))
+                    return craft_config_filepath
+                else:
+                    query_response = input("Invalid input. Please enter y or n\n")
+                    continue
+
+        else:
+            print("Could not find config file for craft {}. Generating new config...".format(self.craft_name))
+            configCreator = JsonConfigCreator(craft_config_template, craft_config_filepath)
+            configCreator.create_new_craft_config()
+            return craft_config_filepath
+
+        # for json_config_file in os.listdir(craft_config_dir):
+        #     json_config_craft_name = json_config_file.split('_config.json')[0]
+        #     print(json_config_craft_name)
+        #     if json_config_craft_name.lower() == craft_name.lower():
+        #         print("Loading config file {}".format(json_config_file))
+        #         return os.path.join(craft_config_dir, json_config_file)
+        #
+        #     else:
+        #         #raise Exception("Could not find config file for craft {}".format(craft_name))
+        #         # todo implement below
+        #         return self.create_new_config(craft_name)
+
 
     ## SAS stuff
     ## fixme - get one method working and pass in SAS mode. output below, how to get enum?
     ## (Pdb) self.vessel.control.sas_mode = "prograde"
     ## *** TypeError: SpaceCenter.Control_set_SASMode() argument 1 must be a <enum 'SASMode'>, got a <class 'str'>
+
+    def set_orientation(self, direction):
+        """
+        :param direction: see dict below for possible strings
+        :return:
+        """
+
+        direction_mod1 = direction.lower()
+        direction_mod1.replace("-", "_")
+        direction_dict = {"prograde": "normal",
+                          "retrograde": "anti_normal",
+                          "normal": "prograde",
+                          "anti_normal": "retrograde",
+                          "radial": "radial",
+                          "anti_radial": "anti_radial"}
+
+        if direction_mod1 not in direction_dict.keys():
+            raise Exception(f"Invalid direction: {direction}")
+
+        # adjust direction (pro/retrograde actually point normal/anti-normal and vice versa)
+        direction_mod2 = direction_dict[direction]
+
+        # check SAS disabled and auto pilot enabled
+        if self.vessel.control.sas:
+            self.vessel.control.sas = False
+        self.vessel.auto_pilot.engage()
+
+        # set direction
+        ref_frame = self.vessel.orbital_reference_frame
+        direction_stream = self.conn.add_stream(getattr, self.vessel.flight(ref_frame), direction)
+        self.vessel.auto_pilot.target_direction = direction_stream()
+
+        # wait for vessel to lineup
+        self.vessel.auto_pilot.wait()
+        print(f"Vessel oriented to {direction_stream}")
+
+        # todo test what happens if I remove stream?
+
 
     def set_sas(self, sasMode):
         self.vessel.auto_pilot.disengage()
@@ -85,31 +171,60 @@ class Core:
         self.conn.space_center.warp_to(time)
         ## todo use set_apo time warp in this method? work out how to scale warping
 
-    # ## deprecated
-    # def get_srb_fuel(self, srb_decouple_stage, fuel_type):
-    #     stage_resources = self.vessel.resources_in_decouple_stage(stage=srb_decouple_stage, cumulative=False)
-    #     srb_fuel = self.conn.add_stream(stage_resources.amount, 'SolidFuel')
-    #
-    #     return srb_fuel()
-
     # todo part_name is not very specific and will probably break easily
-    # todo work out how to get current stage automatically
-    def get_fuel_in_stage(self, part_name, fuel_type):
+    # todo add functionality to account for not all engines of one type being expended in current stage (as above method)
+    def get_fuel_in_stage(self, part_name, fuel_type, print_fuel=False):
         stage_resources = self.vessel.parts.in_stage(self.vessel.control.current_stage)
         total_fuel = 0
         for part in stage_resources:
             if part_name in part.name:
-                total_fuel += part.resources.amount(name = fuel_type)
+                total_fuel += part.resources.amount(name=fuel_type)
 
+        if print_fuel:
+            print("{}: {}".format(fuel_type, total_fuel))
         return total_fuel
+
+    def activate_stage(self, msg, delay=0.5):
+        time.sleep(delay)
+        print(msg)
+        self.vessel.control.activate_next_stage()
+
+    def execute_node(self):
+        # get existing nodes
+        nodes = self.vessel.control.nodes
+        next_node = nodes[0]
+        dV = next_node.delta_v
+
+        pass
+
 
 class Launcher(Core):
 
-    def __init__(self, script_name='kRPC script', target_apo=100000, target_peri=100000):
-        super().__init__(script_name=script_name)
+    def __init__(self, target_apo=100000, target_peri=100000):
+
+        """
+        :param alt_turn_start: self explanatory
+        :param alt_turn_end: the craft will turn in order to hit final_pitch by this altitude
+        :param final_pitch: in degrees. this pitch will be held until target_apo is reached
+        :param warp: timewarp 0-3 = 1-4x
+        :param srbs_separated: default False means the solid fuel boosters in current stage will be staged when empty
+        :param lf_launch_stage_expended: default False means the liquid fuel booster in current stage will be staged when empty
+        :return:
+        """
+
+        super().__init__()
         self.target_apo = target_apo
         self.target_peri = target_peri
         print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
+
+        self.alt_turn_start = self.launch_params['alt_turn_start']
+        self.alt_turn_end = self.launch_params['alt_turn_end']
+        self.final_pitch = self.launch_params['final_pitch']
+        self.warp = self.launch_params['warp']
+        self.srbs_separated = self.launch_params['srbs_separated']
+        self.lf_launch_stage_expended = self.launch_params['lf_launch_stage_expended']
+
+        print('Launch parameters: {}'.format(self.launch_params))
 
     def launch(self, launch_num_stages=1, sas_activated=True, warp=0):
         self.set_phys_warp(warp)
@@ -119,60 +234,52 @@ class Launcher(Core):
             self.vessel.control.activate_next_stage()
         self.vessel.control.sas = sas_activated
         time.sleep(0.1)
+        print("Launch stage complete")
 
-    # todo trigger liquid fuel stage?
-    def gravity_turn(self, alt_turn_start=3000, alt_turn_end=20000, final_pitch=25, warp=0, srbs_separated=False, lf_launch_stage=False):
-        """
-        :param alt_turn_start: self explanatory
-        :param alt_turn_end: the craft will turn in order to hit final_pitch by this altitude
-        :param final_pitch: in degrees. this pitch will be held until target_apo is reached
-        :param warp: timewarp 0-3 = 1-4x
-        :param srbs_separated: default False means the solid fuel boosters in current stage will be staged when empty
-        :param lf_launch_stage: default False means the liquid fuel booster in current stage will be staged when empty
-        :return:
-        """
+    def gravity_turn(self):
 
         turn_angle = 0
 
         self.vessel.auto_pilot.engage()
         self.vessel.auto_pilot.target_pitch_and_heading(90, 90)
 
-        while self.altitude() < 0.9*alt_turn_start:
+        while self.altitude() < 0.9*self.alt_turn_start:
             pass
 
-        self.set_phys_warp(warp)
+        self.set_phys_warp(self.warp)
 
         print("Entering gravity turn loop")
         while True:
 
-            if self.altitude() > alt_turn_start and self.altitude() < alt_turn_end:
-                frac = ((self.altitude() - alt_turn_start) / (alt_turn_end - alt_turn_start))
+            if self.altitude() > self.alt_turn_start and self.altitude() < self.alt_turn_end:
+                frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
                 new_turn_angle = frac * 90
                 if abs(new_turn_angle - turn_angle) > 0.5:
-                    turn_angle = 90-new_turn_angle + frac*final_pitch
+                    turn_angle = 90-new_turn_angle + frac*self.final_pitch
                     self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, 90)
 
-            if not srbs_separated:
-                if self.get_fuel_in_stage("solid", "SolidFuel") < 0.1:
-                    print("Staging SRBs done")
-                    self.vessel.control.activate_next_stage()
-                    srbs_separated = True
+            if not self.srbs_separated:
+                srb_fuel_amount = self.get_fuel_in_stage("solid", "SolidFuel")
+                if srb_fuel_amount < 0.1:
+                    self.activate_stage("*****Ditching SRBs*****")
+                    self.srbs_separated = True
 
-            if not lf_launch_stage:
-                if self.get_fuel_in_stage("LFB", "LiquidFuel") < 0.1:
-                    self.vessel.control.activate_next_stage()
-                    lf_launch_stage = True
+            if not self.lf_launch_stage_expended:
+                lf_fuel_amount = self.get_fuel_in_stage("LFB", "LiquidFuel")
+                if lf_fuel_amount < 0.1:
+                    self.activate_stage("*****Ditching LF booster*****")
+                    self.lf_launch_stage_expended = True
 
             if self.apoapsis() > self.target_apo:
                 break
 
             time.sleep(0.1)
 
-        print("Gravity turn finished, coasting to apoapsis")
+        print("Gravity turn complete. Coasting to apoapsis")
         self.sas_prograde()
         self.vessel.control.throttle = 0
 
-
+    ## DEPRECATED
     def gravity_turn_no_staging(self, alt_turn_start=3000, alt_turn_end=20000, final_pitch=25, warp=0):
 
         ##todo improve turn logic. get it smoother. what to do with final pithc and where to point?
@@ -265,7 +372,10 @@ class Launcher(Core):
         self.vessel.control.throttle = 0.0
         node.remove()
 
+
         print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()
 
 
 class Orbit(Core):
@@ -394,7 +504,7 @@ class Transfer(Core):
 def main():
 
     launcher = Launcher()
-    orbit = Orbit()
+    #orbit = Orbit()
 
     launcher.launch()
     # launcher.gravity_turn_no_staging()
@@ -404,8 +514,18 @@ def main():
 def test():
 
     test = Core()
-    test.set_sas(prograde)
+
+    test.set_orientation("prograde")
+
+    # # demonstration orientation
+    # directions = ["normal", "anti_normal", "prograde", "retrograde", "radial", "anti_radial"]
+    # for item in directions:
+    #     print(item)
+    #     test.set_orientation(item)
+
 
 if __name__ == "__main__":
 
-    main()
+    test()
+    time.sleep(10)
+    print("exiting script")

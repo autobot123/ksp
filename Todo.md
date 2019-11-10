@@ -1,9 +1,17 @@
+backlog:
+- test what happens if I use my new set_orientation method in the launcher methods. will it hold position?
+- List options when running script. E.g. do you want to launch(if you're on the launchpad)? Do you want to circularise?
+- Do not launch if vehicle is not on launchpad
+- If no config found, prompt to enter details
+- Split out into different scripts as appropriate
+- add craft files to repo and add installer method?
+- refactor vessel orientation. can't get auto_pilot methods to work properly
+
+major issue:
+- two processes run when running krpc_FUNCTIONS. investigate - try calling from another script?
+- streams d/c once script has finished. probably not an issue...
+
 turn set_apo and set_peri into one method. define apo or peri in args.
-
-neaten methods for circularising. put calcs into one core method and call them.
-
-create smart method for warping?
-
 
 to test:
 - create gravity turn and manuever node only launch profile? stage myself
@@ -13,19 +21,15 @@ to test:
 
 backlog:
 - call info display script using sub process popen. program is python, first argument is my script https://stackoverflow.com/questions/7152340/using-a-python-subprocess-call-to-invoke-a-python-script
-- change circularise method to match apoapsis. Cut throttle if app rises more then ten %
-- add booster_separator(fuel_type, fuel_threshold)
-- can the gravity turn logic go into its own method? Or is it better to have that written out and call the booster_sep method in the while loop?
-- add more useful stats. vessel mass. some rocket equations? e.g. for circularisation burn
-- remove Phys warp calls from other methods. Write out in launcher scripts
 
+
+
+
+User story: log flight data to CSV for analysis
+Epic: automate landing on a body
+Story: automatically control throttle to gradually reduce vertical speed when landing
 
 Launcher:
-
-Gravity turn:
-- enter num stages to stage during gravity turn
-- enter type of fuel to monitor? or use GetFuelAmounts()?
-- if using srbs, use srb_separator method. if LF, use lf_separator method.
 
 circularise:
 - create_node(mu=gravitational_parameter, r=apoapsis, a1=semi_major_axis, time_to_apo, prograde=delta_v?) method
@@ -34,9 +38,5 @@ circularise:
 - execute_burn(time_to_burn) - how to confirm burn finished? pass in parameter and value, e.g. parameter=periapsis and value= 0.99*target_periapsis?
 - remove_node() method
 
-use mock to test?
-
-Test most efficient launch profiles
-Could try quickly banking over to 45 degrees? Then follow prograde?
 
 

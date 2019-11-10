@@ -1,0 +1,7 @@
+{
+  "param": "test2",
+  "param-dict": {
+    "nested-param1": 1
+  },
+  "nested-param1": "2"
+}
