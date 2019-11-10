@@ -1,4 +1,6 @@
--use with statement to close stream after code block
+# Random notes from reading Kroc GitHub/discord/etc.
+
+- use with statement to close stream after code block
 
 ```python
 conn = krpc.connect()
