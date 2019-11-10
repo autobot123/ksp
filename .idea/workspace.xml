@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/nodes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/useful_attributes.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/Todo.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" afterDir="false" />
     </list>
@@ -20,11 +22,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="306" column="41" lean-forward="true" selection-start-line="306" selection-start-column="41" selection-end-line="306" selection-end-column="41" />
+            <state relative-caret-position="595">
+              <caret line="119" column="52" lean-forward="true" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#265#1249#0" />
+                <element signature="e#1295#3156#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="68">
+                <caret line="4" selection-start-line="4" selection-end-line="4" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -32,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/json_config_creator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+            <state relative-caret-position="612">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -45,9 +66,19 @@
         <entry file="file://$PROJECT_DIR$/Todo.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="612">
-                <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <first_editor relative-caret-position="17">
+                <caret line="1" column="106" selection-start-line="1" selection-start-column="106" selection-end-line="1" selection-end-column="106" />
               </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
               <second_editor />
             </state>
           </provider>
@@ -61,6 +92,13 @@
       <find>script_name</find>
       <find>OUTPUT DATA</find>
       <find>Type the new</find>
+      <find>node</find>
+      <find>execu</find>
+      <find>reference</find>
+      <find>self.apoapsis =</find>
+      <find>(0, 1, 0)</find>
+      <find>breakp</find>
+      <find>exit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -72,28 +110,44 @@
         <option value="$PROJECT_DIR$/main/scripts/json_config_creator.py" />
         <option value="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" />
         <option value="$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json" />
+        <option value="$PROJECT_DIR$/docs/nodes.md" />
+        <option value="$PROJECT_DIR$/docs/useful_attributes" />
+        <option value="$PROJECT_DIR$/docs/useful_attributes.md" />
+        <option value="$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md" />
+        <option value="$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example" />
         <option value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
         <option value="$PROJECT_DIR$/Todo.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1273" />
-    <option name="width" value="1294" />
-    <option name="height" value="1407" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
               <item name="ksp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="auto_pilot" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
@@ -123,6 +177,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -145,7 +200,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.json_config_creator">
+  <component name="RunManager" selected="Python.krpc_FUNCTIONS">
     <configuration name="json_config_creator" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -190,8 +245,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.json_config_creator" />
         <item itemvalue="Python.krpc_FUNCTIONS" />
+        <item itemvalue="Python.json_config_creator" />
       </list>
     </recent_temporary>
   </component>
@@ -209,14 +264,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="1416" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.60429937" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.058028616" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3288854" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32967034" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32735777" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -252,22 +308,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/nodes.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="260">
+            <caret line="10" column="58" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="51">
+            <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+            <folding>
+              <element signature="e#0#11#0" expanded="true" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="68">
+            <caret line="4" selection-start-line="4" selection-end-line="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/json_config_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        <state relative-caret-position="612">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="306" column="41" lean-forward="true" selection-start-line="306" selection-start-column="41" selection-end-line="306" selection-end-column="41" />
+        <state relative-caret-position="595">
+          <caret line="119" column="52" lean-forward="true" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#265#1249#0" />
+            <element signature="e#1295#3156#0" />
           </folding>
         </state>
       </provider>
@@ -275,8 +380,8 @@
     <entry file="file://$PROJECT_DIR$/Todo.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="612">
-            <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <first_editor relative-caret-position="17">
+            <caret line="1" column="106" selection-start-line="1" selection-start-column="106" selection-end-line="1" selection-end-column="106" />
           </first_editor>
           <second_editor />
         </state>

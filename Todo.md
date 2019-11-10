@@ -1,9 +1,15 @@
 backlog:
+- test what happens if I use my new set_orientation method in the launcher methods. will it hold position?
 - List options when running script. E.g. do you want to launch(if you're on the launchpad)? Do you want to circularise?
 - Do not launch if vehicle is not on launchpad
 - If no config found, prompt to enter details
 - Split out into different scripts as appropriate
 - add craft files to repo and add installer method?
+- refactor vessel orientation. can't get auto_pilot methods to work properly
+
+major issue:
+- two processes run when running krpc_FUNCTIONS. investigate - try calling from another script?
+- streams d/c once script has finished. probably not an issue...
 
 turn set_apo and set_peri into one method. define apo or peri in args.
 

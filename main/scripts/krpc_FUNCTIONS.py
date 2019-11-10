@@ -82,10 +82,43 @@ class Core:
     ## (Pdb) self.vessel.control.sas_mode = "prograde"
     ## *** TypeError: SpaceCenter.Control_set_SASMode() argument 1 must be a <enum 'SASMode'>, got a <class 'str'>
 
-    def set_orientation(self, mode):
-        self.vessel.auto_pilot.reference_frame = mode.reference_frame
-        self.vessel.auto_pilot.target_direction = (0, 1, 0)
+    def set_orientation(self, direction):
+        """
+        :param direction: see dict below for possible strings
+        :return:
+        """
+
+        direction_mod1 = direction.lower()
+        direction_mod1.replace("-", "_")
+        direction_dict = {"prograde": "normal",
+                          "retrograde": "anti_normal",
+                          "normal": "prograde",
+                          "anti_normal": "retrograde",
+                          "radial": "radial",
+                          "anti_radial": "anti_radial"}
+
+        if direction_mod1 not in direction_dict.keys():
+            raise Exception(f"Invalid direction: {direction}")
+
+        # adjust direction (pro/retrograde actually point normal/anti-normal and vice versa)
+        direction_mod2 = direction_dict[direction]
+
+        # check SAS disabled and auto pilot enabled
+        if self.vessel.control.sas:
+            self.vessel.control.sas = False
+        self.vessel.auto_pilot.engage()
+
+        # set direction
+        ref_frame = self.vessel.orbital_reference_frame
+        direction_stream = self.conn.add_stream(getattr, self.vessel.flight(ref_frame), direction)
+        self.vessel.auto_pilot.target_direction = direction_stream()
+
+        # wait for vessel to lineup
         self.vessel.auto_pilot.wait()
+        print(f"Vessel oriented to {direction_stream}")
+
+        # todo test what happens if I remove stream?
+
 
     def set_sas(self, sasMode):
         self.vessel.auto_pilot.disengage()
@@ -138,13 +171,6 @@ class Core:
         self.conn.space_center.warp_to(time)
         ## todo use set_apo time warp in this method? work out how to scale warping
 
-    # ## deprecated
-    # def get_srb_fuel(self, srb_decouple_stage, fuel_type):
-    #     stage_resources = self.vessel.resources_in_decouple_stage(stage=srb_decouple_stage, cumulative=False)
-    #     srb_fuel = self.conn.add_stream(stage_resources.amount, 'SolidFuel')
-    #
-    #     return srb_fuel()
-
     # todo part_name is not very specific and will probably break easily
     # todo add functionality to account for not all engines of one type being expended in current stage (as above method)
     def get_fuel_in_stage(self, part_name, fuel_type, print_fuel=False):
@@ -164,7 +190,12 @@ class Core:
         self.vessel.control.activate_next_stage()
 
     def execute_node(self):
+        # get existing nodes
+        nodes = self.vessel.control.nodes
+        next_node = nodes[0]
+        dV = next_node.delta_v
 
+        pass
 
 
 class Launcher(Core):
@@ -483,8 +514,18 @@ def main():
 def test():
 
     test = Core()
-    test.set_sas(prograde)
+
+    test.set_orientation("prograde")
+
+    # # demonstration orientation
+    # directions = ["normal", "anti_normal", "prograde", "retrograde", "radial", "anti_radial"]
+    # for item in directions:
+    #     print(item)
+    #     test.set_orientation(item)
+
 
 if __name__ == "__main__":
 
-    main()
+    test()
+    time.sleep(10)
+    print("exiting script")

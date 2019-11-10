@@ -1,0 +1,2 @@
+- surface alt = vessel.flight().surface_altitude
+- vessel position wrt orbital body = print('(%.1f, %.1f, %.1f)' % vessel.position(vessel.orbit.body.reference_frame))
