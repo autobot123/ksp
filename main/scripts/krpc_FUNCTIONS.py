@@ -76,12 +76,6 @@ class Core:
         #         # todo implement below
         #         return self.create_new_config(craft_name)
 
-
-    ## SAS stuff
-    ## fixme - get one method working and pass in SAS mode. output below, how to get enum?
-    ## (Pdb) self.vessel.control.sas_mode = "prograde"
-    ## *** TypeError: SpaceCenter.Control_set_SASMode() argument 1 must be a <enum 'SASMode'>, got a <class 'str'>
-
     def set_orientation(self, direction):
         """
         :param direction: see dict below for possible strings
@@ -103,14 +97,11 @@ class Core:
         # adjust direction (pro/retrograde actually point normal/anti-normal and vice versa)
         direction_mod2 = direction_dict[direction]
 
-        # check SAS disabled and auto pilot enabled
-        if self.vessel.control.sas:
-            self.vessel.control.sas = False
-        self.vessel.auto_pilot.engage()
+        self.enable_autopilot()
 
         # set direction
         ref_frame = self.vessel.orbital_reference_frame
-        direction_stream = self.conn.add_stream(getattr, self.vessel.flight(ref_frame), direction)
+        direction_stream = self.conn.add_stream(getattr, self.vessel.flight(ref_frame), direction_mod2)
         self.vessel.auto_pilot.target_direction = direction_stream()
 
         # wait for vessel to lineup
@@ -119,46 +110,42 @@ class Core:
 
         # todo test what happens if I remove stream?
 
+    def activate_stage(self, msg, delay=0.5):
+        time.sleep(delay)
+        print(msg)
+        self.vessel.control.activate_next_stage()
+
+    def enable_sas(self):
+        if not self.vessel.control.sas:
+            self.vessel.auto_pilot.disengage()
+            self.vessel.control.sas = True
+            time.sleep(0.1)
+
+    def enable_autopilot(self):
+        if self.vessel.control.sas:
+            self.vessel.control.sas = False
+        self.vessel.auto_pilot.engage()
 
     def set_sas(self, sasMode):
-        self.vessel.auto_pilot.disengage()
-        self.vessel.control.sas = True
-        time.sleep(0.1)
+        self.enable_sas()
         breakpoint()
         self.vessel.control.sas_mode = self.vessel.control.sas_mode.sasMode
 
-        ## todo try using autopilot commands in krpc
-
     def sas_prograde(self):
-        ## todo: one method for sas? pass in sas_mode as arg
-        self.vessel.auto_pilot.disengage()
-        self.vessel.control.sas = True
-        time.sleep(0.1)
+        self.enable_sas()
         self.vessel.control.sas_mode = self.vessel.control.sas_mode.prograde
 
-    def sas_retrograde(self):
-        self.vessel.auto_pilot.disengage()
-        self.vessel.control.sas = True
-        time.sleep(0.1)
-        self.vessel.control.sas_mode = self.vessel.control.sas_mode.retrograde
-
     def sas_target(self):
-        self.vessel.auto_pilot.disengage()
-        self.vessel.control.sas = True
-        time.sleep(0.1)
+        self.enable_sas()
         self.vessel.control.sas_mode = self.vessel.control.sas_mode.target
 
     def set_pitch_heading(self, pitch, heading):
-        self.auto_pilot.engage()
-        time.sleep(0.1)
+        self.enable_autopilot()
         self.vessel.auto_pilot.target_pitch_and_heading(pitch, heading)
 
-    def activate_stage(self):
-        self.vessel.control.activate_next_stage()
-
     def set_phys_warp(self, factor=0):
-        print("setting warp to ", factor)
         self.conn.space_center.physics_warp_factor = factor
+        print(f"Warp factor: {factor+1}")
 
     ## todo test
     def get_fuel_quantity(self):
@@ -184,10 +171,6 @@ class Core:
             print("{}: {}".format(fuel_type, total_fuel))
         return total_fuel
 
-    def activate_stage(self, msg, delay=0.5):
-        time.sleep(delay)
-        print(msg)
-        self.vessel.control.activate_next_stage()
 
     def execute_node(self):
         # get existing nodes

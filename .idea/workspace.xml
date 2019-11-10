@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/nodes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/useful_attributes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/Todo.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,15 +12,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="119" column="52" lean-forward="true" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
+            <state relative-caret-position="1950">
+              <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#265#1249#0" />
                 <element signature="e#1295#3156#0" />
+                <element signature="e#3488#4847#0" />
+                <element signature="e#4610#4759#0" />
+                <element signature="e#5028#5139#0" />
+                <element signature="e#5185#5299#0" />
+                <element signature="e#5337#5431#0" />
+                <element signature="e#5467#5559#0" />
+                <element signature="e#5622#5717#0" />
+                <element signature="e#5766#5859#0" />
               </folding>
             </state>
           </provider>
@@ -62,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Todo.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -115,8 +116,8 @@
         <option value="$PROJECT_DIR$/docs/useful_attributes.md" />
         <option value="$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md" />
         <option value="$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example" />
-        <option value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
         <option value="$PROJECT_DIR$/Todo.md" />
+        <option value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
       </list>
     </option>
   </component>
@@ -131,6 +132,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,7 +179,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,7 +319,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="51">
@@ -327,6 +327,7 @@
           <second_editor />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -349,27 +350,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="119" column="52" lean-forward="true" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#265#1249#0" />
-            <element signature="e#1295#3156#0" />
-          </folding>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -380,6 +369,26 @@
             <caret line="1" column="106" selection-start-line="1" selection-start-column="106" selection-end-line="1" selection-end-column="106" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1950">
+          <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#265#1249#0" />
+            <element signature="e#1295#3156#0" />
+            <element signature="e#3488#4847#0" />
+            <element signature="e#4610#4759#0" />
+            <element signature="e#5028#5139#0" />
+            <element signature="e#5185#5299#0" />
+            <element signature="e#5337#5431#0" />
+            <element signature="e#5467#5559#0" />
+            <element signature="e#5622#5717#0" />
+            <element signature="e#5766#5859#0" />
+          </folding>
         </state>
       </provider>
     </entry>
