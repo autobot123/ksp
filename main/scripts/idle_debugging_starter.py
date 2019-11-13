@@ -4,6 +4,7 @@ import math
 import json
 import os
 
+print(os.getcwd())
 
 json_config = os.path.join(os.getcwd(), r"C:\projects\ksp\main\resources\craft_config\suborbitalflight_config.json")
 

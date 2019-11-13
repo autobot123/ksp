@@ -1,0 +1,3 @@
+resources_in_stage = vessel.resources_in_decouple_stage(vessel.control.current_stage - 1, True)
+fuel_list = filter(lambda item: item.name in ["LiquidFuel", "SolidFuel"], resources_in_stage.all)
+fuel_in_stage = sum(item.amount for item in fuel_list)

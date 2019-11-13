@@ -17,7 +17,9 @@ class Core:
 
     def __init__(self):
 
-        self.craft_name = krpc.connect().space_center.active_vessel.name
+        self.craft_name = krpc.connect(name="get_craft_name").space_center.active_vessel.name
+        # try to remove get_craft_name script created by above code
+        krpc.connect("get_craft_name").close()
 
         # setting up craft config
         json_config = self.select_craft_config()
@@ -172,13 +174,88 @@ class Core:
         return total_fuel
 
 
-    def execute_node(self):
-        # get existing nodes
+    def execute_next_node(self):
+        # get next node
         nodes = self.vessel.control.nodes
         next_node = nodes[0]
         dV = next_node.delta_v
+        print(f"node delta V: {dV}")
 
-        pass
+        self.enable_autopilot()
+
+        # point ship at node
+        # todo match with set_orientation? add set_ref_frame method?
+        self.vessel.auto_pilot.reference_frame = next_node.reference_frame
+        self.vessel.auto_pilot.target_direction = (0, 1, 0)
+        self.vessel.auto_pilot.wait()
+
+        # turn into core method
+        mu = self.vessel.orbit.body.gravitational_parameter
+        r = self.vessel.orbit.apoapsis
+        a1 = self.vessel.orbit.semi_major_axis
+        a2 = r
+        v1 = math.sqrt(mu * ((2. / r) - (1. / a1)))
+        v2 = math.sqrt(mu * ((2. / r) - (1. / a2)))
+        delta_v = v2 - v1
+
+        # calculate burn time
+        F = self.vessel.available_thrust
+        Isp = self.vessel.specific_impulse * 9.82
+        m0 = self.vessel.mass
+        m1 = m0 / math.exp(delta_v / Isp)
+        flow_rate = F / Isp
+        burn_time = (m0 - m1) / flow_rate
+
+        print("Burn time: ", burn_time)
+
+        # Wait until burn
+        burn_ut = next_node.ut
+        print(f'Warp to {burn_ut} second to burn')
+        lead_time = 5
+        # todo test this
+        self.conn.space_center.warp_to(burn_ut - lead_time - burn_time)
+
+        # Execute burn
+        print('Ready to execute burn')
+        burn_dv = self.conn.add_stream(getattr, next_node, "remaining_delta_v")
+
+        # sleep until burn time
+        while (burn_ut - self.ut()) - (burn_time/2) > 0:
+            pass
+
+        print(f'Burning for {burn_time} seconds')
+        self.vessel.control.throttle = 1.0
+
+        while burn_dv > 10:
+            pass
+
+        self.vessel.control.throttle = 0.05
+        while burn_dv > 1:
+            pass
+        self.vessel.control.throttle = 0.01
+        while burn_dv > 0.01:
+            pass
+
+        # todo turn into recursive method? to fine tune burning?
+		# todo use decimal to round to avoid floating point errors affecting the updated_burn_dv >= old_burn_dv calc?
+        updated_burn_dv = 10000000
+        while True:
+            old_burn_dv = updated_burn_dv
+            updated_burn_dv = burn_dv()
+            # print("old value: {}, new value: {}".format(old_burn_dv, updated_burn_dv))
+            time.sleep(0.1)
+            if burn_dv() < 20:
+                self.vessel.control.throttle = 0.5
+            if burn_dv() < 1:
+                self.vessel.control.throttle = 0.01
+            if updated_burn_dv >= old_burn_dv:
+                self.vessel.control.throttle = 0.0
+                break
+
+        next_node.remove()
+        print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()
 
 
 class Launcher(Core):
@@ -480,9 +557,7 @@ class Orbit(Core):
 
 class Transfer(Core):
 
-    def execute_node(self):
-        pass
-
+    pass
 
 def main():
 
@@ -498,7 +573,7 @@ def test():
 
     test = Core()
 
-    test.set_orientation("prograde")
+    test.execute_next_node()
 
     # # demonstration orientation
     # directions = ["normal", "anti_normal", "prograde", "retrograde", "radial", "anti_radial"]
@@ -510,5 +585,3 @@ def test():
 if __name__ == "__main__":
 
     test()
-    time.sleep(10)
-    print("exiting script")

@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/get_fuel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/Todo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,20 +20,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1950">
-              <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
+            <state relative-caret-position="-145">
+              <caret line="225" column="47" selection-start-line="225" selection-start-column="47" selection-end-line="225" selection-end-column="47" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#265#1249#0" />
                 <element signature="e#1295#3156#0" />
-                <element signature="e#3488#4847#0" />
+                <element signature="e#3208#4432#0" />
+                <element signature="e#4488#4574#0" />
                 <element signature="e#4610#4759#0" />
-                <element signature="e#5028#5139#0" />
-                <element signature="e#5185#5299#0" />
-                <element signature="e#5337#5431#0" />
-                <element signature="e#5467#5559#0" />
-                <element signature="e#5622#5717#0" />
-                <element signature="e#5766#5859#0" />
+                <element signature="e#4801#4912#0" />
+                <element signature="e#4954#5068#0" />
+                <element signature="e#5106#5200#0" />
+                <element signature="e#5236#5328#0" />
+                <element signature="e#5387#5482#0" />
+                <element signature="e#5531#5624#0" />
+                <element signature="e#5684#5882#0" />
+                <element signature="e#5921#6083#0" />
+                <element signature="e#6361#6715#0" />
+                <element signature="e#13651#17913#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/scripts/idle_debugging_starter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,7 +89,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="17">
-                <caret line="1" column="106" selection-start-line="1" selection-start-column="106" selection-end-line="1" selection-end-column="106" />
+                <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
               </first_editor>
               <second_editor />
             </state>
@@ -100,6 +121,8 @@
       <find>(0, 1, 0)</find>
       <find>breakp</find>
       <find>exit</find>
+      <find>connect</find>
+      <find>self.ut</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,23 +139,23 @@
         <option value="$PROJECT_DIR$/docs/useful_attributes.md" />
         <option value="$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md" />
         <option value="$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example" />
+        <option value="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" />
+        <option value="$PROJECT_DIR$/docs/get_fuel" />
         <option value="$PROJECT_DIR$/Todo.md" />
         <option value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1416" />
+    <option name="x" value="-7" />
+    <option name="width" value="1739" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,6 +202,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -265,14 +289,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1416" extended-state="0" />
+    <frame x="-7" y="0" width="1739" height="1407" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.058028616" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.28264332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3288854" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32735777" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.17582418" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -362,11 +386,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/idle_debugging_starter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/get_fuel">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="54" lean-forward="true" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Todo.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="17">
-            <caret line="1" column="106" selection-start-line="1" selection-start-column="106" selection-end-line="1" selection-end-column="106" />
+            <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
           </first_editor>
           <second_editor />
         </state>
@@ -374,20 +415,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
+        <state relative-caret-position="-145">
+          <caret line="225" column="47" selection-start-line="225" selection-start-column="47" selection-end-line="225" selection-end-column="47" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#265#1249#0" />
             <element signature="e#1295#3156#0" />
-            <element signature="e#3488#4847#0" />
+            <element signature="e#3208#4432#0" />
+            <element signature="e#4488#4574#0" />
             <element signature="e#4610#4759#0" />
-            <element signature="e#5028#5139#0" />
-            <element signature="e#5185#5299#0" />
-            <element signature="e#5337#5431#0" />
-            <element signature="e#5467#5559#0" />
-            <element signature="e#5622#5717#0" />
-            <element signature="e#5766#5859#0" />
+            <element signature="e#4801#4912#0" />
+            <element signature="e#4954#5068#0" />
+            <element signature="e#5106#5200#0" />
+            <element signature="e#5236#5328#0" />
+            <element signature="e#5387#5482#0" />
+            <element signature="e#5531#5624#0" />
+            <element signature="e#5684#5882#0" />
+            <element signature="e#5921#6083#0" />
+            <element signature="e#6361#6715#0" />
+            <element signature="e#13651#17913#0" />
           </folding>
         </state>
       </provider>

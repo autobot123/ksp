@@ -1,5 +1,5 @@
 backlog:
-- test what happens if I use my new set_orientation method in the launcher methods. will it hold position?
+- Split maneuvres into maneuvre Class?
 - List options when running script. E.g. do you want to launch(if you're on the launchpad)? Do you want to circularise?
 - Do not launch if vehicle is not on launchpad
 - If no config found, prompt to enter details
