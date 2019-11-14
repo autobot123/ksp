@@ -4,6 +4,7 @@ import math
 import json
 import os
 from json_config_creator import JsonConfigCreator
+import decimal
 
 # todo add target apo and peri to class
 
@@ -173,13 +174,18 @@ class Core:
             print("{}: {}".format(fuel_type, total_fuel))
         return total_fuel
 
+    def print_float(self, msg, num, decimal_places, units):
+        print(f"{msg}{round(num,decimal_places)}{units}")
 
+
+    # todo TEST THIS
     def execute_next_node(self):
         # get next node
         nodes = self.vessel.control.nodes
         next_node = nodes[0]
-        dV = next_node.delta_v
-        print(f"node delta V: {dV}")
+        delta_v = next_node.delta_v
+        self.print_float("node delta V: ", delta_v, 3, "m/s")
+        # print(f"node delta V: {delta_v}")
 
         self.enable_autopilot()
 
@@ -189,15 +195,6 @@ class Core:
         self.vessel.auto_pilot.target_direction = (0, 1, 0)
         self.vessel.auto_pilot.wait()
 
-        # turn into core method
-        mu = self.vessel.orbit.body.gravitational_parameter
-        r = self.vessel.orbit.apoapsis
-        a1 = self.vessel.orbit.semi_major_axis
-        a2 = r
-        v1 = math.sqrt(mu * ((2. / r) - (1. / a1)))
-        v2 = math.sqrt(mu * ((2. / r) - (1. / a2)))
-        delta_v = v2 - v1
-
         # calculate burn time
         F = self.vessel.available_thrust
         Isp = self.vessel.specific_impulse * 9.82
@@ -206,50 +203,57 @@ class Core:
         flow_rate = F / Isp
         burn_time = (m0 - m1) / flow_rate
 
-        print("Burn time: ", burn_time)
+        self.print_float("Burn time: ", burn_time, 3, " seconds")
 
         # Wait until burn
+        # todo make sure burn_ut > ut(). otherwise burn is in the past and process should exit.
         burn_ut = next_node.ut
-        print(f'Warp to {burn_ut} second to burn')
+
         lead_time = 5
+        self.print_float("Warp to ", lead_time, 1, " seconds to burn")
         # todo test this
         self.conn.space_center.warp_to(burn_ut - lead_time - burn_time)
 
         # Execute burn
         print('Ready to execute burn')
+        # todo try converting to decimal here?
         burn_dv = self.conn.add_stream(getattr, next_node, "remaining_delta_v")
 
         # sleep until burn time
-        while (burn_ut - self.ut()) - (burn_time/2) > 0:
+        while (burn_ut - self.ut()) - (burn_time / 2) > 0:
+            countdown_to_burn = (burn_ut - self.ut()) - (burn_time / 2)
+            # todo make it count 10, 9, 8 etc. but only print once
+            #self.print_float("countdown to burn: ", countdown_to_burn, 3, " seconds")
+            #time.sleep(0.1)
             pass
 
-        print(f'Burning for {burn_time} seconds')
+        self.print_float("Burning for ", burn_time, 3, " seconds")
         self.vessel.control.throttle = 1.0
 
-        while burn_dv > 10:
-            pass
-
-        self.vessel.control.throttle = 0.05
-        while burn_dv > 1:
-            pass
-        self.vessel.control.throttle = 0.01
-        while burn_dv > 0.01:
-            pass
-
         # todo turn into recursive method? to fine tune burning?
-		# todo use decimal to round to avoid floating point errors affecting the updated_burn_dv >= old_burn_dv calc?
-        updated_burn_dv = 10000000
+
+        new_burn_dv = 10000000
+        decimal.getcontext().prec = 3
         while True:
-            old_burn_dv = updated_burn_dv
-            updated_burn_dv = burn_dv()
-            # print("old value: {}, new value: {}".format(old_burn_dv, updated_burn_dv))
-            time.sleep(0.1)
-            if burn_dv() < 20:
+            # multiply by 1 to ensure values are rounded as per precision above
+            old_burn_dv = decimal.Decimal(new_burn_dv) * 1
+            new_burn_dv = decimal.Decimal(burn_dv()) * 1
+            ## debugging
+            # print(f"old_burn_dv: {old_burn_dv}, new_burn_dv: {new_burn_dv}\n{new_burn_dv > old_burn_dv}")
+            # time.sleep(0.1)
+            if 5 < new_burn_dv < 20:
                 self.vessel.control.throttle = 0.5
-            if burn_dv() < 1:
+            elif 1 < new_burn_dv < 5:
+                self.vessel.control.throttle = 0.1
+            elif burn_dv() < 1:
                 self.vessel.control.throttle = 0.01
-            if updated_burn_dv >= old_burn_dv:
+            if new_burn_dv < 0.01:
                 self.vessel.control.throttle = 0.0
+                self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
+                break
+            elif new_burn_dv > old_burn_dv:
+                self.vessel.control.throttle = 0.0
+                self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
                 break
 
         next_node.remove()
