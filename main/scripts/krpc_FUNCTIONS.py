@@ -67,18 +67,6 @@ class Core:
             configCreator.create_new_craft_config()
             return craft_config_filepath
 
-        # for json_config_file in os.listdir(craft_config_dir):
-        #     json_config_craft_name = json_config_file.split('_config.json')[0]
-        #     print(json_config_craft_name)
-        #     if json_config_craft_name.lower() == craft_name.lower():
-        #         print("Loading config file {}".format(json_config_file))
-        #         return os.path.join(craft_config_dir, json_config_file)
-        #
-        #     else:
-        #         #raise Exception("Could not find config file for craft {}".format(craft_name))
-        #         # todo implement below
-        #         return self.create_new_config(craft_name)
-
     def set_orientation(self, direction):
         """
         :param direction: see dict below for possible strings
@@ -127,6 +115,7 @@ class Core:
     def enable_autopilot(self):
         if self.vessel.control.sas:
             self.vessel.control.sas = False
+        print("Engaging KRPC auto pilot")
         self.vessel.auto_pilot.engage()
 
     def set_sas(self, sasMode):
@@ -156,11 +145,6 @@ class Core:
         liquid_fuel = self.conn.get_call(self.vessel.resources.amount, "LiquidFuel")
         return solid_fuel, liquid_fuel
 
-    def warp_to(self, time):
-        ## fixme below command unreliable
-        self.conn.space_center.warp_to(time)
-        ## todo use set_apo time warp in this method? work out how to scale warping
-
     # todo part_name is not very specific and will probably break easily
     # todo add functionality to account for not all engines of one type being expended in current stage (as above method)
     def get_fuel_in_stage(self, part_name, fuel_type, print_fuel=False):
@@ -178,14 +162,34 @@ class Core:
         print(f"{msg}{round(num,decimal_places)}{units}")
 
 
+    def calculate_burn_time(self, delta_v):
+        F = self.vessel.available_thrust
+        Isp = self.vessel.specific_impulse * 9.82
+        m0 = self.vessel.mass
+        m1 = m0 / math.exp(delta_v / Isp)
+        flow_rate = F / Isp
+        burn_time = (m0 - m1) / flow_rate
+
+        return burn_time
+
+    def get_active_engine_info(self):
+        pass
+
+        # if no active engine, warning
+
     # todo TEST THIS
     def execute_next_node(self):
+
+        self.get_active_engine_info()
+
         # get next node
         nodes = self.vessel.control.nodes
         next_node = nodes[0]
         delta_v = next_node.delta_v
-        self.print_float("node delta V: ", delta_v, 3, "m/s")
-        # print(f"node delta V: {delta_v}")
+        self.print_float("Node delta V: ", delta_v, 3, "m/s")
+
+        # todo check if node will require staging. if so, add staging and calculate next stages delta_v
+        # add method to calculate delta_v remaining in stage?
 
         self.enable_autopilot()
 
@@ -196,12 +200,7 @@ class Core:
         self.vessel.auto_pilot.wait()
 
         # calculate burn time
-        F = self.vessel.available_thrust
-        Isp = self.vessel.specific_impulse * 9.82
-        m0 = self.vessel.mass
-        m1 = m0 / math.exp(delta_v / Isp)
-        flow_rate = F / Isp
-        burn_time = (m0 - m1) / flow_rate
+        burn_time = self.calculate_burn_time(delta_v)
 
         self.print_float("Burn time: ", burn_time, 3, " seconds")
 
@@ -238,9 +237,6 @@ class Core:
             # multiply by 1 to ensure values are rounded as per precision above
             old_burn_dv = decimal.Decimal(new_burn_dv) * 1
             new_burn_dv = decimal.Decimal(burn_dv()) * 1
-            ## debugging
-            # print(f"old_burn_dv: {old_burn_dv}, new_burn_dv: {new_burn_dv}\n{new_burn_dv > old_burn_dv}")
-            # time.sleep(0.1)
             if 5 < new_burn_dv < 20:
                 self.vessel.control.throttle = 0.5
             elif 1 < new_burn_dv < 5:

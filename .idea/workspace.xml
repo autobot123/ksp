@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/auto_pilot/vessel_velocity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" afterDir="false" />
     </list>
@@ -18,59 +16,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="180" column="20" selection-start-line="180" selection-start-column="20" selection-end-line="180" selection-end-column="20" />
+            <state relative-caret-position="597">
+              <caret line="185" column="28" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="28" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#150#216#1" />
-                <element signature="e#265#1385#0" />
-                <element signature="e#1431#3292#0" />
-                <element signature="e#1705#2343#0" />
-                <element signature="e#1799#2343#0" />
-                <element signature="e#1845#2033#0" />
-                <element signature="e#2098#2209#0" />
-                <element signature="e#2252#2343#0" />
-                <element signature="e#2371#2654#0" />
-                <element signature="e#2664#2719#0" />
-                <element signature="e#3344#4568#0" />
-                <element signature="e#3344#3438#1" />
-                <element signature="e#3549#3831#0" />
-                <element signature="e#4624#4710#0" />
-                <element signature="e#5090#5204#0" />
-                <element signature="e#5372#5464#0" />
-                <element signature="e#5523#5618#0" />
-                <element signature="e#5667#5760#0" />
-                <element signature="e#5820#6018#0" />
-                <element signature="e#6057#6219#0" />
-                <element signature="e#6497#6851#0" />
-                <element signature="e#6649#6743#0" />
-                <element signature="e#9526#16230#0" />
-                <element signature="e#9594#10825#0" />
-                <element signature="e#9594#10147#1" />
-                <element signature="e#10906#11213#0" />
-                <element signature="e#11252#12823#0" />
-                <element signature="e#11564#12692#0" />
-                <element signature="e#11662#12015#0" />
-                <element signature="e#11877#12015#0" />
-                <element signature="e#12073#12291#0" />
-                <element signature="e#12198#12291#0" />
-                <element signature="e#12359#12590#0" />
-                <element signature="e#12481#12590#0" />
-                <element signature="e#12956#13969#0" />
-                <element signature="e#13315#13838#0" />
-                <element signature="e#13403#13736#0" />
-                <element signature="e#13603#13736#0" />
-                <element signature="e#14008#16230#0" />
-                <element signature="e#16037#16080#0" />
-                <element signature="e#16257#20519#0" />
-                <element signature="e#16344#17388#0" />
-                <element signature="e#16374#16619#0" />
-                <element signature="e#17482#18603#0" />
-                <element signature="e#17575#17818#0" />
-                <element signature="e#18648#20519#0" />
-                <element signature="e#20549#20553#0" />
-                <element signature="e#20572#20733#0" />
-                <element signature="e#20801#20830#0" />
+                <element signature="e#280#1400#0" />
+                <element signature="e#4639#4725#0" />
+                <element signature="e#4761#4910#0" />
+                <element signature="e#5105#5219#0" />
+                <element signature="e#5257#5351#0" />
+                <element signature="e#5387#5479#0" />
+                <element signature="e#5538#5633#0" />
+                <element signature="e#5682#5775#0" />
+                <element signature="e#5835#6033#0" />
+                <element signature="e#6512#6866#0" />
+                <element signature="e#6936#6985#0" />
               </folding>
             </state>
           </provider>
@@ -91,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/idle_debugging_starter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state>
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -171,6 +131,8 @@
       <find>ref</find>
       <find>dV</find>
       <find>warp to</find>
+      <find>self.warp</find>
+      <find>self.warp_to</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -345,7 +307,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3288854" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.17582418" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19466248" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -398,7 +360,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="185" column="28" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#280#1400#0" />
+            <element signature="e#4639#4725#0" />
+            <element signature="e#4761#4910#0" />
+            <element signature="e#5105#5219#0" />
+            <element signature="e#5257#5351#0" />
+            <element signature="e#5387#5479#0" />
+            <element signature="e#5538#5633#0" />
+            <element signature="e#5682#5775#0" />
+            <element signature="e#5835#6033#0" />
+            <element signature="e#6512#6866#0" />
+            <element signature="e#6936#6985#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_velocity.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="23" selection-start-column="23" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/idle_debugging_starter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
+      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="51">
@@ -407,7 +411,6 @@
           <second_editor />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -440,94 +443,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_velocity.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="23" selection-start-column="23" selection-end-column="23" />
-          </first_editor>
+          <first_editor />
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/idle_debugging_starter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="180" column="20" selection-start-line="180" selection-start-column="20" selection-end-line="180" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#150#216#1" />
-            <element signature="e#265#1385#0" />
-            <element signature="e#1431#3292#0" />
-            <element signature="e#1705#2343#0" />
-            <element signature="e#1799#2343#0" />
-            <element signature="e#1845#2033#0" />
-            <element signature="e#2098#2209#0" />
-            <element signature="e#2252#2343#0" />
-            <element signature="e#2371#2654#0" />
-            <element signature="e#2664#2719#0" />
-            <element signature="e#3344#4568#0" />
-            <element signature="e#3344#3438#1" />
-            <element signature="e#3549#3831#0" />
-            <element signature="e#4624#4710#0" />
-            <element signature="e#5090#5204#0" />
-            <element signature="e#5372#5464#0" />
-            <element signature="e#5523#5618#0" />
-            <element signature="e#5667#5760#0" />
-            <element signature="e#5820#6018#0" />
-            <element signature="e#6057#6219#0" />
-            <element signature="e#6497#6851#0" />
-            <element signature="e#6649#6743#0" />
-            <element signature="e#9526#16230#0" />
-            <element signature="e#9594#10825#0" />
-            <element signature="e#9594#10147#1" />
-            <element signature="e#10906#11213#0" />
-            <element signature="e#11252#12823#0" />
-            <element signature="e#11564#12692#0" />
-            <element signature="e#11662#12015#0" />
-            <element signature="e#11877#12015#0" />
-            <element signature="e#12073#12291#0" />
-            <element signature="e#12198#12291#0" />
-            <element signature="e#12359#12590#0" />
-            <element signature="e#12481#12590#0" />
-            <element signature="e#12956#13969#0" />
-            <element signature="e#13315#13838#0" />
-            <element signature="e#13403#13736#0" />
-            <element signature="e#13603#13736#0" />
-            <element signature="e#14008#16230#0" />
-            <element signature="e#16037#16080#0" />
-            <element signature="e#16257#20519#0" />
-            <element signature="e#16344#17388#0" />
-            <element signature="e#16374#16619#0" />
-            <element signature="e#17482#18603#0" />
-            <element signature="e#17575#17818#0" />
-            <element signature="e#18648#20519#0" />
-            <element signature="e#20549#20553#0" />
-            <element signature="e#20572#20733#0" />
-            <element signature="e#20801#20830#0" />
-          </folding>
         </state>
       </provider>
     </entry>
