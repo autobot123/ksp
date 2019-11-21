@@ -8,8 +8,10 @@ from orbit import Orbit
 from transfer import Transfer
 
 
-print("Running execute node script")
-core = Core()
+print("Running launcher script")
+launcher = Launcher()
 
-core.execute_next_node()
-print("Exiting execute node script")
+launcher.launch()
+launcher.gravity_turn()
+launcher.circularise()
+print("Exiting launcher script")
