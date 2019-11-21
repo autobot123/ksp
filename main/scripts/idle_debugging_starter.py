@@ -26,4 +26,9 @@ periapsis = conn.add_stream(getattr, vessel.orbit, 'periapsis_altitude')
 
 ### testbed
 
+ref = vessel.orbit.body.reference_frame
+vspeed = conn.add_stream(getattr, vessel.flight(ref), 'vertical_speed')
+
+print ('\nVertical Speed = %d' % vspeed())
+
 ### /testbed

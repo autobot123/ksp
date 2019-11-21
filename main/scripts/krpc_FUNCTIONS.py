@@ -40,6 +40,8 @@ class Core:
         self.altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'mean_altitude')
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
         self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
+        orbit_body_ref_frame = self.vessel.orbit.body.reference_frame
+        self.vertical_speed = self.conn.add_stream(getattr, self.vessel.flight(orbit_body_ref_frame), 'vertical_speed')
 
     def select_craft_config(self):
 
@@ -240,8 +242,8 @@ class Core:
             if 5 < new_burn_dv < 20:
                 self.vessel.control.throttle = 0.5
             elif 1 < new_burn_dv < 5:
-                self.vessel.control.throttle = 0.1
-            elif burn_dv() < 1:
+                self.vessel.control.throttle = 0.2
+            elif burn_dv() < 0.5:
                 self.vessel.control.throttle = 0.01
             if new_burn_dv < 0.01:
                 self.vessel.control.throttle = 0.0
@@ -294,7 +296,7 @@ class Launcher(Core):
             self.vessel.control.activate_next_stage()
         self.vessel.control.sas = sas_activated
         time.sleep(0.1)
-        print("Launch stage complete")
+        print("Liftoff")
 
     def gravity_turn(self):
 
@@ -558,6 +560,35 @@ class Orbit(Core):
 class Transfer(Core):
 
     pass
+
+class Lander(Core):
+
+    def __init__(self):
+        super().__init__()
+
+    def suicide_burn(self):
+
+        # todo deploy chute
+
+        #self.set_orientation("retrograde")
+
+        while self.altitude() > 2000:
+            pass
+
+        while True:
+
+            if self.vertical_speed() > 100:
+                self.throttle = 1
+            elif 200 >= self.vertical_speed() > 30:
+                self.throttle = 0.75
+            elif 50 >= self.vertical_speed() > 10:
+                self.throttle = 0.5
+            else:
+                self.throttle = 0.3
+
+            if self.vertical_speed() == 0:
+                break
+
 
 def main():
 

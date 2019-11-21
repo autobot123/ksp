@@ -3,6 +3,7 @@ import json
 from pprint import pprint
 
 # todo - use ship name as script name?
+# fixme - check type of values entered
 
 class JsonConfigCreator:
 
