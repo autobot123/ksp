@@ -3,7 +3,10 @@ import time
 import math
 import json
 import os
+from pdb import set_trace as bp
+import decimal
 
+print(os.getcwd())
 
 json_config = os.path.join(os.getcwd(), r"C:\projects\ksp\main\resources\craft_config\suborbitalflight_config.json")
 
@@ -17,70 +20,31 @@ altitude = conn.add_stream(getattr, vessel.flight(), 'mean_altitude')
 apoapsis = conn.add_stream(getattr, vessel.orbit, 'apoapsis_altitude')
 periapsis = conn.add_stream(getattr, vessel.orbit, 'periapsis_altitude')
 
-with open(json_config, "r") as json_file:
-    flight_params = json.load(json_file)
+#with open(json_config, "r") as json_file:
+#    flight_params = json.load(json_file)
 
 
 ### testbed
 
-direction_dict = {"prograde": "normal",
-                  "retrograde": "anti-normal",
-                  "normal": "prograde",
-                  "anti_normal": "retrograde",
-                  "radial": "radial",
-                  "anti_radial": "anti-radial"}
+def enable_sas():
 
-ref_frame = vessel.orbital_reference_frame
+    try:
+        vessel.auto_pilot.disengage()
+        vessel.control.sas = True
+        time.sleep(0.1)
+        return True
 
-def set_orientation(direction):
+    except RuntimeError:
+        print("Cannot set SAS mode of vessel")
+        return False
 
-    direction = direction.lower()
-    direction_dict = {"prograde": "normal",
-                      "retrograde": "anti-normal",
-                      "normal": "prograde",
-                      "anti_normal": "retrograde",
-                      "radial": "radial",
-                      "anti_radial": "anti-radial"}
-    if direction not in direction_dict.keys():
-        print("Please enter a valid direction")
-        raise Exception(f"Invalid direction specified: {direction}")
+def sas_prograde():
 
-    # adjust direction (pro/retrograde actually point normal/anti-normal and vice versa)
-    direction = direction_dict[direction]
-
-    # check SAS disabled and auto pilot enabled
-    if vessel.control.sas:
-        vessel.control.sas = False
-    vessel.auto_pilot.engage()
-
-    # set direction
-    ref_frame = vessel.orbital_reference_frame
-    direction = conn.add_stream(getattr, vessel.flight(ref_frame), direction)
-    vessel.auto_pilot.target_direction = direction()
-
-    # wait for vessel to lineup
-    vessel.auto_pilot.wait()
-    print(f"Vessel oriented to {direction}")
-
+    enable_sas()
+    try:
+        vessel.control.sas_mode = vessel.control.sas_mode.prograde
+    except RuntimeError:
+        print("Error: Cannot set SAS mode of vessel to prograde")
 
 ### /testbed
-
-
-#exit()
-
-
-stage_resources = vessel.parts.in_stage(vessel.control.current_stage)
-
-while 500 < altitude() < 5000:
-    for part in stage_resources:
-        if "solid" in part.name:
-            solid_fuel = part.resources.amount(name="SolidFuel")
-            print("solid fuel: {}".format(solid_fuel))
-        if "engine" in part.name:
-            liquid_fuel = part.resources.amount(name="LiquidFuel")
-            print("liquid fuel: {}".format(liquid_fuel))
-
-
-node = vessel.control.nodes
-for i in node:
-	 i.orbit.body.name
+        

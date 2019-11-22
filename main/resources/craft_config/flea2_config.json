@@ -5,6 +5,6 @@
     "final_pitch": 20,
     "warp": 0,
     "srbs_separated": false,
-    "lf_launch_stage_expended": false
+    "lf_launch_stage_expended": true
   }
 }
