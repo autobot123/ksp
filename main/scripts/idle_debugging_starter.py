@@ -26,9 +26,25 @@ periapsis = conn.add_stream(getattr, vessel.orbit, 'periapsis_altitude')
 
 ### testbed
 
-ref = vessel.orbit.body.reference_frame
-vspeed = conn.add_stream(getattr, vessel.flight(ref), 'vertical_speed')
+def enable_sas():
 
-print ('\nVertical Speed = %d' % vspeed())
+    try:
+        vessel.auto_pilot.disengage()
+        vessel.control.sas = True
+        time.sleep(0.1)
+        return True
+
+    except RuntimeError:
+        print("Cannot set SAS mode of vessel")
+        return False
+
+def sas_prograde():
+
+    enable_sas()
+    try:
+        vessel.control.sas_mode = vessel.control.sas_mode.prograde
+    except RuntimeError:
+        print("Error: Cannot set SAS mode of vessel to prograde")
 
 ### /testbed
+        

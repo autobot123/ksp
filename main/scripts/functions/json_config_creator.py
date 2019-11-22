@@ -1,9 +1,9 @@
-import os
 import json
 from pprint import pprint
 
 # todo - use ship name as script name?
 # fixme - check type of values entered
+
 
 class JsonConfigCreator:
 
@@ -36,14 +36,14 @@ class JsonConfigCreator:
     def edit_param(self, key, value):
 
         while value == "":
-            new_value = input("'{}' is blank. Enter a value:\n".format(key))
+            new_value = input(f"'{key}' is blank. Enter a value:\n")
             if new_value != "":
                 return new_value
             else:
                 print("Error: blank input. Try again")
                 continue
 
-        query_response = input("'{}': '{}'. Modify? y / n\n".format(key, value))
+        query_response = input(f"'{key}': '{value}'. Modify? y / n\n")
         while True:
             if query_response == "y":
                 new_value = input("Type the new value\n")
@@ -60,7 +60,10 @@ class JsonConfigCreator:
 
         for (key, param) in dict_data.items():
             if type(param) is not dict:
-                dict_data[key] = self.edit_param(key, param)
+                param_type = type(param)
+                new_param = param_type(self.edit_param(key, param))
+                print(f"New parameter = {new_param} {type(new_param)}")
+                dict_data[key] = new_param
             elif type(param) is dict:
                 print("***EDITING {}***\n".format(key.upper()))
                 self.create_new_dict(param)
@@ -83,5 +86,13 @@ def main():
     test = JsonConfigCreator(craft_config_template, new_craft_config)
     test.create_new_craft_config()
 
+def test():
+    craft_config_template = r"C:\projects\ksp\main\resources\craft_config\craft_config_template.json"
+    new_craft_config = r"C:\projects\ksp\main\resources\craft_config\test_config.json"
+
+    test = JsonConfigCreator(craft_config_template, new_craft_config)
+    test.create_new_craft_config()
+
+
 if __name__ == "__main__":
-    main()
+    test()

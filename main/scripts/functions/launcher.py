@@ -1,19 +1,11 @@
-from core import Core
+import time
+import math
+from .core import Core
 
 
 class Launcher(Core):
 
     def __init__(self, target_apo=100000, target_peri=100000):
-
-        """
-        :param alt_turn_start: self explanatory
-        :param alt_turn_end: the craft will turn in order to hit final_pitch by this altitude
-        :param final_pitch: in degrees. this pitch will be held until target_apo is reached
-        :param warp: timewarp 0-3 = 1-4x
-        :param srbs_separated: default False means the solid fuel boosters in current stage will be staged when empty
-        :param lf_launch_stage_expended: default False means the liquid fuel booster in current stage will be staged when empty
-        :return:
-        """
 
         super().__init__()
         self.target_apo = target_apo
@@ -41,10 +33,11 @@ class Launcher(Core):
 
     def gravity_turn(self):
 
+        compass_heading = 270
         turn_angle = 0
 
         self.vessel.auto_pilot.engage()
-        self.vessel.auto_pilot.target_pitch_and_heading(90, 90)
+        self.vessel.auto_pilot.target_pitch_and_heading(90, compass_heading)
 
         while self.altitude() < 0.9*self.alt_turn_start:
             pass
@@ -59,7 +52,7 @@ class Launcher(Core):
                 new_turn_angle = frac * 90
                 if abs(new_turn_angle - turn_angle) > 0.5:
                     turn_angle = 90-new_turn_angle + frac*self.final_pitch
-                    self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, 90)
+                    self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, compass_heading)
 
             if not self.srbs_separated:
                 srb_fuel_amount = self.get_fuel_in_stage("solid", "SolidFuel")

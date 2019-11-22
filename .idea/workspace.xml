@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main/scripts/execute_next_node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/scripts/launcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/scripts/suicide_burn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mission_planning.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ksp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ksp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/craft_config/flea_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/craft_config/flea_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/json_config_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/json_config_creator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/lander.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/lander.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/launcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/launcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/orbit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/orbit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/transfer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/scripts/json_config_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/json_config_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,156 +22,77 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
+        <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-501">
-              <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+            <state relative-caret-position="40">
+              <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
               <folding>
-                <element signature="e#165#231#1" />
-                <element signature="e#2267#2358#0" />
-                <element signature="e#2386#2669#0" />
-                <element signature="e#2721#3945#0" />
-                <element signature="e#2721#2815#1" />
-                <element signature="e#2926#3208#0" />
-                <element signature="e#4001#4087#0" />
-                <element signature="e#4123#4272#0" />
-                <element signature="e#4167#4272#0" />
-                <element signature="e#4314#4467#0" />
-                <element signature="e#4509#4623#0" />
-                <element signature="e#4661#4755#0" />
-                <element signature="e#4791#4883#0" />
-                <element signature="e#4942#5037#0" />
-                <element signature="e#5086#5179#0" />
-                <element signature="e#5239#5437#0" />
-                <element signature="e#5443#5511#0" />
-                <element signature="e#5715#6069#0" />
-                <element signature="e#5867#5961#0" />
-                <element signature="e#6139#6188#0" />
-                <element signature="e#6243#6493#0" />
-                <element signature="e#6541#6585#0" />
-                <element signature="e#6650#9626#0" />
-                <element signature="e#6883#6978#0" />
-                <element signature="e#7083#7103#0" />
-                <element signature="e#7507#7524#0" />
-                <element signature="e#8137#8396#0" />
-                <element signature="e#8209#8263#0" />
-                <element signature="e#9172#9313#0" />
-                <element signature="e#9374#9515#0" />
-                <element signature="e#9724#10277#1" />
-                <element signature="e#12203#12421#0" />
-                <element signature="e#12328#12421#0" />
-                <element signature="e#12489#12720#0" />
-                <element signature="e#12611#12720#0" />
-                <element signature="e#13086#14099#0" />
-                <element signature="e#13445#13968#0" />
-                <element signature="e#13533#13866#0" />
-                <element signature="e#13733#13866#0" />
-                <element signature="e#14138#16360#0" />
-                <element signature="e#16167#16210#0" />
-                <element signature="e#16387#20649#0" />
-                <element signature="e#16474#17518#0" />
-                <element signature="e#16504#16749#0" />
-                <element signature="e#17612#18733#0" />
-                <element signature="e#17705#17948#0" />
-                <element signature="e#18778#20649#0" />
-                <element signature="e#20679#20683#0" />
-                <element signature="e#20882#21145#0" />
-                <element signature="e#20931#20960#0" />
+                <element signature="e#212#1522#0" />
+                <element signature="e#1568#2791#0" />
+                <element signature="e#1855#2514#0" />
+                <element signature="e#1936#2480#0" />
+                <element signature="e#1982#2170#0" />
+                <element signature="e#2235#2346#0" />
+                <element signature="e#2389#2480#0" />
+                <element signature="e#2508#2791#0" />
+                <element signature="e#2843#4067#0" />
+                <element signature="e#2843#2937#1" />
+                <element signature="e#4123#4209#0" />
+                <element signature="e#4246#4547#0" />
+                <element signature="e#4263#4392#0" />
+                <element signature="e#4435#4491#0" />
+                <element signature="e#4436#4589#0" />
+                <element signature="e#4756#4785#0" />
+                <element signature="e#4913#5005#0" />
+                <element signature="e#5064#5159#0" />
+                <element signature="e#5208#5301#0" />
+                <element signature="e#5361#5559#0" />
+                <element signature="e#5565#5633#0" />
+                <element signature="e#5837#6191#0" />
+                <element signature="e#5989#6083#0" />
+                <element signature="e#6261#6310#0" />
+                <element signature="e#6365#6615#0" />
+                <element signature="e#6663#6707#0" />
+                <element signature="e#6772#9750#0" />
+                <element signature="e#7005#7100#0" />
+                <element signature="e#7205#7225#0" />
+                <element signature="e#7629#7646#0" />
+                <element signature="e#8259#8518#0" />
+                <element signature="e#8331#8385#0" />
+                <element signature="e#8798#9639#0" />
+                <element signature="e#9296#9437#0" />
+                <element signature="e#9498#9639#0" />
+                <element signature="e#10415#10458#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/resources/craft_config/flea_config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/launcher.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mission_planning.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="102">
-                <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/suicide_burn.py">
+        <entry file="file://$PROJECT_DIR$/main/scripts/functions/json_config_creator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret selection-end-column="56" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/execute_next_node.py">
+        <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="68">
-                <caret line="4" selection-start-line="4" selection-end-line="4" />
-              </first_editor>
-              <second_editor />
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/scripts/json_config_creator.py">
+        <entry file="file://$PROJECT_DIR$/main/scripts/launch_craft.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="58" lean-forward="true" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Todo.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="17">
-                <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
+            <state relative-caret-position="116">
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -205,6 +128,14 @@
       <find>self.warp_to</find>
       <find>self.apo</find>
       <find>type</find>
+      <find>execute</find>
+      <find>modify?</find>
+      <find>se</find>
+      <find>enable_sas</find>
+      <find>config found</find>
+      <find>json.</find>
+      <find>throttle</find>
+      <find>retrograde</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -224,19 +155,33 @@
         <option value="$PROJECT_DIR$/Todo.md" />
         <option value="$PROJECT_DIR$/docs/auto_pilot/vessel_velocity.md" />
         <option value="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" />
-        <option value="$PROJECT_DIR$/main/scripts/execute_next_node.py" />
-        <option value="$PROJECT_DIR$/main/scripts/suicide_burn.py" />
         <option value="$PROJECT_DIR$/mission_planning.md" />
-        <option value="$PROJECT_DIR$/main/scripts/launcher.py" />
         <option value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
-        <option value="$PROJECT_DIR$/main/resources/craft_config/flea_config.json" />
         <option value="$PROJECT_DIR$/main/scripts/json_config_creator.py" />
+        <option value="$PROJECT_DIR$/main/scripts/launcher.py" />
+        <option value="$PROJECT_DIR$/main/scripts/suicide_burn.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/launcher_functions.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/transfer_functions.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/orbit_functions.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/core_functions.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/lander_functions.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/launch_craft.py" />
+        <option value="$PROJECT_DIR$/main/scripts/template_script.py" />
+        <option value="$PROJECT_DIR$/main/resources/craft_config/flea_config.json" />
+        <option value="$PROJECT_DIR$/main/scripts/launch_craft.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/json_config_creator.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/lander.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/launcher.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/core.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/orbit.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/transfer.py" />
+        <option value="$PROJECT_DIR$/main/scripts/execute_next_node.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
-    <option name="width" value="1651" />
+    <option name="width" value="1294" />
     <option name="height" value="1407" />
   </component>
   <component name="ProjectView">
@@ -244,7 +189,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,18 +220,33 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main/scripts/functions" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\ksp\main\scripts\functions" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\projects\ksp\main\scripts" />
+      <recent name="C:\projects\ksp\main\scripts\functions" />
+      <recent name="C:\projects\ksp\main\scripts\deprecated" />
       <recent name="C:\projects\ksp\main\resources\craft_config" />
     </key>
   </component>
@@ -303,7 +262,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.launcher">
+  <component name="RunManager" selected="Python.launch_craft">
     <configuration name="execute_next_node" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -333,11 +292,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main/scripts" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main/scripts/functions" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/json_config_creator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/functions/json_config_creator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -346,7 +305,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="krpc_FUNCTIONS" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="launch_craft" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -358,7 +317,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/launch_craft.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -379,7 +338,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/launcher.py" />
+      <option name="SCRIPT_NAME" value="C:\projects\ksp\main\scripts\functions\launcher.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -400,7 +359,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/suicide_burn.py" />
+      <option name="SCRIPT_NAME" value="C:\projects\ksp\main\scripts\functions\lander.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -411,11 +370,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.launch_craft" />
+        <item itemvalue="Python.json_config_creator" />
+        <item itemvalue="Python.execute_next_node" />
         <item itemvalue="Python.launcher" />
         <item itemvalue="Python.suicide_burn" />
-        <item itemvalue="Python.execute_next_node" />
-        <item itemvalue="Python.krpc_FUNCTIONS" />
-        <item itemvalue="Python.json_config_creator" />
       </list>
     </recent_temporary>
   </component>
@@ -433,9 +392,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1651" height="1407" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23062617" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11386919" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3288854" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3452845" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289166" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32967034" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11386919" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -452,23 +431,19 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
+    </layout-to-restore>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main/scripts/functions/core.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/json/decoder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1056">
@@ -503,17 +478,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/idle_debugging_starter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
+      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="51">
@@ -522,7 +488,32 @@
           <second_editor />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mission_planning.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="102">
+            <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/fat-lobyte_ksrpc-logger.py">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/auto_pilot/vessel_orientation.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -544,123 +535,156 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/execute_next_node.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mission_planning.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="102">
-            <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/suicide_burn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/launcher.py">
+    <entry file="file://$PROJECT_DIR$/main/scripts/idle_debugging_starter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/template_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/simple_test_config2.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/simple_test_config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/test_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/resources/craft_config/flea_config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/krpc_FUNCTIONS.py">
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-501">
-          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
           <folding>
-            <element signature="e#165#231#1" />
-            <element signature="e#2267#2358#0" />
-            <element signature="e#2386#2669#0" />
-            <element signature="e#2721#3945#0" />
-            <element signature="e#2721#2815#1" />
-            <element signature="e#2926#3208#0" />
-            <element signature="e#4001#4087#0" />
-            <element signature="e#4123#4272#0" />
-            <element signature="e#4167#4272#0" />
-            <element signature="e#4314#4467#0" />
-            <element signature="e#4509#4623#0" />
-            <element signature="e#4661#4755#0" />
-            <element signature="e#4791#4883#0" />
-            <element signature="e#4942#5037#0" />
-            <element signature="e#5086#5179#0" />
-            <element signature="e#5239#5437#0" />
-            <element signature="e#5443#5511#0" />
-            <element signature="e#5715#6069#0" />
-            <element signature="e#5867#5961#0" />
-            <element signature="e#6139#6188#0" />
-            <element signature="e#6243#6493#0" />
-            <element signature="e#6541#6585#0" />
-            <element signature="e#6650#9626#0" />
-            <element signature="e#6883#6978#0" />
-            <element signature="e#7083#7103#0" />
-            <element signature="e#7507#7524#0" />
-            <element signature="e#8137#8396#0" />
-            <element signature="e#8209#8263#0" />
-            <element signature="e#9172#9313#0" />
-            <element signature="e#9374#9515#0" />
-            <element signature="e#9724#10277#1" />
-            <element signature="e#12203#12421#0" />
-            <element signature="e#12328#12421#0" />
-            <element signature="e#12489#12720#0" />
-            <element signature="e#12611#12720#0" />
-            <element signature="e#13086#14099#0" />
-            <element signature="e#13445#13968#0" />
-            <element signature="e#13533#13866#0" />
-            <element signature="e#13733#13866#0" />
-            <element signature="e#14138#16360#0" />
-            <element signature="e#16167#16210#0" />
-            <element signature="e#16387#20649#0" />
-            <element signature="e#16474#17518#0" />
-            <element signature="e#16504#16749#0" />
-            <element signature="e#17612#18733#0" />
-            <element signature="e#17705#17948#0" />
-            <element signature="e#18778#20649#0" />
-            <element signature="e#20679#20683#0" />
-            <element signature="e#20882#21145#0" />
-            <element signature="e#20931#20960#0" />
+            <element signature="e#212#1522#0" />
+            <element signature="e#1568#2791#0" />
+            <element signature="e#1855#2514#0" />
+            <element signature="e#1936#2480#0" />
+            <element signature="e#1982#2170#0" />
+            <element signature="e#2235#2346#0" />
+            <element signature="e#2389#2480#0" />
+            <element signature="e#2508#2791#0" />
+            <element signature="e#2843#4067#0" />
+            <element signature="e#2843#2937#1" />
+            <element signature="e#4123#4209#0" />
+            <element signature="e#4246#4547#0" />
+            <element signature="e#4263#4392#0" />
+            <element signature="e#4435#4491#0" />
+            <element signature="e#4436#4589#0" />
+            <element signature="e#4756#4785#0" />
+            <element signature="e#4913#5005#0" />
+            <element signature="e#5064#5159#0" />
+            <element signature="e#5208#5301#0" />
+            <element signature="e#5361#5559#0" />
+            <element signature="e#5565#5633#0" />
+            <element signature="e#5837#6191#0" />
+            <element signature="e#5989#6083#0" />
+            <element signature="e#6261#6310#0" />
+            <element signature="e#6365#6615#0" />
+            <element signature="e#6663#6707#0" />
+            <element signature="e#6772#9750#0" />
+            <element signature="e#7005#7100#0" />
+            <element signature="e#7205#7225#0" />
+            <element signature="e#7629#7646#0" />
+            <element signature="e#8259#8518#0" />
+            <element signature="e#8331#8385#0" />
+            <element signature="e#8798#9639#0" />
+            <element signature="e#9296#9437#0" />
+            <element signature="e#9498#9639#0" />
+            <element signature="e#10415#10458#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/json_config_creator.py">
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/json_config_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="58" lean-forward="true" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
+        <state>
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/execute_next_node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/launcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/orbit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/launch_craft.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
         </state>
       </provider>
     </entry>

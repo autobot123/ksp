@@ -1,4 +1,4 @@
-from core import Core
+from .core import Core
 
 
 class Lander(Core):
@@ -18,13 +18,13 @@ class Lander(Core):
         while True:
 
             if self.vertical_speed() > 100:
-                self.throttle = 1
+                self.vessel.control.throttle = 1
             elif 200 >= self.vertical_speed() > 30:
-                self.throttle = 0.75
+                self.vessel.control.throttle = 0.75
             elif 50 >= self.vertical_speed() > 10:
-                self.throttle = 0.5
+                self.vessel.control.throttle = 0.5
             else:
-                self.throttle = 0.3
+                self.vessel.control.throttle = 0.3
 
             if self.vertical_speed() == 0:
                 break

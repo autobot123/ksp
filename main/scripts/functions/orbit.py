@@ -1,4 +1,6 @@
-from core import Core
+import time
+import math
+from .core import Core
 
 
 class Orbit(Core):
@@ -22,20 +24,19 @@ class Orbit(Core):
         time.sleep(turn_time)
 
         print("Performing burn")
-        while self.apoapsis() < 0.95* apo_target:
+        while self.apoapsis() < 0.95 * apo_target:
             self.vessel.control.throttle = 1
-        while self.apoapsis() < 0.99* apo_target:
+        while self.apoapsis() < 0.99 * apo_target:
             self.vessel.control.throttle = 0.1
-        while self.apoapsis() < 0.99999* apo_target:
+        while self.apoapsis() < 0.99999 * apo_target:
             self.vessel.control.throttle = 0.01
 
         self.vessel.control.throttle = 0
         apo_actual = self.apoapsis()
         print("Burn complete. Target apo: {}  Actual apo: {}".format(apo_target, apo_actual))
 
-
     def set_peri(self, peri_target, wait_til_apo=True, burn_time=30, turn_time=5):
-        ## todo check if burn should be prograde or retrograde
+        # todo check if burn should be prograde or retrograde
 
         if wait_til_apo:
             while self.vessel.orbit.time_to_apoapsis > burn_time*3:
@@ -54,11 +55,11 @@ class Orbit(Core):
         time.sleep(turn_time)
 
         print("Performing burn")
-        while self.periapsis() < 0.95* peri_target:
+        while self.periapsis() < 0.95 * peri_target:
             self.vessel.control.throttle = 1
-        while self.periapsis() < 0.99* peri_target:
+        while self.periapsis() < 0.99 * peri_target:
             self.vessel.control.throttle = 0.1
-        while self.periapsis() < 0.99999* peri_target:
+        while self.periapsis() < 0.99999 * peri_target:
             self.vessel.control.throttle = 0.01
 
         self.vessel.control.throttle = 0

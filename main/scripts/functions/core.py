@@ -3,8 +3,9 @@ import time
 import math
 import json
 import os
-from json_config_creator import JsonConfigCreator
+from .json_config_creator import JsonConfigCreator
 import decimal
+from pprint import pprint
 
 # todo add target apo and peri to class
 
@@ -45,7 +46,10 @@ class Core:
         craft_config_filepath = os.path.join(os.getcwd(), r"..\resources\craft_config", self.craft_name.lower() + "_config.json")
 
         if os.path.exists(craft_config_filepath):
-            query_response = input("Config found. Modify? y/n\n")
+            with open(craft_config_filepath) as craft_config:
+                craft_config_text = json.load(craft_config)
+            print(f"Config found:\n{json.dumps(craft_config_text, indent=2)}\n")
+            query_response = input(f"Modify? y/n\n")
             while True:
                 if query_response == "y":
                     configCreator = JsonConfigCreator(craft_config_filepath, craft_config_filepath)
@@ -104,10 +108,16 @@ class Core:
         self.vessel.control.activate_next_stage()
 
     def enable_sas(self):
-        if not self.vessel.control.sas:
+
+        try:
             self.vessel.auto_pilot.disengage()
             self.vessel.control.sas = True
             time.sleep(0.1)
+            return True
+
+        except RuntimeError:
+            "Cannot enable SAS on vessel"
+            return False
 
     def enable_autopilot(self):
         if self.vessel.control.sas:
@@ -115,18 +125,30 @@ class Core:
         print("Engaging KRPC auto pilot")
         self.vessel.auto_pilot.engage()
 
-    def set_sas(self, sasMode):
-        self.enable_sas()
-        breakpoint()
-        self.vessel.control.sas_mode = self.vessel.control.sas_mode.sasMode
+    # def set_sas(self, sasMode):
+    #     self.enable_sas()
+    #     breakpoint()
+    #     self.vessel.control.sas_mode = self.vessel.control.sas_mode.sasMode
 
     def sas_prograde(self):
-        self.enable_sas()
-        self.vessel.control.sas_mode = self.vessel.control.sas_mode.prograde
+
+        if self.enable_sas():
+            try:
+                self.vessel.control.sas_mode = self.vessel.control.sas_mode.prograde
+            except RuntimeError:
+                print("Error: Cannot set SAS mode of vessel to prograde")
+
+    def sas_retrograde(self):
+
+        if self.enable_sas():
+            try:
+                self.vessel.control.sas_mode = self.vessel.control.sas_mode.retrograde
+            except RuntimeError:
+                print("Error: Cannot set SAS mode of vessel to retrograde")
 
     def sas_target(self):
-        self.enable_sas()
-        self.vessel.control.sas_mode = self.vessel.control.sas_mode.target
+        if self.enable_sas():
+            self.vessel.control.sas_mode = self.vessel.control.sas_mode.target
 
     def set_pitch_heading(self, pitch, heading):
         self.enable_autopilot()
@@ -254,16 +276,6 @@ class Core:
         time.sleep(1)
         self.sas_prograde()
 
-
-def main():
-
-    launcher = Launcher()
-    #orbit = Orbit()
-
-    launcher.launch()
-    # launcher.gravity_turn_no_staging()
-    launcher.gravity_turn()
-    launcher.circularise()
 
 def test():
 
