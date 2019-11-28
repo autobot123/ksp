@@ -1,6 +1,6 @@
 import time
 import math
-from .core import Core
+from core import Core
 
 
 class Launcher(Core):
@@ -33,7 +33,7 @@ class Launcher(Core):
 
     def gravity_turn(self):
 
-        compass_heading = 270
+        compass_heading = 90
         turn_angle = 0
 
         self.vessel.auto_pilot.engage()

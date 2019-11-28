@@ -3,7 +3,7 @@ import time
 import math
 import json
 import os
-from .json_config_creator import JsonConfigCreator
+from json_config_creator import JsonConfigCreator
 import decimal
 from pprint import pprint
 
