@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/test_launcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/attributes_and_methods/flea_srb_attributes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/scripts/stage_when_empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ksp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ksp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/functions/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/scripts/functions/lander.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/lander.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/functions/launcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/launcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/scripts/functions/orbit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/orbit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/scripts/functions/transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/transfer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,70 +22,79 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="456">
+              <caret line="186" column="15" lean-forward="true" selection-start-line="186" selection-start-column="15" selection-end-line="186" selection-end-column="15" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#238#1548#0" />
+                <element signature="e#1594#3007#0" />
+                <element signature="e#1868#2696#0" />
+                <element signature="e#2152#2696#0" />
+                <element signature="e#2198#2386#0" />
+                <element signature="e#2451#2562#0" />
+                <element signature="e#2605#2696#0" />
+                <element signature="e#2724#3007#0" />
+                <element signature="e#3059#4283#0" />
+                <element signature="e#3059#3153#1" />
+                <element signature="e#3264#3546#0" />
+                <element signature="e#4462#4705#0" />
+                <element signature="e#4479#4608#0" />
+                <element signature="e#4651#4705#0" />
+                <element signature="e#4747#4900#0" />
+                <element signature="e#4906#4935#0" />
+                <element signature="e#5103#5333#0" />
+                <element signature="e#5137#5333#0" />
+                <element signature="e#5374#5608#0" />
+                <element signature="e#5408#5608#0" />
+                <element signature="e#5644#5744#0" />
+                <element signature="e#5803#5898#0" />
+                <element signature="e#5947#6040#0" />
+                <element signature="e#6304#6372#0" />
+                <element signature="e#7104#7354#0" />
+                <element signature="e#7511#10489#0" />
+                <element signature="e#7744#7839#0" />
+                <element signature="e#7944#7964#0" />
+                <element signature="e#8368#8385#0" />
+                <element signature="e#8998#9257#0" />
+                <element signature="e#9070#9124#0" />
+                <element signature="e#9537#10378#0" />
+                <element signature="e#10035#10176#0" />
+                <element signature="e#10237#10378#0" />
+                <element signature="e#10509#10552#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
+        <entry file="file://$PROJECT_DIR$/main/scripts/stage_when_empty.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/functions/launcher.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="52" column="58" lean-forward="true" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/scripts/execute_next_node.py">
+        <entry file="file://$PROJECT_DIR$/main/scripts/functions/launcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/functions/orbit.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+            <state relative-caret-position="414">
+              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#2983#3996#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_launcher.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/functions/json_config_creator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+        <entry file="file://$PROJECT_DIR$/docs/attributes_and_methods/flea_srb_attributes.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="251">
+                <caret line="61" column="7" selection-start-line="61" selection-start-column="3" selection-end-line="61" selection-end-column="7" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -92,17 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/launch_craft.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -146,6 +147,8 @@
       <find>json.</find>
       <find>throttle</find>
       <find>retrograde</find>
+      <find>engine</find>
+      <find>fuel</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,19 +182,25 @@
         <option value="$PROJECT_DIR$/main/scripts/template_script.py" />
         <option value="$PROJECT_DIR$/main/resources/craft_config/flea_config.json" />
         <option value="$PROJECT_DIR$/main/scripts/launch_craft.py" />
-        <option value="$PROJECT_DIR$/main/scripts/execute_next_node.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/json_config_creator.py" />
         <option value="$PROJECT_DIR$/test/test_launcher.py" />
-        <option value="$PROJECT_DIR$/main/scripts/functions/core.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/lander.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/orbit.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/transfer.py" />
+        <option value="$PROJECT_DIR$/main/scripts/__init__.py" />
+        <option value="$PROJECT_DIR$/main/scripts/execute_next_node.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/__init__.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/example.py" />
+        <option value="$PROJECT_DIR$/main/scripts/example.py" />
+        <option value="$PROJECT_DIR$/docs/attributes_and_methods/flea_srb_attributes.md" />
+        <option value="$PROJECT_DIR$/main/scripts/stage_when_empty.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/launcher.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/core.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
+    <option name="x" value="1273" />
     <option name="width" value="1294" />
     <option name="height" value="1407" />
   </component>
@@ -200,6 +209,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -210,7 +220,18 @@
             <path>
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
               <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
@@ -225,11 +246,15 @@
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
               <item name="functions" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -260,7 +285,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.execute_next_node">
+  <component name="RunManager" selected="Python.launch_craft">
+    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ksp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="execute_next_node" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -324,7 +370,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="launcher" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="stage_when_empty" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -336,28 +382,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\projects\ksp\main\scripts\functions\launcher.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="suicide_burn" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ksp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main/scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\projects\ksp\main\scripts\functions\lander.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/stage_when_empty.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -368,11 +393,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.execute_next_node" />
         <item itemvalue="Python.launch_craft" />
+        <item itemvalue="Python.stage_when_empty" />
+        <item itemvalue="Python.example" />
+        <item itemvalue="Python.execute_next_node" />
         <item itemvalue="Python.json_config_creator" />
-        <item itemvalue="Python.launcher" />
-        <item itemvalue="Python.suicide_burn" />
       </list>
     </recent_temporary>
   </component>
@@ -390,9 +415,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1294" height="1407" extended-state="0" />
+    <frame x="1290" y="0" width="1277" height="1407" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23009554" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16609195" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -410,25 +435,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11386919" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3288854" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34850863" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289166" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32967034" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -583,19 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_launcher.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/json_config_creator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -603,9 +596,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/main/scripts/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/orbit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
+        <state relative-caret-position="34">
           <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -613,10 +614,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/launch_craft.py">
+    <entry file="file://$PROJECT_DIR$/test/test_launcher.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/json_config_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="153">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -627,30 +634,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/launcher.py">
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="52" column="58" lean-forward="true" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/execute_next_node.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state>
+          <caret selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="186" column="15" lean-forward="true" selection-start-line="186" selection-start-column="15" selection-end-line="186" selection-end-column="15" />
+          <folding>
+            <element signature="e#238#1548#0" />
+            <element signature="e#1594#3007#0" />
+            <element signature="e#1868#2696#0" />
+            <element signature="e#2152#2696#0" />
+            <element signature="e#2198#2386#0" />
+            <element signature="e#2451#2562#0" />
+            <element signature="e#2605#2696#0" />
+            <element signature="e#2724#3007#0" />
+            <element signature="e#3059#4283#0" />
+            <element signature="e#3059#3153#1" />
+            <element signature="e#3264#3546#0" />
+            <element signature="e#4462#4705#0" />
+            <element signature="e#4479#4608#0" />
+            <element signature="e#4651#4705#0" />
+            <element signature="e#4747#4900#0" />
+            <element signature="e#4906#4935#0" />
+            <element signature="e#5103#5333#0" />
+            <element signature="e#5137#5333#0" />
+            <element signature="e#5374#5608#0" />
+            <element signature="e#5408#5608#0" />
+            <element signature="e#5644#5744#0" />
+            <element signature="e#5803#5898#0" />
+            <element signature="e#5947#6040#0" />
+            <element signature="e#6304#6372#0" />
+            <element signature="e#7104#7354#0" />
+            <element signature="e#7511#10489#0" />
+            <element signature="e#7744#7839#0" />
+            <element signature="e#7944#7964#0" />
+            <element signature="e#8368#8385#0" />
+            <element signature="e#8998#9257#0" />
+            <element signature="e#9070#9124#0" />
+            <element signature="e#9537#10378#0" />
+            <element signature="e#10035#10176#0" />
+            <element signature="e#10237#10378#0" />
+            <element signature="e#10509#10552#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/stage_when_empty.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/attributes_and_methods/flea_srb_attributes.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="251">
+            <caret line="61" column="7" selection-start-line="61" selection-start-column="3" selection-end-line="61" selection-end-column="7" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/launch_craft.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/launcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#2983#3996#0" />
+          </folding>
         </state>
       </provider>
     </entry>

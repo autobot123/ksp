@@ -102,7 +102,7 @@ class Core:
 
         # todo test what happens if I remove stream?
 
-    def activate_stage(self, msg, delay=0.5):
+    def activate_stage(self, msg="", delay=0.5):
         time.sleep(delay)
         print(msg)
         self.vessel.control.activate_next_stage()
@@ -177,9 +177,39 @@ class Core:
             print("{}: {}".format(fuel_type, total_fuel))
         return total_fuel
 
+    def get_active_engines(self):
+
+        # active_engines = [e for e in self.vessel.parts.engines if e.active and e.has_fuel]
+        active_engines = [e for e in self.vessel.parts.engines if e.active]
+        print("~~~~~ENGINE SUMMARY~~~~~")
+        for e in active_engines:
+            print(f"Active engine: {e.part.title}")
+        print()
+        return active_engines
+
+    def stage_when_engine_empty(self):
+
+        active_stage = self.vessel.control.current_stage
+        parts_in_stage = self.vessel.parts.in_stage(active_stage)
+        part_names = [part.title for part in parts_in_stage]
+
+        print(f"Active stage: {active_stage}    Parts in active stage: {part_names}")
+
+        engines = self.get_active_engines()
+        staged = False
+        while not staged:
+            print("Looping")
+            for engine in engines:
+                if not engine.has_fuel:
+                    staged = True
+
+        self.activate_stage()
+
+    def stage_when_empty(self):
+        pass
+
     def print_float(self, msg, num, decimal_places, units):
         print(f"{msg}{round(num,decimal_places)}{units}")
-
 
     def calculate_burn_time(self, delta_v):
         F = self.vessel.available_thrust
@@ -191,10 +221,6 @@ class Core:
 
         return burn_time
 
-    def get_active_engine_info(self):
-        pass
-
-        # if no active engine, warning
 
     # todo TEST THIS
     def execute_next_node(self):
