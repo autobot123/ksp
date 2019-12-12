@@ -3,7 +3,7 @@ import time
 import math
 import json
 import os
-from json_config_creator import JsonConfigCreator
+from .json_config_creator import JsonConfigCreator
 import decimal
 from pprint import pprint
 
@@ -205,9 +205,6 @@ class Core:
 
         self.activate_stage()
 
-    def stage_when_empty(self):
-        pass
-
     def print_float(self, msg, num, decimal_places, units):
         print(f"{msg}{round(num,decimal_places)}{units}")
 
@@ -225,7 +222,8 @@ class Core:
     # todo TEST THIS
     def execute_next_node(self):
 
-        self.get_active_engine_info()
+        # deprecated?
+        # self.get_active_engine_info()
 
         # get next node
         nodes = self.vessel.control.nodes
@@ -255,8 +253,8 @@ class Core:
 
         lead_time = 5
         self.print_float("Warp to ", lead_time, 1, " seconds to burn")
-        # todo test this
-        self.conn.space_center.warp_to(burn_ut - lead_time - burn_time)
+        # todo test burntime/2 works as expected
+        self.conn.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
 
         # Execute burn
         print('Ready to execute burn')
@@ -298,7 +296,7 @@ class Core:
                 break
 
         next_node.remove()
-        print('Launch complete')
+        print('Node complete')
         time.sleep(1)
         self.sas_prograde()
 

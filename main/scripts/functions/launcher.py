@@ -1,6 +1,6 @@
 import time
 import math
-from core import Core
+from .core import Core
 
 
 class Launcher(Core):
@@ -93,6 +93,19 @@ class Launcher(Core):
         delta_v = v2 - v1
         node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_apoapsis, prograde=delta_v)
 
+        self.execute_next_node()
+
+        print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()
+
+    def deprecated_circularise_code(self):
+        """
+        replaced by calling self.execute_next_node()
+        :return:
+        """
+
+
         ## todo create core method
         F = self.vessel.available_thrust
         Isp = self.vessel.specific_impulse * 9.82
@@ -135,8 +148,3 @@ class Launcher(Core):
             pass
         self.vessel.control.throttle = 0.0
         node.remove()
-
-
-        print('Launch complete')
-        time.sleep(1)
-        self.sas_prograde()

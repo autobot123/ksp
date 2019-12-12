@@ -1,6 +1,6 @@
 import time
 import math
-from core import Core
+from .core import Core
 
 
 class Orbit(Core):

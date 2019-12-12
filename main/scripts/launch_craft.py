@@ -1,11 +1,7 @@
-import sys
-sys.path.insert(1, "functions")
+# import sys
+# sys.path.insert(1, "functions")
 
-from core import Core
-from lander import Lander
-from launcher import Launcher
-from orbit import Orbit
-from transfer import Transfer
+from functions.launcher import Launcher
 
 
 print("Running launcher script")
