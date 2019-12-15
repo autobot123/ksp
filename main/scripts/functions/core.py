@@ -198,7 +198,6 @@ class Core:
         engines = self.get_active_engines()
         staged = False
         while not staged:
-            print("Looping")
             for engine in engines:
                 if not engine.has_fuel:
                     staged = True
