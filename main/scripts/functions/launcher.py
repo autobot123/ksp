@@ -76,7 +76,6 @@ class Launcher(Core):
         self.sas_prograde()
         self.vessel.control.throttle = 0
 
-
     def circularise(self):
 
         while self.altitude() < 70000:
