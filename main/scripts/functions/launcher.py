@@ -1,6 +1,6 @@
 import time
 import math
-from core import Core
+from .core import Core
 
 
 class Launcher(Core):
@@ -45,6 +45,9 @@ class Launcher(Core):
         self.set_phys_warp(self.warp)
 
         print("Entering gravity turn loop")
+
+        engines = self.get_active_engines()
+
         while True:
 
             if self.altitude() > self.alt_turn_start and self.altitude() < self.alt_turn_end:
@@ -54,17 +57,15 @@ class Launcher(Core):
                     turn_angle = 90-new_turn_angle + frac*self.final_pitch
                     self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, compass_heading)
 
-            if not self.srbs_separated:
-                srb_fuel_amount = self.get_fuel_in_stage("solid", "SolidFuel")
-                if srb_fuel_amount < 0.1:
-                    self.activate_stage("*****Ditching SRBs*****")
-                    self.srbs_separated = True
-
-            if not self.lf_launch_stage_expended:
-                lf_fuel_amount = self.get_fuel_in_stage("LFB", "LiquidFuel")
-                if lf_fuel_amount < 0.1:
-                    self.activate_stage("*****Ditching LF booster*****")
-                    self.lf_launch_stage_expended = True
+            engine_staged = False
+            if engines:
+                for engine in engines:
+                    if not engine.has_fuel:
+                        print(f"{engine.part.title} fuel expended. Staging")
+                        engine_staged = True
+                if engine_staged:
+                    self.activate_stage()
+                    engines = self.get_active_engines()
 
             if self.apoapsis() > self.target_apo:
                 break
@@ -74,40 +75,6 @@ class Launcher(Core):
         print("Gravity turn complete. Coasting to apoapsis")
         self.sas_prograde()
         self.vessel.control.throttle = 0
-
-    ## DEPRECATED
-    def gravity_turn_no_staging(self, alt_turn_start=3000, alt_turn_end=20000, final_pitch=25, warp=0):
-
-        ##todo improve turn logic. get it smoother. what to do with final pithc and where to point?
-
-        turn_angle = 0
-
-        self.vessel.auto_pilot.engage()
-        self.vessel.auto_pilot.target_pitch_and_heading(90, 90)
-
-        while self.altitude() < 0.9*alt_turn_start:
-            pass
-
-        self.set_phys_warp(warp)
-
-        while True:
-
-            if self.altitude() > alt_turn_start and self.altitude() < alt_turn_end:
-                frac = ((self.altitude() - alt_turn_start) / (alt_turn_end - alt_turn_start))
-                new_turn_angle = frac * 90
-                if abs(new_turn_angle - turn_angle) > 0.5:
-                    turn_angle = 90-new_turn_angle + frac*final_pitch
-                    self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, 90)
-
-            if self.apoapsis() > self.target_apo:
-                break
-
-            time.sleep(0.1)
-
-        print("Gravity turn finished, coasting to apoapsis")
-        self.sas_prograde()
-        self.vessel.control.throttle = 0
-
 
     def circularise(self):
 
@@ -124,6 +91,19 @@ class Launcher(Core):
         v2 = math.sqrt(mu * ((2. / r) - (1. / a2)))
         delta_v = v2 - v1
         node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_apoapsis, prograde=delta_v)
+
+        self.execute_next_node()
+
+        print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()
+
+    def deprecated_circularise_code(self):
+        """
+        replaced by calling self.execute_next_node()
+        :return:
+        """
+
 
         ## todo create core method
         F = self.vessel.available_thrust
@@ -167,8 +147,3 @@ class Launcher(Core):
             pass
         self.vessel.control.throttle = 0.0
         node.remove()
-
-
-        print('Launch complete')
-        time.sleep(1)
-        self.sas_prograde()

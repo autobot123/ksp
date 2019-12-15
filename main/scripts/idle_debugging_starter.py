@@ -26,25 +26,19 @@ periapsis = conn.add_stream(getattr, vessel.orbit, 'periapsis_altitude')
 
 ### testbed
 
-def enable_sas():
+def get_atts(item):
+    
+    for i in dir(item):
+             print(i, getattr(item, i))
 
-    try:
-        vessel.auto_pilot.disengage()
-        vessel.control.sas = True
-        time.sleep(0.1)
-        return True
+srb = vessel.parts.in_stage(vessel.control.current_stage)[0]
 
-    except RuntimeError:
-        print("Cannot set SAS mode of vessel")
-        return False
+active_engines = [e for e in vessel.parts.engines if e.active and e.has_fuel]
 
-def sas_prograde():
+for engine in active_engines:
+    print(f"engine name: {engine.part.title} engine fuel: "
 
-    enable_sas()
-    try:
-        vessel.control.sas_mode = vessel.control.sas_mode.prograde
-    except RuntimeError:
-        print("Error: Cannot set SAS mode of vessel to prograde")
+#get_atts(srb)
 
 ### /testbed
         

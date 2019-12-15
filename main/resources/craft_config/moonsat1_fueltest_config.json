@@ -1,9 +1,9 @@
 {
   "launch_params": {
-    "alt_turn_start": 3000,
+    "alt_turn_start": 1500,
     "alt_turn_end": 22500,
     "final_pitch": 20,
-    "warp": 1,
+    "warp": 0,
     "srbs_separated": false,
     "lf_launch_stage_expended": false
   }
