@@ -42,42 +42,41 @@ class AsyncLauncher(Core):
         while self.altitude() < 0.9*self.alt_turn_start:
             pass
         self.set_phys_warp(self.warp)
-        print("Entering gravity turn loop")
+        print("Commence turn")
 
-
-        while True:
-            if self.altitude() > self.alt_turn_start and self.altitude() < self.alt_turn_end:
+        target_apo_reached = False
+        while not target_apo_reached:
+            if self.alt_turn_start < self.altitude() < self.alt_turn_end:
                 frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
                 new_turn_angle = frac * 90
                 if abs(new_turn_angle - turn_angle) > 0.5:
                     turn_angle = 90-new_turn_angle + frac*self.final_pitch
                     self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, compass_heading)
-
             if self.apoapsis() > self.target_apo:
-                break
-
-            time.sleep(0.1)
+                target_apo_reached = True
+            await asyncio.sleep(0.1)
 
         print("Gravity turn complete. Coasting to apoapsis")
         self.sas_prograde()
         self.vessel.control.throttle = 0
 
-    # get this to carry on looping
+    # todo: how to end this method? for launch, could have it stop staging once out of atmos?
     async def async_stage_when_engine_empty(self):
 
         for i in range(2):
             active_stage = self.vessel.control.current_stage
-            parts_in_stage = self.vessel.parts.in_stage(active_stage)
-            part_names = [part.title for part in parts_in_stage]
+            part_names = [part.title for part in self.vessel.parts.in_stage(active_stage)]
 
             print(f"Active stage: {active_stage}    Parts in active stage: {part_names}")
 
             engines = self.get_active_engines()
+            # todo - can I get this to stop staging based on engine config?
             # while engines:
             staged = False
             while not staged:
                 for engine in engines:
                     if not engine.has_fuel:
                         staged = True
+                await asyncio.sleep(0.01)
 
             self.activate_stage()
