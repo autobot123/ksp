@@ -9,6 +9,7 @@ class AsyncLauncher(Core):
     def __init__(self, target_apo=100000, target_peri=100000):
 
         super().__init__()
+        self.launch_complete = False
         self.target_apo = target_apo
         self.target_peri = target_peri
         print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
@@ -32,7 +33,6 @@ class AsyncLauncher(Core):
         time.sleep(0.1)
         print("Liftoff")
 
-    # staging logic removed
     async def gravity_turn(self):
 
         compass_heading = 90
@@ -44,8 +44,7 @@ class AsyncLauncher(Core):
         self.set_phys_warp(self.warp)
         print("Commence turn")
 
-        target_apo_reached = False
-        while not target_apo_reached:
+        while not self.launch_complete:
             if self.alt_turn_start < self.altitude() < self.alt_turn_end:
                 frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
                 new_turn_angle = frac * 90
@@ -53,25 +52,22 @@ class AsyncLauncher(Core):
                     turn_angle = 90-new_turn_angle + frac*self.final_pitch
                     self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, compass_heading)
             if self.apoapsis() > self.target_apo:
-                target_apo_reached = True
+                self.launch_complete = True
             await asyncio.sleep(0.1)
 
         print("Gravity turn complete. Coasting to apoapsis")
         self.sas_prograde()
         self.vessel.control.throttle = 0
 
-    # todo: how to end this method? for launch, could have it stop staging once out of atmos?
     async def async_stage_when_engine_empty(self):
 
-        for i in range(2):
+        while not self.launch_complete:
             active_stage = self.vessel.control.current_stage
             part_names = [part.title for part in self.vessel.parts.in_stage(active_stage)]
 
             print(f"Active stage: {active_stage}    Parts in active stage: {part_names}")
 
             engines = self.get_active_engines()
-            # todo - can I get this to stop staging based on engine config?
-            # while engines:
             staged = False
             while not staged:
                 for engine in engines:
@@ -80,3 +76,25 @@ class AsyncLauncher(Core):
                 await asyncio.sleep(0.01)
 
             self.activate_stage()
+
+    def circularise(self):
+
+        while self.altitude() < 70000:
+            pass
+
+        ## todo create core method
+        self.vessel.auto_pilot.engage()
+        mu = self.vessel.orbit.body.gravitational_parameter
+        r = self.vessel.orbit.apoapsis
+        a1 = self.vessel.orbit.semi_major_axis
+        a2 = r
+        v1 = math.sqrt(mu * ((2. / r) - (1. / a1)))
+        v2 = math.sqrt(mu * ((2. / r) - (1. / a2)))
+        delta_v = v2 - v1
+        node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_apoapsis, prograde=delta_v)
+
+        self.execute_next_node()
+
+        print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()

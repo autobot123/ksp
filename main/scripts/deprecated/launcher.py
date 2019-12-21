@@ -1,6 +1,6 @@
 import time
 import math
-from .core import Core
+from functions.core import Core
 
 
 class Launcher(Core):
