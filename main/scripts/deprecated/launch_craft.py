@@ -1,7 +1,7 @@
 # import sys
 # sys.path.insert(1, "functions")
 
-from functions.launcher import Launcher
+from deprecated.launcher import Launcher
 
 
 print("Running launcher script")
