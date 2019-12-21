@@ -40,7 +40,7 @@ class AsyncLauncher(Core):
         self.vessel.auto_pilot.engage()
         self.vessel.auto_pilot.target_pitch_and_heading(90, compass_heading)
         while self.altitude() < 0.9*self.alt_turn_start:
-            pass
+            await asyncio.sleep(0.1)
         self.set_phys_warp(self.warp)
         print("Commence turn")
 
