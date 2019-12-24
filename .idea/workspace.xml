@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main/scripts/transfer_script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/async_launch_craft.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/async_launch_craft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/deprecated/launch_craft.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/deprecated/launch_craft.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/lander.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/lander.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/functions/transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/transfer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/idle_debugging_starter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/landing_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/landing_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/transfer_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/transfer_script.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +22,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="799">
+              <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/scripts/landing_script.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="35" lean-forward="true" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4131">
-              <caret line="252" column="21" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
+            <state relative-caret-position="527">
+              <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -28,10 +58,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/launcher.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/oo_krpc_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/functions/async_launcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="81" column="8" lean-forward="true" selection-start-line="81" selection-start-column="8" selection-end-line="100" />
+            <state relative-caret-position="281">
+              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -42,22 +95,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/async_launch_craft.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,26 +107,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/scripts/transfer_script.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/stage_when_empty.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="32" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/launch_craft.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" selection-start-line="6" selection-end-line="13" />
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -101,11 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>execu</find>
-      <find>reference</find>
-      <find>self.apoapsis =</find>
-      <find>(0, 1, 0)</find>
-      <find>breakp</find>
       <find>exit</find>
       <find>connect</find>
       <find>self.ut</find>
@@ -123,7 +141,6 @@
       <find>config found</find>
       <find>json.</find>
       <find>throttle</find>
-      <find>retrograde</find>
       <find>engine</find>
       <find>fuel</find>
       <find>set_p</find>
@@ -131,6 +148,12 @@
       <find>params</find>
       <find>Warp to</find>
       <find>t</find>
+      <find>retrograde</find>
+      <find>self.vessel.auto_pilot.reference_frame =</find>
+      <find>mode</find>
+      <find>enable</find>
+      <find>sasmode</find>
+      <find>altitude</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,16 +195,19 @@
         <option value="$PROJECT_DIR$/docs/attributes_and_methods/flea_srb_attributes.md" />
         <option value="$PROJECT_DIR$/main/scripts/stage_when_empty.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/__init__.py" />
-        <option value="$PROJECT_DIR$/main/scripts/functions/lander.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/orbit.py" />
         <option value="$PROJECT_DIR$/main/scripts/launch_craft.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/launcher.py" />
-        <option value="$PROJECT_DIR$/main/scripts/functions/core.py" />
-        <option value="$PROJECT_DIR$/main/scripts/async_launch_craft.py" />
         <option value="$PROJECT_DIR$/main/scripts/deprecated/launcher.py" />
-        <option value="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" />
-        <option value="$PROJECT_DIR$/main/scripts/transfer_script.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/transfer.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/landing_script.py" />
+        <option value="$PROJECT_DIR$/main/scripts/deprecated/launch_craft.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/core.py" />
+        <option value="$PROJECT_DIR$/main/scripts/landing_script.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/lander.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" />
+        <option value="$PROJECT_DIR$/main/scripts/async_launch_craft.py" />
+        <option value="$PROJECT_DIR$/main/scripts/transfer_script.py" />
       </list>
     </option>
   </component>
@@ -219,6 +245,13 @@
               <item name="ksp" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="deprecated" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
               <item name="functions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -233,14 +266,14 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\projects\ksp\main\scripts\functions" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\projects\ksp\main\scripts\deprecated" />
       <recent name="C:\projects\ksp\main\scripts" />
+      <recent name="C:\projects\ksp\main\scripts\deprecated" />
       <recent name="C:\projects\ksp\main\scripts\functions" />
       <recent name="C:\projects\ksp\main\resources\craft_config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\ksp\main\scripts\functions" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -277,7 +310,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="landing_script" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ksp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -289,7 +322,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/example.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/scripts/landing_script.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -365,9 +398,9 @@
       <list>
         <item itemvalue="Python.transfer_script" />
         <item itemvalue="Python.async_launch_craft" />
+        <item itemvalue="Python.landing_script" />
         <item itemvalue="Python.launch_craft" />
         <item itemvalue="Python.stage_when_empty" />
-        <item itemvalue="Python.example" />
       </list>
     </recent_temporary>
   </component>
@@ -442,7 +475,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/auto_pilot/discord_u_Machete_Dont_Text_example.py">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="51">
@@ -451,6 +483,7 @@
           <second_editor />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/mission_planning.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -462,19 +495,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/fat-lobyte_ksrpc-logger.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/useful_attributes.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -591,15 +621,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/stage_when_empty.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -608,38 +641,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/launcher.py">
+    <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/fat-lobyte_ksrpc-logger.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/KerbSatLauncher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
+        <state relative-caret-position="153">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#893#1186#0" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/launch_craft.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" selection-start-line="6" selection-end-line="13" />
+        <state relative-caret-position="799">
+          <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4131">
-          <caret line="252" column="21" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
+        <state relative-caret-position="527">
+          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/oo_krpc_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/launcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/landing_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="35" lean-forward="true" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/async_launcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="81" column="8" lean-forward="true" selection-start-line="81" selection-start-column="8" selection-end-line="100" />
+        <state relative-caret-position="281">
+          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -648,28 +718,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/async_launch_craft.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/transfer_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>

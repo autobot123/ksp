@@ -1,6 +1,3 @@
-# import sys
-# sys.path.insert(1, "functions")
-
 from deprecated.launcher import Launcher
 
 

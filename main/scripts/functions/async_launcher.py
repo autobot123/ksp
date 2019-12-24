@@ -77,9 +77,9 @@ class AsyncLauncher(Core):
 
             self.activate_stage()
 
-    def circularise(self):
+    def circularise(self, atmos_alt):
 
-        while self.altitude() < 70000:
+        while self.altitude() < atmos_alt:
             pass
 
         ## todo create core method

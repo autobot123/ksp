@@ -6,10 +6,10 @@ async def main():
 
     print("Running async launcher script")
     launcher = AsyncLauncher()
-    launcher.launch(warp=0)
-
-    await asyncio.gather(launcher.async_stage_when_engine_empty(), launcher.gravity_turn())
-    launcher.circularise()
+    # launcher.launch(warp=0)
+    #
+    # await asyncio.gather(launcher.async_stage_when_engine_empty(), launcher.gravity_turn())
+    launcher.circularise(atmos_alt=0)
     print("Exiting async launcher script")
 
 
