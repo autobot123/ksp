@@ -22,6 +22,7 @@ periapsis = conn.add_stream(getattr, vessel.orbit, 'periapsis_altitude')
 surface_altitude = conn.add_stream(getattr, vessel.flight(), 'surface_altitude')
 
 
+
 #with open(json_config, "r") as json_file:
 #    flight_params = json.load(json_file)
 
@@ -36,7 +37,8 @@ def get_atts(item):
 ### testbed
 
 while True:
-    print(f"surface altitude = {surface_altitude()}")
+    
+    print(f"air pressure = {vessel.orbit.body.pressure_at(altitude())}")
     time.sleep(0.5)
 
 ### /testbed
