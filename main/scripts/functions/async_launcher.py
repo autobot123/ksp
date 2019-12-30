@@ -9,10 +9,10 @@ class AsyncLauncher(Core):
     def __init__(self, target_apo=100000, target_peri=100000):
 
         super().__init__()
-        self.launch_complete = False
         self.gravity_turn_active = False
         self.target_apo_reached = False
         self.circularisation_active = False
+        self.circularisation_complete = False
         self.target_apo = target_apo
         self.target_peri = target_peri
         print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
@@ -38,6 +38,66 @@ class AsyncLauncher(Core):
         self.vessel.control.sas = sas_activated
         time.sleep(0.1)
         print("Liftoff")
+
+    async def gravity_turn(self):
+
+        self.vessel.auto_pilot.engage()
+        self.vessel.auto_pilot.target_pitch_and_heading(90, self.compass_heading)
+
+        while not self.gravity_turn_active:
+            await asyncio.sleep(0.1)
+
+        print(f"Commencing turn at {self.altitude():.0f} metres")
+        while not self.target_apo_reached:
+            frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
+            new_turn_angle = frac * 90
+            if abs(new_turn_angle - self.turn_angle) > 1:
+                self.turn_angle = 90-new_turn_angle + frac*self.final_pitch
+                if self.turn_angle < self.final_pitch:
+                    self.turn_angle = self.final_pitch
+                self.vessel.auto_pilot.target_pitch_and_heading(self.turn_angle, self.compass_heading)
+                # logger.debug(f"turn angle: {turn_angle:.0f}, compass heading: {compass_heading}")
+            await asyncio.sleep(0.1)
+
+        print(f"Gravity turn complete.")
+
+    async def async_stage_when_engine_empty(self):
+
+        while not self.circularisation_complete:
+            engines = self.get_active_engines()
+            staged = False
+            while not staged:
+                if self.circularisation_complete:
+                    staged = True
+                for engine in engines:
+                    if not engine.has_fuel:
+                        staged = True
+                await asyncio.sleep(0.01)
+
+            if not self.circularisation_complete:
+                self.activate_stage("Staging")
+
+        print("Auto staging complete")
+
+    async def circularise(self):
+
+        while not self.circularisation_active:
+            await asyncio.sleep(0.5)
+        print("Commencing circularisation")
+
+        self.vessel.auto_pilot.engage()
+        mu = self.vessel.orbit.body.gravitational_parameter
+        r = self.vessel.orbit.apoapsis
+        a1 = self.vessel.orbit.semi_major_axis
+        a2 = r
+        v1 = math.sqrt(mu * ((2. / r) - (1. / a1)))
+        v2 = math.sqrt(mu * ((2. / r) - (1. / a2)))
+        delta_v = v2 - v1
+        node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_apoapsis, prograde=delta_v)
+
+        self.execute_next_node()
+        self.circularisation_complete = True
+
 
     # todo try using async main loop in monitor launch state instead of separate launch script?
     async def monitor_launch_state(self):
@@ -69,73 +129,9 @@ class AsyncLauncher(Core):
                 await asyncio.sleep(1)
             self.circularisation_active = True
 
-        while self.periapsis() < self.target_peri:
+        while not self.circularisation_complete:
             await asyncio.sleep(0.1)
 
-        self.launch_complete = True
         print("Launch complete. Craft inactive.")
-        print('Launch complete')
         time.sleep(1)
         self.sas_prograde()
-
-    async def gravity_turn(self):
-
-        self.vessel.auto_pilot.engage()
-        self.vessel.auto_pilot.target_pitch_and_heading(90, self.compass_heading)
-
-        while not self.gravity_turn_active:
-            await asyncio.sleep(0.1)
-
-        print(f"Commencing turn at {self.altitude():.0f} metres")
-        while not self.target_apo_reached:
-            frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
-            new_turn_angle = frac * 90
-            if abs(new_turn_angle - self.turn_angle) > 1:
-                self.turn_angle = 90-new_turn_angle + frac*self.final_pitch
-                if self.turn_angle < self.final_pitch:
-                    self.turn_angle = self.final_pitch
-                self.vessel.auto_pilot.target_pitch_and_heading(self.turn_angle, self.compass_heading)
-                # logger.debug(f"turn angle: {turn_angle:.0f}, compass heading: {compass_heading}")
-            await asyncio.sleep(0.1)
-
-        print(f"Gravity turn complete. Pitch locked at {self.final_pitch}")
-
-    async def async_stage_when_engine_empty(self):
-
-        while not self.launch_complete:
-            active_stage = self.vessel.control.current_stage
-            part_names = [part.title for part in self.vessel.parts.in_stage(active_stage)]
-            print(f"Monitoring engines for active stage {active_stage}\n  Parts in active stage: {part_names}")
-
-            engines = self.get_active_engines()
-            staged = False
-            while not staged:
-                if self.launch_complete:
-                    staged = True
-                for engine in engines:
-                    if not engine.has_fuel:
-                        staged = True
-                await asyncio.sleep(0.01)
-
-            if not self.launch_complete:
-                self.activate_stage("Staging")
-
-        print("Auto staging complete")
-
-    async def circularise(self):
-
-        while not self.circularisation_active:
-            await asyncio.sleep(0.5)
-        print("Commencing circularisation")
-
-        self.vessel.auto_pilot.engage()
-        mu = self.vessel.orbit.body.gravitational_parameter
-        r = self.vessel.orbit.apoapsis
-        a1 = self.vessel.orbit.semi_major_axis
-        a2 = r
-        v1 = math.sqrt(mu * ((2. / r) - (1. / a1)))
-        v2 = math.sqrt(mu * ((2. / r) - (1. / a2)))
-        delta_v = v2 - v1
-        node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_apoapsis, prograde=delta_v)
-
-        self.execute_next_node()

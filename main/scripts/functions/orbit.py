@@ -5,6 +5,25 @@ from .core import Core
 
 class Orbit(Core):
 
+    def circularise_to_apoapsis(self):
+
+        self.vessel.auto_pilot.engage()
+        mu = self.vessel.orbit.body.gravitational_parameter
+        r = self.vessel.orbit.apoapsis
+        a1 = self.vessel.orbit.semi_major_axis
+        a2 = r
+        v1 = math.sqrt(mu * ((2. / r) - (1. / a1)))
+        v2 = math.sqrt(mu * ((2. / r) - (1. / a2)))
+        delta_v = v2 - v1
+        node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_apoapsis, prograde=delta_v)
+
+        self.execute_next_node()
+
+        print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()
+
+
     def set_apo(self, apo_target, wait_til_peri=True, burn_time=30, turn_time=5):
 
         if wait_til_peri:
@@ -66,6 +85,7 @@ class Orbit(Core):
         peri_actual = self.periapsis()
         print("Burn complete. Target peri: {}  Actual peri: {}".format(peri_target, peri_actual))
 
+    # todo test and remove
     def circularise_to_apo(self):
 
         self.vessel.auto_pilot.engage()

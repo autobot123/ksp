@@ -3,6 +3,7 @@ import math
 import time
 
 
+# fixme redundant? just use orbit.py
 class Transfer(Core):
 
     def __init__(self):

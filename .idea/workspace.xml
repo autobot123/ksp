@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5fec14c-e27b-47ab-be22-578e0dae3c20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main/scripts/async_launch_craft.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/async_launch_craft.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/scripts/orbit_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/scripts/functions/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/orbit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/orbit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/scripts/functions/transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/scripts/functions/transfer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,47 +19,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/landing_script.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="215" column="27" lean-forward="true" selection-start-line="215" selection-start-column="27" selection-end-line="215" selection-end-column="27" />
+            <state relative-caret-position="328">
+              <caret line="187" column="15" lean-forward="true" selection-start-line="187" selection-start-column="15" selection-end-line="187" selection-end-column="15" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/oo_krpc_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,33 +33,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/scripts/functions/async_launcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="105" column="27" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="60" />
+            <state relative-caret-position="255">
+              <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#4759#5447#0" />
+                <element signature="e#164#1057#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/scripts/async_launch_craft.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+            <state relative-caret-position="357">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/scripts/transfer_script.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -106,10 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dV</find>
-      <find>warp to</find>
-      <find>self.warp</find>
-      <find>self.warp_to</find>
       <find>self.apo</find>
       <find>type</find>
       <find>execute</find>
@@ -136,6 +92,10 @@
       <find>ENGINE SUMMARy</find>
       <find>ENGINE</find>
       <find>get_acti</find>
+      <find>Monitoring engines for</find>
+      <find>~</find>
+      <find>self.launch</find>
+      <find>self.launch_com</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -144,7 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" />
         <option value="$PROJECT_DIR$/main/resources/craft_config/craft_config_template.json" />
         <option value="$PROJECT_DIR$/docs/nodes.md" />
         <option value="$PROJECT_DIR$/docs/useful_attributes" />
@@ -177,19 +136,21 @@
         <option value="$PROJECT_DIR$/docs/attributes_and_methods/flea_srb_attributes.md" />
         <option value="$PROJECT_DIR$/main/scripts/stage_when_empty.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/__init__.py" />
-        <option value="$PROJECT_DIR$/main/scripts/functions/orbit.py" />
         <option value="$PROJECT_DIR$/main/scripts/launch_craft.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/launcher.py" />
         <option value="$PROJECT_DIR$/main/scripts/deprecated/launcher.py" />
-        <option value="$PROJECT_DIR$/main/scripts/functions/transfer.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/landing_script.py" />
         <option value="$PROJECT_DIR$/main/scripts/deprecated/launch_craft.py" />
         <option value="$PROJECT_DIR$/main/scripts/landing_script.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/lander.py" />
         <option value="$PROJECT_DIR$/main/scripts/transfer_script.py" />
         <option value="$PROJECT_DIR$/main/scripts/async_launch_craft.py" />
-        <option value="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/orbit.py" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/transfer.py" />
+        <option value="$PROJECT_DIR$/main/scripts/orbit_script.py" />
         <option value="$PROJECT_DIR$/main/scripts/functions/core.py" />
+        <option value="$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json" />
+        <option value="$PROJECT_DIR$/main/scripts/functions/async_launcher.py" />
       </list>
     </option>
   </component>
@@ -203,6 +164,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,6 +176,19 @@
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
               <item name="ksp" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ksp" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="craft_config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ksp" type="b2602c69:ProjectViewProjectNode" />
@@ -232,7 +207,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -393,8 +367,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="491" y="0" width="2076" height="1407" extended-state="0" />
-    <editor active="true" />
+    <frame x="979" y="0" width="1588" height="1407" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25159237" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -412,8 +385,27 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Run" order="3" visible="true" weight="0.34424603" />
+      <window_info anchor="right" id="Run" order="3" weight="1.0" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2022293" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3288854" />
+      <window_info anchor="bottom" id="Run" order="2" side_tool="true" visible="true" weight="0.59576136" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289166" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32967034" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/json/decoder.py">
@@ -548,13 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/__init__.py" />
     <entry file="file://$PROJECT_DIR$/main/scripts/example.py" />
     <entry file="file://$PROJECT_DIR$/test/test_launcher.py">
@@ -577,16 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/orbit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/json_config_creator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -599,16 +574,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/stage_when_empty.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -643,26 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/landing_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/deprecated/oo_krpc_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -674,38 +619,101 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/transfer_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/async_launch_craft.py">
+    <entry file="file://$PROJECT_DIR$/main/scripts/orbit_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+        <state relative-caret-position="221">
+          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/transfer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/orbit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#160#1207#0" />
+            <element signature="e#1300#2423#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/landing_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/scripts/functions/async_launcher.py">
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/lander.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="105" column="27" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#4759#5447#0" />
-          </folding>
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/scripts/functions/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="215" column="27" lean-forward="true" selection-start-line="215" selection-start-column="27" selection-end-line="215" selection-end-column="27" />
+        <state relative-caret-position="328">
+          <caret line="187" column="15" lean-forward="true" selection-start-line="187" selection-start-column="15" selection-end-line="187" selection-end-column="15" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/kerbsat1 relay_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/moonsat1 relay_config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/craft_config/moonsat1_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/functions/async_launcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#164#1057#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/scripts/async_launch_craft.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
