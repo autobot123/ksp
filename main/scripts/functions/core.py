@@ -34,6 +34,7 @@ class Core:
         # flight info
         self.ut = self.conn.add_stream(getattr, self.conn.space_center, 'ut')
         self.altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'mean_altitude')
+        self.surface_altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'surface_altitude')
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
         self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
         orbit_body_ref_frame = self.vessel.orbit.body.reference_frame

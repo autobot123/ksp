@@ -19,26 +19,26 @@ ut = conn.add_stream(getattr, conn.space_center, 'ut')
 altitude = conn.add_stream(getattr, vessel.flight(), 'mean_altitude')
 apoapsis = conn.add_stream(getattr, vessel.orbit, 'apoapsis_altitude')
 periapsis = conn.add_stream(getattr, vessel.orbit, 'periapsis_altitude')
+surface_altitude = conn.add_stream(getattr, vessel.flight(), 'surface_altitude')
+
+
 
 #with open(json_config, "r") as json_file:
 #    flight_params = json.load(json_file)
-
-
-### testbed
 
 def get_atts(item):
     
     for i in dir(item):
              print(i, getattr(item, i))
 
-srb = vessel.parts.in_stage(vessel.control.current_stage)[0]
-
-active_engines = [e for e in vessel.parts.engines if e.active and e.has_fuel]
-
-for engine in active_engines:
-    print(f"engine name: {engine.part.title} engine fuel: "
-
 #get_atts(srb)
 
+
+### testbed
+
+while True:
+    
+    print(f"air pressure = {vessel.orbit.body.pressure_at(altitude())}")
+    time.sleep(0.5)
+
 ### /testbed
-        

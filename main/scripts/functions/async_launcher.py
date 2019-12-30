@@ -10,6 +10,7 @@ class AsyncLauncher(Core):
 
         super().__init__()
         self.launch_complete = False
+        self.gravity_turn_active = False
         self.target_apo = target_apo
         self.target_peri = target_peri
         print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
@@ -33,25 +34,39 @@ class AsyncLauncher(Core):
         time.sleep(0.1)
         print("Liftoff")
 
+
+    # todo test this and incorporate with grav turn and staging
+    # async def monitor_launch_state(self):
+    #
+    #     while not self.gravity_turn_active:
+    #         if self.alt_turn_start < self.altitude() < self.alt_turn_end:
+    #             self.gravity_turn_active = True
+    #         await asyncio.sleep(0.1)
+    #
+    #     while self.gravity_turn_active:
+    #         if self.altitude > self.alt_turn_end:
+    #             self.gravity_turn_active = False
+    #         await asyncio.sleep(0.1)
+
     async def gravity_turn(self):
 
         compass_heading = 90
         turn_angle = 0
         self.vessel.auto_pilot.engage()
         self.vessel.auto_pilot.target_pitch_and_heading(90, compass_heading)
-        while self.altitude() < 0.9*self.alt_turn_start:
-            pass
+        while self.altitude() < 0.9*self.alt_turn_start: # todo remove. use grav turn active var instead
+            await asyncio.sleep(0.1)
         self.set_phys_warp(self.warp)
         print("Commence turn")
 
-        while not self.launch_complete:
-            if self.alt_turn_start < self.altitude() < self.alt_turn_end:
+        while not self.launch_complete: # todo change to while grav turn active
+            if self.alt_turn_start < self.altitude() < self.alt_turn_end: # todo don't need this
                 frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
                 new_turn_angle = frac * 90
                 if abs(new_turn_angle - turn_angle) > 0.5:
                     turn_angle = 90-new_turn_angle + frac*self.final_pitch
                     self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, compass_heading)
-            if self.apoapsis() > self.target_apo:
+            if self.apoapsis() > self.target_apo: # todo move this to monitor_launch_state
                 self.launch_complete = True
             await asyncio.sleep(0.1)
 
@@ -70,17 +85,33 @@ class AsyncLauncher(Core):
             engines = self.get_active_engines()
             staged = False
             while not staged:
+
                 for engine in engines:
                     if not engine.has_fuel:
                         staged = True
                 await asyncio.sleep(0.01)
+                # if self.altitude() > 75000:
+                #     print("stuck in staging loop")
+                #     print(f"self.launch_complete = {self.launch_complete}")
+                #     time.sleep(1)
+                # todo fix logic here
+                if self.launch_complete:
+                    staged = True
 
-            self.activate_stage()
+            if not self.launch_complete:
+                self.activate_stage("staging")
+
+        print("Auto staging complete")
 
     def circularise(self):
 
-        while self.altitude() < 70000:
+        while self.vessel.orbit.body.pressure_at(self.altitude()) != 0:
+            print(f"pressure: {self.vessel.orbit.body.pressure_at(self.altitude())}")
             pass
+            time.sleep(1)
+
+        # while self.altitude() < atmos_alt:
+        #     pass
 
         ## todo create core method
         self.vessel.auto_pilot.engage()

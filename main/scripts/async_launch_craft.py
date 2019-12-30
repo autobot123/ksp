@@ -9,6 +9,9 @@ async def main():
     launcher.launch(warp=0)
 
     await asyncio.gather(launcher.async_stage_when_engine_empty(), launcher.gravity_turn())
+    # launcher.circularise(atmos_alt=0)
+    print("Ready to circularise")
+
     launcher.circularise()
     print("Exiting async launcher script")
 
