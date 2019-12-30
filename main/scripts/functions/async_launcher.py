@@ -11,6 +11,8 @@ class AsyncLauncher(Core):
         super().__init__()
         self.launch_complete = False
         self.gravity_turn_active = False
+        self.target_apo_reached = False
+        self.circularisation_active = False
         self.target_apo = target_apo
         self.target_peri = target_peri
         print("Launch parameters: Target apo = {}    Target peri = {}".format(self.target_apo, self.target_peri))
@@ -21,6 +23,9 @@ class AsyncLauncher(Core):
         self.warp = self.launch_params['warp']
         self.srbs_separated = self.launch_params['srbs_separated']
         self.lf_launch_stage_expended = self.launch_params['lf_launch_stage_expended']
+
+        self.compass_heading = 90
+        self.turn_angle = 0
 
         print('Launch parameters: {}'.format(self.launch_params))
 
@@ -34,86 +39,95 @@ class AsyncLauncher(Core):
         time.sleep(0.1)
         print("Liftoff")
 
+    # todo try using async main loop in monitor launch state instead of separate launch script?
+    async def monitor_launch_state(self):
 
-    # todo test this and incorporate with grav turn and staging
-    # async def monitor_launch_state(self):
-    #
-    #     while not self.gravity_turn_active:
-    #         if self.alt_turn_start < self.altitude() < self.alt_turn_end:
-    #             self.gravity_turn_active = True
-    #         await asyncio.sleep(0.1)
-    #
-    #     while self.gravity_turn_active:
-    #         if self.altitude > self.alt_turn_end:
-    #             self.gravity_turn_active = False
-    #         await asyncio.sleep(0.1)
+        while not self.gravity_turn_active:
+            if self.alt_turn_start < self.altitude() < self.alt_turn_end:
+                self.gravity_turn_active = True
+                print(f"Gravity turn active = {self.gravity_turn_active}")
+            await asyncio.sleep(0.1)
+
+        while self.gravity_turn_active:
+            if self.altitude() > self.alt_turn_end:
+                self.gravity_turn_active = False
+                print(f"Gravity turn active = {self.gravity_turn_active}")
+            await asyncio.sleep(0.1)
+
+        while not self.target_apo_reached:
+            if self.apoapsis() > self.target_apo:
+                self.target_apo_reached = True
+                print(f"Target apo reached = {self.target_apo_reached}")
+            await asyncio.sleep(0.1)
+
+        self.vessel.control.throttle = 0
+        self.sas_prograde()
+
+        while not self.circularisation_active:
+            while self.vessel.orbit.body.pressure_at(self.altitude()) != 0:
+                print(f"pressure: {self.vessel.orbit.body.pressure_at(self.altitude()):.1f}")
+                await asyncio.sleep(1)
+            self.circularisation_active = True
+
+        while self.periapsis() < self.target_peri:
+            await asyncio.sleep(0.1)
+
+        self.launch_complete = True
+        print("Launch complete. Craft inactive.")
+        print('Launch complete')
+        time.sleep(1)
+        self.sas_prograde()
 
     async def gravity_turn(self):
 
-        compass_heading = 90
-        turn_angle = 0
         self.vessel.auto_pilot.engage()
-        self.vessel.auto_pilot.target_pitch_and_heading(90, compass_heading)
-        while self.altitude() < 0.9*self.alt_turn_start: # todo remove. use grav turn active var instead
-            await asyncio.sleep(0.1)
-        self.set_phys_warp(self.warp)
-        print("Commence turn")
+        self.vessel.auto_pilot.target_pitch_and_heading(90, self.compass_heading)
 
-        while not self.launch_complete: # todo change to while grav turn active
-            if self.alt_turn_start < self.altitude() < self.alt_turn_end: # todo don't need this
-                frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
-                new_turn_angle = frac * 90
-                if abs(new_turn_angle - turn_angle) > 0.5:
-                    turn_angle = 90-new_turn_angle + frac*self.final_pitch
-                    self.vessel.auto_pilot.target_pitch_and_heading(turn_angle, compass_heading)
-            if self.apoapsis() > self.target_apo: # todo move this to monitor_launch_state
-                self.launch_complete = True
+        while not self.gravity_turn_active:
             await asyncio.sleep(0.1)
 
-        print("Gravity turn complete. Coasting to apoapsis")
-        self.sas_prograde()
-        self.vessel.control.throttle = 0
+        print(f"Commencing turn at {self.altitude():.0f} metres")
+        while not self.target_apo_reached:
+            frac = ((self.altitude() - self.alt_turn_start) / (self.alt_turn_end - self.alt_turn_start))
+            new_turn_angle = frac * 90
+            if abs(new_turn_angle - self.turn_angle) > 1:
+                self.turn_angle = 90-new_turn_angle + frac*self.final_pitch
+                if self.turn_angle < self.final_pitch:
+                    self.turn_angle = self.final_pitch
+                self.vessel.auto_pilot.target_pitch_and_heading(self.turn_angle, self.compass_heading)
+                # logger.debug(f"turn angle: {turn_angle:.0f}, compass heading: {compass_heading}")
+            await asyncio.sleep(0.1)
+
+        print(f"Gravity turn complete. Pitch locked at {self.final_pitch}")
 
     async def async_stage_when_engine_empty(self):
 
         while not self.launch_complete:
             active_stage = self.vessel.control.current_stage
             part_names = [part.title for part in self.vessel.parts.in_stage(active_stage)]
-
-            print(f"Active stage: {active_stage}    Parts in active stage: {part_names}")
+            print(f"Monitoring engines for active stage {active_stage}\n  Parts in active stage: {part_names}")
 
             engines = self.get_active_engines()
             staged = False
             while not staged:
-
+                if self.launch_complete:
+                    staged = True
                 for engine in engines:
                     if not engine.has_fuel:
                         staged = True
                 await asyncio.sleep(0.01)
-                # if self.altitude() > 75000:
-                #     print("stuck in staging loop")
-                #     print(f"self.launch_complete = {self.launch_complete}")
-                #     time.sleep(1)
-                # todo fix logic here
-                if self.launch_complete:
-                    staged = True
 
             if not self.launch_complete:
-                self.activate_stage("staging")
+                self.activate_stage("Staging")
 
         print("Auto staging complete")
 
-    def circularise(self):
+    async def circularise(self):
 
-        while self.vessel.orbit.body.pressure_at(self.altitude()) != 0:
-            print(f"pressure: {self.vessel.orbit.body.pressure_at(self.altitude())}")
-            pass
-            time.sleep(1)
+        while not self.circularisation_active:
+            await asyncio.sleep(0.5)
+        print("Commencing circularisation")
 
-        # while self.altitude() < atmos_alt:
-        #     pass
-
-        ## todo create core method
         self.vessel.auto_pilot.engage()
         mu = self.vessel.orbit.body.gravitational_parameter
         r = self.vessel.orbit.apoapsis
@@ -125,7 +139,3 @@ class AsyncLauncher(Core):
         node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_apoapsis, prograde=delta_v)
 
         self.execute_next_node()
-
-        print('Launch complete')
-        time.sleep(1)
-        self.sas_prograde()
