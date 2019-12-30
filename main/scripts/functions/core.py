@@ -182,7 +182,7 @@ class Core:
 
         # active_engines = [e for e in self.vessel.parts.engines if e.active and e.has_fuel]
         active_engines = [e for e in self.vessel.parts.engines if e.active]
-        print("~~~~~ENGINE SUMMARY~~~~~")
+        print(f"~~~~~ENGINE SUMMARY FOR STAGE {self.vessel.control.current_stage}~~~~~")
         for e in active_engines:
             print(f"Active engine: {e.part.title}")
         print()

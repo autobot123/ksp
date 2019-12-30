@@ -2,17 +2,18 @@ import asyncio
 from functions.async_launcher import AsyncLauncher
 
 
+# todo move this into async launcher?
 async def main():
 
     print("Running async launcher script")
     launcher = AsyncLauncher()
     launcher.launch(warp=0)
 
-    await asyncio.gather(launcher.async_stage_when_engine_empty(), launcher.gravity_turn())
-    # launcher.circularise(atmos_alt=0)
-    print("Ready to circularise")
+    await asyncio.gather(launcher.monitor_launch_state(),
+                         launcher.async_stage_when_engine_empty(),
+                         launcher.gravity_turn(),
+                         launcher.circularise())
 
-    launcher.circularise()
     print("Exiting async launcher script")
 
 
