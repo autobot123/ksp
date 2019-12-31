@@ -6,7 +6,7 @@ from .core import Core
 
 class AsyncLauncher(Core):
 
-    def __init__(self, target_apo=100000, target_peri=100000):
+    def __init__(self, target_apo=100000, target_peri=100000, compass_heading=90):
 
         super().__init__()
         self.gravity_turn_active = False
@@ -24,7 +24,7 @@ class AsyncLauncher(Core):
         self.srbs_separated = self.launch_params['srbs_separated']
         self.lf_launch_stage_expended = self.launch_params['lf_launch_stage_expended']
 
-        self.compass_heading = 90
+        self.compass_heading = compass_heading
         self.turn_angle = 0
 
         print('Launch parameters: {}'.format(self.launch_params))

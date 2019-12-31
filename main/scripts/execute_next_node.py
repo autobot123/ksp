@@ -1,15 +1,8 @@
-import sys
-sys.path.insert(1, "functions")
-
-from core import Core
-from lander import Lander
-from launcher import Launcher
-from orbit import Orbit
-from transfer import Transfer
+from functions.orbit import Orbit
 
 
 print("Running execute node script")
-core = Core()
+orbit = Orbit()
 
-core.execute_next_node()
+orbit.execute_next_node()
 print("Exiting execute node script")

@@ -6,7 +6,7 @@ from functions.async_launcher import AsyncLauncher
 async def main():
 
     print("Running async launcher script")
-    launcher = AsyncLauncher()
+    launcher = AsyncLauncher(compass_heading=90)
     launcher.launch(warp=0)
 
     await asyncio.gather(launcher.monitor_launch_state(),

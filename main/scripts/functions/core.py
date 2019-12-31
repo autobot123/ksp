@@ -50,6 +50,7 @@ class Core:
             with open(craft_config_filepath) as craft_config:
                 craft_config_text = json.load(craft_config)
             print(f"Config found:\n{json.dumps(craft_config_text, indent=2)}\n")
+            # todo - add if statement to check if craft is pre-launch, and if so give option below to edit config?
             query_response = input(f"Modify? y/n\n")
             while True:
                 if query_response == "y":
@@ -205,6 +206,7 @@ class Core:
 
         self.activate_stage()
 
+    # fixme decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
     def print_float(self, msg, num, decimal_places, units):
         print(f"{msg}{round(num,decimal_places)}{units}")
 
