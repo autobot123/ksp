@@ -36,9 +36,6 @@ def get_atts(item):
 
 ### testbed
 
-while True:
-    
-    print(f"air pressure = {vessel.orbit.body.pressure_at(altitude())}")
-    time.sleep(0.5)
+print(vessel.situation.landed)
 
 ### /testbed

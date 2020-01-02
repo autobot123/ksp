@@ -46,3 +46,56 @@ class Lander(Core):
 
         self.vessel.control.throttle = 0
         print("Vessel landed")
+
+    def suicide_burn_v2(self, suicide_burn_alt):
+        """
+        todo
+        add event support
+        add better logic for tapering throttle
+        auto calculate throttle required to maintain vertical speed
+        taper final stage of landing
+
+        :param suicide_burn_alt:
+        :return:
+        """
+
+        print("Initiating suicide burn, waiting for altitude to drop")
+        self.enable_sas()
+        self.vessel.control.sas_mode = self.vessel.control.sas_mode.retrograde
+
+        # expr = self.conn.krpc.Expression.less_than(self.conn.krpc.Expression.call(self.surface_altitude()),
+        #                                            suicide_burn_alt)
+        # suicide_burn_alt_event = self.conn.krpc.add_event(expr)
+        # with suicide_burn_alt_event.condition:
+        #     suicide_burn_alt_event.wait()
+
+        while self.surface_altitude() > suicide_burn_alt:
+            pass
+
+        self.vessel.control.throttle = 1
+
+        # expr = self.conn.krpc.Expression.less_than(self.conn.krpc.Expression.call(self.vertical_speed()), 0)
+        # engine_cut_event = self.conn.krpc.add_event(expr)
+        # with engine_cut_event.condition:
+        #     engine_cut_event.wait()
+
+        while self.vertical_speed() < -10:
+            pass
+
+        self.vessel.control.throttle = 0
+
+        while self.vessel.situation.name != "landed":
+
+            if self.vertical_speed() < -10:
+                self.vessel.control.throttle += 0.05
+
+            if self.vertical_speed() < -5:
+                self.vessel.control.throttle += 0.01
+
+            if self.vertical_speed() > -2:
+                self.vessel.control.throttle -= 0.25
+
+            time.sleep(0.05)
+
+        print("landed")
+        self.vessel.control.throttle = 0
