@@ -28,17 +28,19 @@ class Core:
         # connections
         self.conn = krpc.connect(name=self.craft_name)
         self.canvas = self.conn.ui.stock_canvas
-        self.vessel = self.conn.space_center.active_vessel
+        self.space_center = self.conn.space_center
+        self.vessel = self.space_center.active_vessel
         self.srf_frame = self.vessel.orbit.body.reference_frame
 
         # flight info
-        self.ut = self.conn.add_stream(getattr, self.conn.space_center, 'ut')
+        self.ut = self.conn.add_stream(getattr, self.space_center, 'ut')
         self.altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'mean_altitude')
         self.surface_altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'surface_altitude')
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
         self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
         orbit_body_ref_frame = self.vessel.orbit.body.reference_frame
         self.vertical_speed = self.conn.add_stream(getattr, self.vessel.flight(orbit_body_ref_frame), 'vertical_speed')
+        self.horizontal_speed = self.conn.add_stream(getattr, self.vessel.flight(orbit_body_ref_frame), 'horizontal_speed')
 
     def select_craft_config(self):
 
@@ -157,7 +159,7 @@ class Core:
         self.vessel.auto_pilot.target_pitch_and_heading(pitch, heading)
 
     def set_phys_warp(self, factor=0):
-        self.conn.space_center.physics_warp_factor = factor
+        self.space_center.physics_warp_factor = factor
         print(f"Warp factor: {factor+1}")
 
     ## todo test
@@ -220,6 +222,14 @@ class Core:
 
         return burn_time
 
+    def adjust_throttle_for_twr(self, target_twr):
+        thrust = sum(e.available_thrust for e in self.vessel.parts.engines if e.active)
+        mass = self.vessel.mass
+        gravity = self.space_center.active_vessel.orbit.body.surface_gravity
+        throttle = target_twr / (thrust / (mass * gravity))
+        self.vessel.control.throttle = throttle
+        # print(f"Desired TWR = {target_twr}; setting throttle to {throttle}")
+
 
     # todo TEST THIS
     def execute_next_node(self):
@@ -256,7 +266,7 @@ class Core:
         lead_time = 5
         self.print_float("Warp to ", lead_time, 1, " seconds to burn")
         # todo test burntime/2 works as expected
-        self.conn.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
+        self.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
 
         # Execute burn
         print('Ready to execute burn')
