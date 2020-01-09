@@ -123,11 +123,14 @@ class AsyncLauncher(Core):
         self.vessel.control.throttle = 0
         self.sas_prograde()
 
+        self.set_phys_warp(3)
+
         while not self.circularisation_active:
             while self.vessel.orbit.body.pressure_at(self.altitude()) != 0:
-                print(f"pressure: {self.vessel.orbit.body.pressure_at(self.altitude()):.1f}")
-                await asyncio.sleep(1)
+                # print(f"pressure: {self.vessel.orbit.body.pressure_at(self.altitude()):.1f}")
+                await asyncio.sleep(0.5)
             self.circularisation_active = True
+            self.set_phys_warp(0)
 
         while not self.circularisation_complete:
             await asyncio.sleep(0.1)

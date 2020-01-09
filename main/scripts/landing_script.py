@@ -14,3 +14,9 @@ lander = Lander()
 lander.suicide_burn(900)
 
 print("Exiting landing script")
+
+
+class ClassName:
+
+    def __init__(self):
+        self.my_attr = my_attr

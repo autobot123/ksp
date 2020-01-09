@@ -210,7 +210,7 @@ class Core:
 
     # fixme decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
     def print_float(self, msg, num, decimal_places, units):
-        print(f"{msg}{round(num,decimal_places)}{units}")
+        print(f"{msg}{round(num, decimal_places)}{units}")
 
     def calculate_burn_time(self, delta_v):
         F = self.vessel.available_thrust
@@ -253,6 +253,7 @@ class Core:
         self.vessel.auto_pilot.reference_frame = next_node.reference_frame
         self.vessel.auto_pilot.target_direction = (0, 1, 0)
         self.vessel.auto_pilot.wait()
+        print("Vessel pointing at node")
 
         # calculate burn time
         burn_time = self.calculate_burn_time(delta_v)
@@ -288,8 +289,10 @@ class Core:
 
         new_burn_dv = 10000000
         decimal.getcontext().prec = 3
+
         while True:
             # multiply by 1 to ensure values are rounded as per precision above
+            # todo add tapering based on twr. use this as a factor? i.e. twr*20 = throttle cut threshold?
             old_burn_dv = decimal.Decimal(new_burn_dv) * 1
             new_burn_dv = decimal.Decimal(burn_dv()) * 1
             if 5 < new_burn_dv < 20:
@@ -300,11 +303,13 @@ class Core:
                 self.vessel.control.throttle = 0.01
             if new_burn_dv < 0.01:
                 self.vessel.control.throttle = 0.0
-                self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
+                # fixme not working
+                # self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
                 break
             elif new_burn_dv > old_burn_dv:
                 self.vessel.control.throttle = 0.0
-                self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
+                # fixme not working
+                # self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
                 break
 
         next_node.remove()
