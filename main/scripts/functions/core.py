@@ -232,7 +232,7 @@ class Core:
 
 
     # todo TEST THIS
-    def execute_next_node(self):
+    def execute_next_node(self, lead_time=10):
 
         # deprecated?
         # self.get_active_engine_info()
@@ -264,7 +264,6 @@ class Core:
         # todo make sure burn_ut > ut(). otherwise burn is in the past and process should exit.
         burn_ut = next_node.ut
 
-        lead_time = 5
         self.print_float("Warp to ", lead_time, 1, " seconds to burn")
         # todo test burntime/2 works as expected
         self.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
