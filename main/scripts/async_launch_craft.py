@@ -2,11 +2,12 @@ import asyncio
 from functions.async_launcher import AsyncLauncher
 
 
-# todo move this into async launcher?
-async def main():
+async def launch(orientation):
 
     print("Running async launcher script")
-    launcher = AsyncLauncher(compass_heading=90)
+
+    # 0 for polar orbit, 90 for conventional
+    launcher = AsyncLauncher(compass_heading=orientation)
     launcher.launch(warp=0)
 
     await asyncio.gather(launcher.monitor_launch_state(),
@@ -18,4 +19,8 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+
+    # 0 for polar, 90 for standard
+    orientation = 0
+
+    asyncio.run(launch(orientation))
