@@ -10,20 +10,16 @@ class Lander(Core):
         super().__init__()
 
     def suicide_burn(self, suicide_burn_alt):
-        """
-        todo
-        add event support
-
-        :param suicide_burn_alt:
-        :return:
-        """
 
         print("Initiating suicide burn, waiting for altitude to drop")
         self.enable_sas()
         self.vessel.control.sas_mode = self.vessel.control.sas_mode.retrograde
 
-        while self.surface_altitude() > suicide_burn_alt and self.vertical_speed() > 0:
+        while self.surface_altitude() > suicide_burn_alt:
             pass
+        while self.vertical_speed() > 0:
+            pass
+
         print("Initiate landing burn at full throttle")
         self.vessel.control.throttle = 1
 

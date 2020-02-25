@@ -19,6 +19,7 @@ class Core:
         krpc.connect("get_craft_name").close()
 
         # setting up craft config
+        # todo - skip config check if vehicle is not on a launchpad
         json_config = self.select_craft_config()
         with open(json_config, "r") as json_file:
             craft_params = json.load(json_file)
