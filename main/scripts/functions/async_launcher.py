@@ -6,7 +6,7 @@ from .core import Core
 
 class AsyncLauncher(Core):
 
-    def __init__(self, target_apo=100000, target_peri=100000, compass_heading=90):
+    def __init__(self, target_apo=80000, target_peri=80000, compass_heading=90):
 
         super().__init__()
         self.gravity_turn_active = False

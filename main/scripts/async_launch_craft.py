@@ -21,6 +21,6 @@ async def launch(orientation):
 if __name__ == "__main__":
 
     # 0 for polar, 90 for standard
-    orientation = 0
+    orientation = 90
 
     asyncio.run(launch(orientation))
