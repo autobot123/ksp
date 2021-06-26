@@ -55,7 +55,7 @@ class Orbit(Core):
         print("Burn complete. Target apo: {}  Actual apo: {}".format(apo_target, apo_actual))
 
     def set_peri(self, peri_target, wait_til_apo=True, burn_time=30, turn_time=5):
-        # todo check if burn should be prograde or retrograde
+        # TODO: check if burn should be prograde or retrograde
 
         if wait_til_apo:
             while self.vessel.orbit.time_to_apoapsis > burn_time*3:
@@ -85,7 +85,7 @@ class Orbit(Core):
         peri_actual = self.periapsis()
         print("Burn complete. Target peri: {}  Actual peri: {}".format(peri_target, peri_actual))
 
-    # todo test and remove
+    # TODO: test and remove
     def circularise_to_apo(self):
 
         self.vessel.auto_pilot.engage()

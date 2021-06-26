@@ -81,7 +81,7 @@ class Launcher(Core):
         while self.altitude() < 70000:
             pass
 
-        ## todo create core method
+        ## TODO: create core method
         self.vessel.auto_pilot.engage()
         mu = self.vessel.orbit.body.gravitational_parameter
         r = self.vessel.orbit.apoapsis
@@ -105,7 +105,7 @@ class Launcher(Core):
         """
 
 
-        ## todo create core method
+        ## TODO: create core method
         F = self.vessel.available_thrust
         Isp = self.vessel.specific_impulse * 9.82
         m0 = self.vessel.mass

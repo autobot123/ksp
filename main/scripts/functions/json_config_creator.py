@@ -1,7 +1,7 @@
 import json
 from pprint import pprint
 
-# todo - use ship name as script name?
+# TODO: - use ship name as script name?
 # fixme - check type of values entered
 
 
@@ -17,7 +17,7 @@ class JsonConfigCreator:
         self.new_dict = {}
 
     def param_validator(self):
-        # todo check entered values against the parameters stored in json files? or do that inline and add type to template file?
+        # TODO: check entered values against the parameters stored in json files? or do that inline and add type to template file?
         pass
 
     def create_new_craft_config(self):
@@ -55,7 +55,7 @@ class JsonConfigCreator:
                 query_response = input("Invalid input. Please enter y or n\n")
                 continue
 
-    # todo try passing in a blank dictionary and copying to that instead of editing dict_data in place?
+    # TODO: try passing in a blank dictionary and copying to that instead of editing dict_data in place?
     def create_new_dict(self, dict_data):
 
         for (key, param) in dict_data.items():
@@ -72,7 +72,7 @@ class JsonConfigCreator:
 
         return dict_data
 
-    # todo fix so that it overwrites existing files if modified
+    # TODO: fix so that it overwrites existing files if modified
     def write_new_config_to_file(self, new_config_data):
         with open(self.new_craft_config_file, "w") as outfile:
             json.dump(new_config_data, outfile, indent=2)

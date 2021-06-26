@@ -25,7 +25,7 @@ def request_user_input(msg, proceed_string="YES", abort_string="NO"):
 
 print("Loading mission plan to launch satellites around Mun and Minmus")
 
-# todo test and uncomment
+# TODO:: test and uncomment
 # # launch craft
 # launcher = AsyncLauncher()
 # print("Running async launcher script")
@@ -42,7 +42,7 @@ orbit = Orbit()
 
 # plan Minmus encounter
 
-# todo uncomment
+# TODO: uncomment
 # request_user_input(f"Create maneuver node to encounter Minmus.")
 # orbit.execute_next_node()
 

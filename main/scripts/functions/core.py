@@ -7,7 +7,7 @@ from .json_config_creator import JsonConfigCreator
 import decimal
 from pprint import pprint
 
-# todo add target apo and peri to class
+# TODO: add target apo and peri to class
 
 
 class Core:
@@ -19,7 +19,7 @@ class Core:
         krpc.connect("get_craft_name").close()
 
         # setting up craft config
-        # todo - skip config check if vehicle is not on a launchpad
+        # TODO: - skip config check if vehicle is not on a launchpad
         json_config = self.select_craft_config()
         with open(json_config, "r") as json_file:
             craft_params = json.load(json_file)
@@ -45,7 +45,7 @@ class Core:
 
     def select_craft_config(self):
 
-        # todo parameterise so this relative path works with where the script runs from
+        # TODO: parameterise so this relative path works with where the script runs from
         # craft_config_template = r'..\resources\craft_config\craft_config_template.json'
         craft_config_template = r'main\resources\craft_config\craft_config_template.json'
 
@@ -56,7 +56,7 @@ class Core:
             with open(craft_config_filepath) as craft_config:
                 craft_config_text = json.load(craft_config)
             print(f"Config found:\n{json.dumps(craft_config_text, indent=2)}\n")
-            # todo - add if statement to check if craft is pre-launch, and if so give option below to edit config?
+            # TODO: - add if statement to check if craft is pre-launch, and if so give option below to edit config?
             query_response = input(f"Modify? y/n\n")
             while True:
                 if query_response == "y":
@@ -108,7 +108,7 @@ class Core:
         self.vessel.auto_pilot.wait()
         print(f"Vessel oriented to {direction_stream}")
 
-        # todo test what happens if I remove stream?
+        # TODO: test what happens if I remove stream?
 
     def activate_stage(self, msg="", delay=0.5):
         time.sleep(delay)
@@ -166,14 +166,14 @@ class Core:
         self.space_center.physics_warp_factor = factor
         print(f"Warp factor: {factor+1}")
 
-    ## todo test
+    ## TODO: test
     def get_fuel_quantity(self):
         solid_fuel = self.conn.get_call(self.vessel.resources.amount, "SolidFuel")
         liquid_fuel = self.conn.get_call(self.vessel.resources.amount, "LiquidFuel")
         return solid_fuel, liquid_fuel
 
-    # todo part_name is not very specific and will probably break easily
-    # todo add functionality to account for not all engines of one type being expended in current stage (as above method)
+    # TODO: part_name is not very specific and will probably break easily
+    # TODO: add functionality to account for not all engines of one type being expended in current stage (as above method)
     def get_fuel_in_stage(self, part_name, fuel_type, print_fuel=False):
         stage_resources = self.vessel.parts.in_stage(self.vessel.control.current_stage)
         total_fuel = 0
@@ -235,7 +235,7 @@ class Core:
         # print(f"Desired TWR = {target_twr}; setting throttle to {throttle}")
 
 
-    # todo TEST THIS
+    # TODO: TEST THIS
     def execute_next_node(self, lead_time=10, physwarp=0):
 
         # deprecated?
@@ -247,15 +247,15 @@ class Core:
         delta_v = next_node.delta_v
         self.print_float("Node delta V: ", delta_v, 3, "m/s")
 
-        # todo check if node will require staging. if so, add staging and calculate next stages delta_v
+        # TODO: check if node will require staging. if so, add staging and calculate next stages delta_v
         # add method to calculate delta_v remaining in stage?
 
         self.enable_autopilot()
 
-        # todo engage RCS
+        # TODO: engage RCS
 
         # point ship at node
-        # todo match with set_orientation? add set_ref_frame method?
+        # TODO: match with set_orientation? add set_ref_frame method?
         self.vessel.auto_pilot.reference_frame = next_node.reference_frame
         self.vessel.auto_pilot.target_direction = (0, 1, 0)
         self.vessel.auto_pilot.wait()
@@ -267,22 +267,22 @@ class Core:
         self.print_float("Burn time: ", burn_time, 3, " seconds")
 
         # Wait until burn
-        # todo make sure burn_ut > ut(). otherwise burn is in the past and process should exit.
+        # TODO: make sure burn_ut > ut(). otherwise burn is in the past and process should exit.
         burn_ut = next_node.ut
 
         self.print_float("Warp to ", lead_time, 1, " seconds to burn")
-        # todo test burntime/2 works as expected
+        # TODO: test burntime/2 works as expected
         self.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
 
         # Execute burn
         print('Ready to execute burn')
-        # todo try converting to decimal here?
+        # TODO: try converting to decimal here?
         burn_dv = self.conn.add_stream(getattr, next_node, "remaining_delta_v")
 
         # sleep until burn time
         while (burn_ut - self.ut()) - (burn_time / 2) > 0:
             countdown_to_burn = (burn_ut - self.ut()) - (burn_time / 2)
-            # todo make it count 10, 9, 8 etc. but only print once
+            # TODO: make it count 10, 9, 8 etc. but only print once
             #self.print_float("countdown to burn: ", countdown_to_burn, 3, " seconds")
             #time.sleep(0.1)
             pass
@@ -291,14 +291,14 @@ class Core:
         self.set_phys_warp(physwarp)
         self.vessel.control.throttle = 1.0
 
-        # todo turn into recursive method? to fine tune burning?
+        # TODO: turn into recursive method? to fine tune burning?
 
         new_burn_dv = 10000000
         decimal.getcontext().prec = 3
 
         while True:
             # multiply by 1 to ensure values are rounded as per precision above
-            # todo add tapering based on twr. use this as a factor? i.e. twr*20 = throttle cut threshold?
+            # TODO: add tapering based on twr. use this as a factor? i.e. twr*20 = throttle cut threshold?
             old_burn_dv = decimal.Decimal(new_burn_dv) * 1
             new_burn_dv = decimal.Decimal(burn_dv()) * 1
             if 5 < new_burn_dv < 20:
@@ -322,7 +322,7 @@ class Core:
         self.set_phys_warp(0)
         print('Node complete')
         time.sleep(1)
-        # todo disengage RCS
+        # TODO: disengage RCS
         self.sas_prograde()
 
 

@@ -99,7 +99,7 @@ class AsyncLauncher(Core):
         self.circularisation_complete = True
 
 
-    # todo try using async main loop in monitor launch state instead of separate launch script?
+    # TODO: try using async main loop in monitor launch state instead of separate launch script?
     async def monitor_launch_state(self):
 
         while not self.gravity_turn_active:
