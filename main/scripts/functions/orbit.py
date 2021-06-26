@@ -137,3 +137,14 @@ class Orbit(Core):
         self.vessel.control.throttle = 0.0
         node.remove()
         self.sas_prograde()
+
+    def multi_stage_transfer(self, total_delta_v, num_maneuvers):
+
+        delta_v = (total_delta_v / num_maneuvers)
+        for num in range(num_maneuvers):
+            print(f"  Executing node {num}")
+            node = self.vessel.control.add_node(self.ut() + self.vessel.orbit.time_to_periapsis, prograde=delta_v)
+            self.execute_next_node(physwarp=3)
+            print(f"  Node {num} complete")
+
+        print("Maneuvers finished")
