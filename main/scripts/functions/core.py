@@ -45,9 +45,12 @@ class Core:
 
     def select_craft_config(self):
 
-        craft_config_template = r'..\resources\craft_config\craft_config_template.json'
+        # todo parameterise so this relative path works with where the script runs from
+        # craft_config_template = r'..\resources\craft_config\craft_config_template.json'
+        craft_config_template = r'main\resources\craft_config\craft_config_template.json'
 
-        craft_config_filepath = os.path.join(os.getcwd(), r"..\resources\craft_config", self.craft_name.lower() + "_config.json")
+        # fixme this relative path doesn't work either
+        craft_config_filepath = os.path.join(os.getcwd(), r"main\resources\craft_config", self.craft_name.lower() + "_config.json")
 
         if os.path.exists(craft_config_filepath):
             with open(craft_config_filepath) as craft_config:
@@ -233,7 +236,7 @@ class Core:
 
 
     # todo TEST THIS
-    def execute_next_node(self, lead_time=10):
+    def execute_next_node(self, lead_time=10, physwarp=0):
 
         # deprecated?
         # self.get_active_engine_info()
@@ -248,6 +251,8 @@ class Core:
         # add method to calculate delta_v remaining in stage?
 
         self.enable_autopilot()
+
+        # todo engage RCS
 
         # point ship at node
         # todo match with set_orientation? add set_ref_frame method?
@@ -283,6 +288,7 @@ class Core:
             pass
 
         self.print_float("Burning for ", burn_time, 3, " seconds")
+        self.set_phys_warp(physwarp)
         self.vessel.control.throttle = 1.0
 
         # todo turn into recursive method? to fine tune burning?
@@ -313,8 +319,10 @@ class Core:
                 break
 
         next_node.remove()
+        self.set_phys_warp(0)
         print('Node complete')
         time.sleep(1)
+        # todo disengage RCS
         self.sas_prograde()
 
 
