@@ -10,7 +10,7 @@ class Transfer(Core):
 
         super().__init__()
 
-    # todo
+    # TODO:
     def circularise_to_periapsis(self):
 
         self.vessel.auto_pilot.engage()
