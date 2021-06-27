@@ -238,10 +238,6 @@ class Core:
     # TODO: TEST THIS
     def execute_next_node(self, lead_time=10, physwarp=0):
 
-        # deprecated?
-        # self.get_active_engine_info()
-
-        # get next node
         nodes = self.vessel.control.nodes
         next_node = nodes[0]
         delta_v = next_node.delta_v
@@ -254,14 +250,12 @@ class Core:
 
         # TODO: engage RCS
 
-        # point ship at node
         # TODO: match with set_orientation? add set_ref_frame method?
         self.vessel.auto_pilot.reference_frame = next_node.reference_frame
         self.vessel.auto_pilot.target_direction = (0, 1, 0)
         self.vessel.auto_pilot.wait()
         print("Vessel pointing at node")
 
-        # calculate burn time
         burn_time = self.calculate_burn_time(delta_v)
 
         self.print_float("Burn time: ", burn_time, 3, " seconds")
@@ -274,7 +268,6 @@ class Core:
         # TODO: test burntime/2 works as expected
         self.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
 
-        # Execute burn
         print('Ready to execute burn')
         # TODO: try converting to decimal here?
         burn_dv = self.conn.add_stream(getattr, next_node, "remaining_delta_v")
