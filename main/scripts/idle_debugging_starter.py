@@ -36,9 +36,22 @@ def get_atts(item):
 
 ### testbed
 
-while True:
+# active_engines = [e for e in self.vessel.parts.engines if e.active and e.has_fuel]
     
-    print(f"air pressure = {vessel.orbit.body.pressure_at(altitude())}")
-    time.sleep(0.5)
+
+
+def calculate_throttle(target_twr):
+    #active_engines = [e for e in vessel.parts.engines if e.active]
+    thrust = sum(e.available_thrust for e in vessel.parts.engines if e.active)
+    mass = vessel.mass
+    gravity = conn.space_center.active_vessel.orbit.body.surface_gravity
+    throttle_level = 1/(thrust/(mass*gravity))
+    return throttle_level
+
+#calculate_throttle(1)
+print(vessel.situation.landed)
+
+while True:
+    vessel.control.throttle = calculate_throttle(1)
 
 ### /testbed

@@ -7,7 +7,7 @@ from .json_config_creator import JsonConfigCreator
 import decimal
 from pprint import pprint
 
-# todo add target apo and peri to class
+# TODO: add target apo and peri to class
 
 
 class Core:
@@ -19,6 +19,7 @@ class Core:
         krpc.connect("get_craft_name").close()
 
         # setting up craft config
+        # TODO: - skip config check if vehicle is not on a launchpad
         json_config = self.select_craft_config()
         with open(json_config, "r") as json_file:
             craft_params = json.load(json_file)
@@ -28,28 +29,34 @@ class Core:
         # connections
         self.conn = krpc.connect(name=self.craft_name)
         self.canvas = self.conn.ui.stock_canvas
-        self.vessel = self.conn.space_center.active_vessel
+        self.space_center = self.conn.space_center
+        self.vessel = self.space_center.active_vessel
         self.srf_frame = self.vessel.orbit.body.reference_frame
 
         # flight info
-        self.ut = self.conn.add_stream(getattr, self.conn.space_center, 'ut')
+        self.ut = self.conn.add_stream(getattr, self.space_center, 'ut')
         self.altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'mean_altitude')
         self.surface_altitude = self.conn.add_stream(getattr, self.vessel.flight(), 'surface_altitude')
         self.apoapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'apoapsis_altitude')
         self.periapsis = self.conn.add_stream(getattr, self.vessel.orbit, 'periapsis_altitude')
         orbit_body_ref_frame = self.vessel.orbit.body.reference_frame
         self.vertical_speed = self.conn.add_stream(getattr, self.vessel.flight(orbit_body_ref_frame), 'vertical_speed')
+        self.horizontal_speed = self.conn.add_stream(getattr, self.vessel.flight(orbit_body_ref_frame), 'horizontal_speed')
 
     def select_craft_config(self):
 
-        craft_config_template = r'..\resources\craft_config\craft_config_template.json'
+        # TODO: parameterise so this relative path works with where the script runs from
+        # craft_config_template = r'..\resources\craft_config\craft_config_template.json'
+        craft_config_template = r'main\resources\craft_config\craft_config_template.json'
 
-        craft_config_filepath = os.path.join(os.getcwd(), r"..\resources\craft_config", self.craft_name.lower() + "_config.json")
+        # fixme this relative path doesn't work either
+        craft_config_filepath = os.path.join(os.getcwd(), r"main\resources\craft_config", self.craft_name.lower() + "_config.json")
 
         if os.path.exists(craft_config_filepath):
             with open(craft_config_filepath) as craft_config:
                 craft_config_text = json.load(craft_config)
             print(f"Config found:\n{json.dumps(craft_config_text, indent=2)}\n")
+            # TODO: - add if statement to check if craft is pre-launch, and if so give option below to edit config?
             query_response = input(f"Modify? y/n\n")
             while True:
                 if query_response == "y":
@@ -101,7 +108,7 @@ class Core:
         self.vessel.auto_pilot.wait()
         print(f"Vessel oriented to {direction_stream}")
 
-        # todo test what happens if I remove stream?
+        # TODO: test what happens if I remove stream?
 
     def activate_stage(self, msg="", delay=0.5):
         time.sleep(delay)
@@ -156,17 +163,17 @@ class Core:
         self.vessel.auto_pilot.target_pitch_and_heading(pitch, heading)
 
     def set_phys_warp(self, factor=0):
-        self.conn.space_center.physics_warp_factor = factor
+        self.space_center.physics_warp_factor = factor
         print(f"Warp factor: {factor+1}")
 
-    ## todo test
+    ## TODO: test
     def get_fuel_quantity(self):
         solid_fuel = self.conn.get_call(self.vessel.resources.amount, "SolidFuel")
         liquid_fuel = self.conn.get_call(self.vessel.resources.amount, "LiquidFuel")
         return solid_fuel, liquid_fuel
 
-    # todo part_name is not very specific and will probably break easily
-    # todo add functionality to account for not all engines of one type being expended in current stage (as above method)
+    # TODO: part_name is not very specific and will probably break easily
+    # TODO: add functionality to account for not all engines of one type being expended in current stage (as above method)
     def get_fuel_in_stage(self, part_name, fuel_type, print_fuel=False):
         stage_resources = self.vessel.parts.in_stage(self.vessel.control.current_stage)
         total_fuel = 0
@@ -205,8 +212,9 @@ class Core:
 
         self.activate_stage()
 
+    # fixme decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
     def print_float(self, msg, num, decimal_places, units):
-        print(f"{msg}{round(num,decimal_places)}{units}")
+        print(f"{msg}{round(num, decimal_places)}{units}")
 
     def calculate_burn_time(self, delta_v):
         F = self.vessel.available_thrust
@@ -218,66 +226,72 @@ class Core:
 
         return burn_time
 
+    def adjust_throttle_for_twr(self, target_twr):
+        thrust = sum(e.available_thrust for e in self.vessel.parts.engines if e.active)
+        mass = self.vessel.mass
+        gravity = self.space_center.active_vessel.orbit.body.surface_gravity
+        throttle = target_twr / (thrust / (mass * gravity))
+        self.vessel.control.throttle = throttle
+        # print(f"Desired TWR = {target_twr}; setting throttle to {throttle}")
 
-    # todo TEST THIS
-    def execute_next_node(self):
 
-        # deprecated?
-        # self.get_active_engine_info()
+    # TODO: TEST THIS
+    def execute_next_node(self, lead_time=10, physwarp=0):
 
-        # get next node
         nodes = self.vessel.control.nodes
         next_node = nodes[0]
         delta_v = next_node.delta_v
         self.print_float("Node delta V: ", delta_v, 3, "m/s")
 
-        # todo check if node will require staging. if so, add staging and calculate next stages delta_v
+        # TODO: check if node will require staging. if so, add staging and calculate next stages delta_v
         # add method to calculate delta_v remaining in stage?
 
         self.enable_autopilot()
 
-        # point ship at node
-        # todo match with set_orientation? add set_ref_frame method?
+        # TODO: engage RCS
+
+        # TODO: match with set_orientation? add set_ref_frame method?
         self.vessel.auto_pilot.reference_frame = next_node.reference_frame
         self.vessel.auto_pilot.target_direction = (0, 1, 0)
         self.vessel.auto_pilot.wait()
+        print("Vessel pointing at node")
 
-        # calculate burn time
         burn_time = self.calculate_burn_time(delta_v)
 
         self.print_float("Burn time: ", burn_time, 3, " seconds")
 
         # Wait until burn
-        # todo make sure burn_ut > ut(). otherwise burn is in the past and process should exit.
+        # TODO: make sure burn_ut > ut(). otherwise burn is in the past and process should exit.
         burn_ut = next_node.ut
 
-        lead_time = 5
         self.print_float("Warp to ", lead_time, 1, " seconds to burn")
-        # todo test burntime/2 works as expected
-        self.conn.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
+        # TODO: test burntime/2 works as expected
+        self.space_center.warp_to(burn_ut - lead_time - (burn_time/2))
 
-        # Execute burn
         print('Ready to execute burn')
-        # todo try converting to decimal here?
+        # TODO: try converting to decimal here?
         burn_dv = self.conn.add_stream(getattr, next_node, "remaining_delta_v")
 
         # sleep until burn time
         while (burn_ut - self.ut()) - (burn_time / 2) > 0:
             countdown_to_burn = (burn_ut - self.ut()) - (burn_time / 2)
-            # todo make it count 10, 9, 8 etc. but only print once
+            # TODO: make it count 10, 9, 8 etc. but only print once
             #self.print_float("countdown to burn: ", countdown_to_burn, 3, " seconds")
             #time.sleep(0.1)
             pass
 
         self.print_float("Burning for ", burn_time, 3, " seconds")
+        self.set_phys_warp(physwarp)
         self.vessel.control.throttle = 1.0
 
-        # todo turn into recursive method? to fine tune burning?
+        # TODO: turn into recursive method? to fine tune burning?
 
         new_burn_dv = 10000000
         decimal.getcontext().prec = 3
+
         while True:
             # multiply by 1 to ensure values are rounded as per precision above
+            # TODO: add tapering based on twr. use this as a factor? i.e. twr*20 = throttle cut threshold?
             old_burn_dv = decimal.Decimal(new_burn_dv) * 1
             new_burn_dv = decimal.Decimal(burn_dv()) * 1
             if 5 < new_burn_dv < 20:
@@ -288,16 +302,20 @@ class Core:
                 self.vessel.control.throttle = 0.01
             if new_burn_dv < 0.01:
                 self.vessel.control.throttle = 0.0
-                self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
+                # fixme not working
+                # self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
                 break
             elif new_burn_dv > old_burn_dv:
                 self.vessel.control.throttle = 0.0
-                self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
+                # fixme not working
+                # self.print_float("Final delta V remaining: ", new_burn_dv, 3, "m/s")
                 break
 
         next_node.remove()
+        self.set_phys_warp(0)
         print('Node complete')
         time.sleep(1)
+        # TODO: disengage RCS
         self.sas_prograde()
 
 

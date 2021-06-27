@@ -9,40 +9,52 @@ class Lander(Core):
     def __init__(self):
         super().__init__()
 
-    def suicide_burn(self):
-
-        # todo deploy chute
+    def suicide_burn(self, suicide_burn_alt):
 
         print("Initiating suicide burn, waiting for altitude to drop")
         self.enable_sas()
         self.vessel.control.sas_mode = self.vessel.control.sas_mode.retrograde
-        while self.surface_altitude() > 2750:
+
+        while self.surface_altitude() > suicide_burn_alt:
+            pass
+        while self.vertical_speed() > 0:
             pass
 
-        print(f"Altitude below {self.surface_altitude():.2f}, entering burn loop")
-        while True:
+        print("Initiate landing burn at full throttle")
+        self.vessel.control.throttle = 1
 
-            # todo work out how to tailor for landing
-            # todo throttle += 0.01 based on how fast vert speed goes up or down?
-            # make it descend at 20m/s below 500m, then 10m/s below 100, then 5 below 25
+        while self.vertical_speed() < -10:
+            pass
+        print(f"Vertical speed {self.vertical_speed():.2f}. Maintaining constant vertical speed for landing.")
+        self.adjust_throttle_for_twr(1)
 
-            if self.vertical_speed() < -30:
-                self.vessel.control.throttle = 1
-                # print(f"vert speed = {self.vertical_speed()}. Throttle set to {self.vessel.control.throttle}")
-            elif -30 <= self.vertical_speed() < -10:
-                self.vessel.control.throttle = 0.45
-                # print(f"vert speed = {self.vertical_speed()}. Throttle set to {self.vessel.control.throttle}")
-            elif -10 <= self.vertical_speed() < -5:
-                self.vessel.control.throttle = 0.17
-                # print(f"vert speed = {self.vertical_speed()}. Throttle set to {self.vessel.control.throttle}")
+        while self.surface_altitude() > 25:
+
+            if -15 < self.vertical_speed() < -10:
+                self.adjust_throttle_for_twr(1)
+            elif self.vertical_speed() < -10:
+                self.adjust_throttle_for_twr(1.1)
+            elif self.vertical_speed() > -10:
+                self.adjust_throttle_for_twr(0.5)
+            time.sleep(0.05)
+
+        print("final landing stage")
+        while self.vessel.situation.name != "landed":
+
+            if self.horizontal_speed() < 2:
+                self.vessel.control.sas_mode = self.vessel.control.sas_mode.radial
             else:
-                self.vessel.control.throttle = 0.05
-                # print(f"vert speed = {self.vertical_speed()}. Throttle set to {self.vessel.control.throttle}")
+                self.vessel.control.sas_mode = self.vessel.control.sas_mode.retrograde
 
-            if self.surface_altitude() < 5 and self.vertical_speed() > -2:
-                break
+            # initial figure (-5) is crucial, if this gap is too small the craft will overshoot into positive vertical speed
+            if -5 < self.vertical_speed() < -2:
+                self.adjust_throttle_for_twr(1.05)
+            elif self.vertical_speed() > -2:
+                self.vessel.control.throttle -= 0.5
+            elif self.vertical_speed() < -5:
+                self.vessel.control.throttle += 0.02
 
-            time.sleep(0.1)
+            time.sleep(0.05)
 
+        print("landed")
         self.vessel.control.throttle = 0
-        print("Vessel landed")
